@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/665eca08a4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h3><span>TM</span>TaskManager</h3>
+
+        </div>
+       <nav>
+        <ul>
+            <li><a href="" id="dash">Dashboard</a></li>
+            <li><a href="">Tasks</a></li>
+            <li><a href="">Profile</a></li>
+        </ul>
+       </nav>
+    </header>
+
+    <div class="main">
+        <h1><span class="task"></span>Task Dashboard</h1>
+
+        <div class="sub-main">
+            <div class="left">
+                <h4>📝Create New Task</h4>
+                <form action="">
+                    <div class="ip">
+                        <input type="text" placeholder="Task Name *" class="inpt" id="red">
+                        
+                    </div>
+                    <div class="ip">
+                        <input type="email" placeholder="Assignee Email *" class="inpt" id="red">
+                    </div>
+
+
+
+                    <div class="ip">
+                        <div class="up">
+                            <label for=""> Due Date *</label>
+                            <input type="date" placeholder="dd/mm/yyyy" class="inpt" id="red">
+
+                        </div>
+                    </div>
+
+
+                    <div class="ip">
+                        <div class="up">
+                            <label for="">Due Time</label>
+                            <input type="time" class="inpt">
+                        </div>
+
+                    </div>
+
+
+                    <div class="ip">
+                        <div class="up">
+                            <label for="">Priority Level *</label>
+                            <select name="" id="select" class="inpt">
+                                <option value="" id="select">Low Priority</option>
+                                <option value="">Medium Priority</option>
+                                <option value="">High Priority</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="ip">
+                        <div class="up">
+                            <label for="">Estimated Hours</label>
+                            <input type="text" value="54" class="inpt">
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="ip">
+                        
+                        <input type="text" placeholder="Project URL" class="inpt">
+                    </div>
+                    <div class="ip">
+                        <textarea name="Task-description" id="" placeholder="Task Description" class="inpt" ></textarea>
+                    </div>
+
+
+                    <div class="ip">
+                        <label for="" class="lab">Task Progress</label>
+                        <input type="range"  min="0" max="100"  id="progress">
+                        <p>0%</p>
+                    </div>
+
+                    <div class="ip">
+                        <label for="task color">Task Color</label>
+                        <div id="di"></div>
+                    </div>
+
+
+
+                    <div class="ip">
+                       <label for="task" class="lab" id="task">Task Type</label>
+                       <div class="che-sub">
+
+                        <div class="check">
+                            <input type="checkbox" class="che" checked><label for="bug" class="label">Bug Fix</label>
+
+                        </div>
+                        <div class="check">
+                            <input type="checkbox" class="che"><label for="feature" class="label">Feature</label>
+
+                        </div>
+                        <div class="check">
+                            <input type="checkbox" class="che"><label for="enhancement" class="label">Enhancement</label>
+
+                        </div>
+                       </div>
+                    </div>
+
+
+
+                    <div class="ip">
+                            <label for="" class="lab">Status</label>
+                        <div class="che-sub">
+                            
+                            <div class="check">
+    
+                                <input type="radio" name="pending"><label for="pending" class="label">Pending</label>
+                            </div>
+                            <div class="check">
+                                <input type="radio" name="pending"><label for="in progress" class="label">In Progress</label>
+    
+                            </div>
+                            <div class="check">
+                                <input type="radio" name="pending"><label for="completed" class="label">Completed</label>
+    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ip">
+                        <div class="upload">
+                            <label for="file-upload" class="file-upload">
+                                <div class="text"><i class="fa-solid fa-paperclip"></i>Click to upload attachments</div>
+                                <div class="supported">Supported: PDF, DOC, Images</div>
+                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="" id="btn">
+                        <button id="btn1"><i class="fa-solid fa-check" id="i"></i>Create Task</button>
+                        <button id="btn2"><i class="fa-solid fa-xmark" id="i1"></i> Reset</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="right">
+                <div class="head">
+                    <h2>✅Active Tasks</h2>
+                    <nav>
+                        <ul>
+                            <li><a href="" id="all">All</a></li>
+                            <li><a href="">High</a></li>
+                            <li><a href="">Medium</a></li>
+                            <li><a href="">Low</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+                <div class="sub-right">
+                    <div class="con">
+                        <h3>Design Homepage Mockup</h3>
+                        <p class="p">Create Wireframes and high-frdelity mochups for the new homepage redesign project with modern ul elements.</p>
+
+                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Sarath Jonhson</p>
+
+                        <!-- <span >High</span>
+                        <span>In Progreess</span> -->
+
+                        <!-- <div class="spa">
+                            <div>
+                                <h4><div></div>High</h4>
+                            </div>
+                            <div>
+                                <h4><span></span>In Progress</h4>
+                            </div>
+                        </div> -->
+                      
+
+
+                     
+                    
+                        <div class="main-high">
+                            
+                            <div class="high">
+                                <span class="dot"></span> HIGH
+                            </div>
+                            <div class="inpro" >
+                                <span class="dot3"></span>In Progress
+                                
+                            </div>
+                        </div>
+                        
+                        <!-- <ul class="ul">
+                            <li class="red"><span></span>High</li>
+                            <li class="blue">In Progress</li>
+                        </ul> -->
+                    </div> 
+                    
+                    
+                    
+                    <div class="con">
+                        <h3>Fix login authentication Bug</h3>
+                        <p class="p">Resolve the issuse where users are logged out unexpectedly after 5 minutes of inactivity.</p>
+                        <p class="p1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 15,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Michael Chen</p>
+                        
+                        <div class="main-high">
+                            <div class="high">
+                                <span class="dot"></span> HIGH
+                            </div>
+                            <div class="inpro" >
+                                <span class="dot4"></span>Pending
+                                
+                            </div>
+
+                        </div>
+                        <!-- <ul class="ul">
+                            <li class="red">High</li>
+                            <li class="yel">Pending</li>
+                        </ul> -->
+                    </div>
+                    
+                    
+                    
+                    <div class="con">
+                        <h3>Updates Documentation </h3>
+                        <p class="p">Review and updates the API documentation with the latest endpoint changes and examples.</p>
+                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 25,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Emily Rodriguez</p>
+                        
+                        <div class="main-high">
+                            
+                            <div class="medium">
+                                <span class="dot1"></span> MEDIUM
+                            </div>
+                            
+                            <div class="inpro" >
+                                <span class="dot3"></span>In Progress
+                                
+                            </div>
+                        </div>
+                        
+                        <!-- <ul class="ul">
+                            <li class="back">Medium</li>
+                            <li class="blue">In Progress</li>
+                        </ul> -->
+                    </div>
+                    
+                    
+                    
+                    <div class="con">
+                        <h3>Database Performance <br> Optimization</h3>
+                        <p class="p">Analyze and optimize slow-running queries to improve overall database Performance by 30%.</p>
+                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 30,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >David Kim</p>
+                        
+                        <div class="main-high">
+                            <div class="medium">
+                                <span class="dot1"></span> MEDIUM
+                            </div>
+                            
+                            <div class="inpro" >
+                                <span class="dot4"></span>Pending
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <!-- <ul class="ul">
+                            <li class="back">Medium</li>
+                            <li class="yel">Pending</li>
+                        </ul> -->
+                    </div>
+                    
+                    
+                    <div class="con">
+                        <h3>Implement Dark Mode </h3>
+                        <p class="p">Add dark mode theme support across the applicationwith user preference persistence.</p>
+                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Nov 05,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Alex Thompson</p>
+                        <div class="main-high">
+
+                            <div class="low">
+                                <span class="dot2"></span> LOW
+                            </div>
+                            
+                            <div class="inpro" >
+                                <span class="dot4"></span>Pending
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <!-- <ul class="ul">
+                            <li class="back">Medium</li>
+                            <li class="yel">Pending</li>
+                        </ul> -->
+                    </div>
+                    
+                    <div class="con">
+                        <h3>User Testing Session </h3>
+                        <p class="p">Conduct user testing sessions with 10 participants to gather feedback on the new interface.</p>
+                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 28,2025</p>
+                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Lisa Anderson</p>
+                        
+                        <div class="main-high">
+                            
+                            <div class="high">
+                                <span class="dot"></span> HIGH
+                            </div>
+                            <div class="inpro" >
+                                <span class="dot5"></span>Completed
+                                
+                            </div>
+                        </div>
+                        
+
+
+                        <!-- <ul class="ul">
+                            <li class="back">Medium</li>
+                            <li class="yel">Pending</li>
+                        </ul> -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+
+    
+        <div class="foot-main">
+            <div>
+                <h3>TaskManager</h3>
+                <p>Organize your work and life,finally</p>
+            </div>
+            <div>
+                <h3>Features</h3>
+                    <ul>
+                        <li><a href="">Task Management</a></li>
+                        <li><a href="">Team Colaboration</a></li>
+                        <li><a href="">Analytics</a></li>
+                        <li><a href="">Integrations</a></li>
+                    </ul>
+            </div>
+            <div>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="">Documentation</a></li>
+                    <li><a href="">Tutorials</a></li>
+                    <li><a href="">ApI Reference</a></li>
+                    <li><a href="">Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        
+        <div id="bottom">
+            <p>“© 2025 TaskManager. All rights reserved. Built With ❤️for productivity.”</p>
+        </div>
+    </footer>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
