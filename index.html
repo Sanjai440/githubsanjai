@@ -8,50 +8,61 @@
     <script src="https://kit.fontawesome.com/665eca08a4.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <div>
+
+    
     <header>
         <div>
             <h3><span>TM</span>TaskManager</h3>
 
         </div>
-       <nav>
-        <ul>
-            <li><a href="" id="dash">Dashboard</a></li>
-            <li><a href="">Tasks</a></li>
-            <li><a href="">Profile</a></li>
-        </ul>
-       </nav>
+        <div class="menu-bar">
+            <i class="fa-solid fa-bars" id="bar"></i>
+           <nav class="nav">
+            <ul class="un">
+                <li><a href="#" id="dash">Dashboard</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+           </nav>
+
+        </div>
     </header>
 
+    </div>
+
     <div class="main">
-        <h1><span class="task"></span>Task Dashboard</h1>
+        <h1 class="h1"><span class="task"></span>Task Dashboard</h1>
 
         <div class="sub-main">
             <div class="left">
                 <h4>📝Create New Task</h4>
                 <form action="">
                     <div class="ip">
-                        <input type="text" placeholder="Task Name *" class="inpt" id="red">
+                        <input type="text" name="task name"  placeholder="Task Name *" class="inpt" id="red">
                         
                     </div>
                     <div class="ip">
-                        <input type="email" placeholder="Assignee Email *" class="inpt" id="red">
+                        <input type="email" name="email" placeholder="Assignee Email *" class="inpt" id="red">
                     </div>
 
 
 
                     <div class="ip">
                         <div class="up">
-                            <label for=""> Due Date *</label>
-                            <input type="date" placeholder="dd/mm/yyyy" class="inpt" id="red">
-
+                            <label for="due date"> Due Date *</label>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red">
+                            
                         </div>
+            
                     </div>
 
 
                     <div class="ip">
                         <div class="up">
-                            <label for="">Due Time</label>
-                            <input type="time" class="inpt">
+                            <label for="due time">Due Time</label>
+                            <input type="time" name="due time" class="inpt">
                         </div>
 
                     </div>
@@ -59,11 +70,11 @@
 
                     <div class="ip">
                         <div class="up">
-                            <label for="">Priority Level *</label>
-                            <select name="" id="select" class="inpt">
-                                <option value="" id="select">Low Priority</option>
-                                <option value="">Medium Priority</option>
-                                <option value="">High Priority</option>
+                            <label for="priority">Priority Level *</label>
+                            <select name="level" id="select" class="inpt">
+                                <option value="low priority" id="select">Low Priority</option>
+                                <option value="medium priority">Medium Priority</option>
+                                <option value="high priority">High Priority</option>
                             </select>
 
                         </div>
@@ -72,8 +83,8 @@
 
                     <div class="ip">
                         <div class="up">
-                            <label for="">Estimated Hours</label>
-                            <input type="text" value="54" class="inpt">
+                            <label for="estimate hour">Estimated Hours</label>
+                            <input type="text" name="estimate hours" value="54" class="inpt">
 
                         </div>
                     </div>
@@ -84,7 +95,7 @@
 
                     <div class="ip">
                         
-                        <input type="text" placeholder="Project URL" class="inpt">
+                        <input type="text" name="project url" placeholder="Project URL" class="inpt">
                     </div>
                     <div class="ip">
                         <textarea name="Task-description" id="" placeholder="Task Description" class="inpt" ></textarea>
@@ -92,32 +103,32 @@
 
 
                     <div class="ip">
-                        <label for="" class="lab">Task Progress</label>
-                        <input type="range"  min="0" max="100"  id="progress">
+                        <label for="task progress" class="lab">Task Progress</label>
+                        <input type="range" name="task progress"  min="0" max="100"  id="progress">
                         <p>0%</p>
                     </div>
 
-                    <div class="ip">
-                        <label for="task color">Task Color</label>
+                    <div class="ip" id="color">
+                        <label for="task color"   class="lab">Task Color</label>
                         <div id="di"></div>
                     </div>
 
 
 
-                    <div class="ip">
-                       <label for="task" class="lab" id="task">Task Type</label>
+                    <div class="ip" id="ip">
+                       <label for="task" id="task">Task Type</label>
                        <div class="che-sub">
 
                         <div class="check">
-                            <input type="checkbox" class="che" checked><label for="bug" class="label">Bug Fix</label>
+                            <input type="checkbox"  name="task type" value="Bug fix" class="che" checked><label for="bug" class="label">Bug Fix</label>
 
                         </div>
                         <div class="check">
-                            <input type="checkbox" class="che"><label for="feature" class="label">Feature</label>
+                            <input type="checkbox" name="task type"  value="Feature" class="che"><label for="feature" class="label">Feature</label>
 
                         </div>
                         <div class="check">
-                            <input type="checkbox" class="che"><label for="enhancement" class="label">Enhancement</label>
+                            <input type="checkbox" name="task type" value="Enhancement" class="che"><label for="enhancement" class="label">Enhancement</label>
 
                         </div>
                        </div>
@@ -125,26 +136,26 @@
 
 
 
-                    <div class="ip">
-                            <label for="" class="lab">Status</label>
+                    <div class="ip" id="ip">
+                            <label for="Status">Status</label>
                         <div class="che-sub">
                             
                             <div class="check">
     
-                                <input type="radio" name="pending"><label for="pending" class="label">Pending</label>
+                                <input type="radio" name="Status" value="pending"><label for="pending" class="label">Pending</label>
                             </div>
                             <div class="check">
-                                <input type="radio" name="pending"><label for="in progress" class="label">In Progress</label>
+                                <input type="radio" name="Status" value="in progress"><label for="in progress" class="label">In Progress</label>
     
                             </div>
                             <div class="check">
-                                <input type="radio" name="pending"><label for="completed" class="label">Completed</label>
+                                <input type="radio" name="Status" value="completed"><label for="completed" class="label">Completed</label>
     
                             </div>
                         </div>
                     </div>
 
-                    <div class="ip">
+                    <div class="file">
                         <div class="upload">
                             <label for="file-upload" class="file-upload">
                                 <div class="text"><i class="fa-solid fa-paperclip"></i>Click to upload attachments</div>
@@ -157,9 +168,11 @@
 
 
                     <div class="" id="btn">
-                        <button id="btn1"><i class="fa-solid fa-check" id="i"></i>Create Task</button>
-                        <button id="btn2"><i class="fa-solid fa-xmark" id="i1"></i> Reset</button>
+                        <button id="btn1" type="submit"><i class="fa-solid fa-check" id="i"></i>Create Task</button>
+                        <button id="btn2" type="submit"><i class="fa-solid fa-xmark" id="i1"></i> <br>Reset</button>
+
                     </div>
+                    <!-- <i class="fa-solid fa-xmark" id="i1"></i> -->
                 </form>
 
             </div>
@@ -184,17 +197,7 @@
                         <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
                         <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Sarath Jonhson</p>
 
-                        <!-- <span >High</span>
-                        <span>In Progreess</span> -->
-
-                        <!-- <div class="spa">
-                            <div>
-                                <h4><div></div>High</h4>
-                            </div>
-                            <div>
-                                <h4><span></span>In Progress</h4>
-                            </div>
-                        </div> -->
+           
                       
 
 
@@ -210,11 +213,7 @@
                                 
                             </div>
                         </div>
-                        
-                        <!-- <ul class="ul">
-                            <li class="red"><span></span>High</li>
-                            <li class="blue">In Progress</li>
-                        </ul> -->
+                
                     </div> 
                     
                     
