@@ -127,7 +127,7 @@ header a{
 
 .left .ip{
     width: 85%;
-    margin: 1px 27px;
+    margin: 1px 8%;
     padding: 10px 1px;
     
 }
@@ -140,7 +140,7 @@ header a{
 }
 
 #select{
-    width: 98%;
+    width: 99%;
 }
 textarea{
     
@@ -271,7 +271,7 @@ textarea::placeholder{
 
 }
 #btn1{
-    padding: 25px 35px;
+    padding: 8% 6%;
     background-color: rgb(113, 113, 221);
     color: white;
     font-weight: bold;
@@ -281,7 +281,7 @@ textarea::placeholder{
 #btn2{
     /* padding-top: 2px; */
     /* padding-bottom: 24px; */
-    padding: 16px 20px;
+    padding: 4% 4%;
     width: 32%;
     /* font-size: 13px; */
     position: relative;
@@ -293,7 +293,6 @@ textarea::placeholder{
     /* margin-top: 20px; */
     position: relative;
     /* bottom: 20px; */
-    /* margin-top: 20px; */
     top: 4px;
 }
 
@@ -585,7 +584,7 @@ textarea::placeholder{
 
 
 
- @media screen and (max-width:1185px) {
+ @media screen and (max-width:1200px) {
      
      
      header{
@@ -629,36 +628,50 @@ textarea::placeholder{
         width: 88%;
     }
 
-    .ip{
-        width: 100%;
+    .left .ip{
+        width: 88%;
+        margin: 1px 2.5%;
     }
     .inpt{
-        width: 104%;
+        margin: 1px .1%;
+        width: 103%;
     }
 
-    #select{
-        width: 108%;
+    #select, #progress{
+        width: 106%;
     }
-    #progress{
-        width: 80vw;
-    }
+    /* #progress{
+        width: 106.5%;
+    } */
     #di{
-        width: 78vw;
+        width: 105%;
     }
     #ip{
-        margin-left: 5%;
+        margin-left: 3%;
+    }
+    .file{
+        margin: 2%;
+    }
+    .upload{
+        margin: 0;
+    }
+    .file-upload{
+        width: 100%;
+        margin-left: 0px;
+        /* padding: 2px 5px; */
     }
 
     #btn{
         /* margin: 40px; */
-        margin-left: 30px;
-        width: 93%;
+        margin-left: 3%;
+        width: 97%;
         /* padding: 25px; */
         /* padding-left: 18px; */
     }
     
     #btn1{
         width: 57%;
+        padding: 5%;
     }
     #btn2{
         width: 30vw;
@@ -776,7 +789,7 @@ textarea::placeholder{
        margin-left: 0px ;
    }
    .main h1{
-       margin-top: 30%;
+       margin-top: 120px;
        margin-left: 7%;
        font-size: 24px;
    }
@@ -807,7 +820,7 @@ textarea::placeholder{
    }
    .left .ip{
        padding: 13px 8px;
-       margin: 1%;
+       margin: 1.5%;
        width: 90%;
        /* background-color: aqua; */
    }
@@ -815,10 +828,10 @@ textarea::placeholder{
     margin-left: 2px;
    }
    #select,#progress{
-        width: 99%;
+        width: 101%;
     }
     .file-upload{
-        margin-left: 2px;
+        margin-left: 20px;
         /* padding: 2px; */
     }
     #di{
@@ -832,7 +845,7 @@ textarea::placeholder{
    #btn {
       /* margin: 2%; */
        margin-left: 3%;
-       width:95%;
+       width:96%;
    }  
    #btn1{
        padding: 9.5% 2%;
@@ -848,12 +861,12 @@ textarea::placeholder{
        top: 9px;
    }
    .file{
-    margin-left:4%;
+    /* margin-left:4%; */
    }
  
    .file-upload{
-    width: 88%;
-    margin-left: 0%;
+    width: 80%;
+    margin: 1%;
    }
 
 
