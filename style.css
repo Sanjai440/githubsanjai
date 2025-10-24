@@ -825,9 +825,7 @@ textarea::placeholder{
        width: 90%;
        /* background-color: aqua; */
    }
-   #ip{
-    margin-left: 2px;
-   }
+
    #select,#progress{
         width: 101%;
     }
