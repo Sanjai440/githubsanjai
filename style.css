@@ -24,7 +24,7 @@ header span{
 
 }
 header h3{
-    margin-left: 80px;
+    margin-left: 90px;
     /* padding-top: 15px; */
     margin-top: 20px;
     color: rgb(61, 58, 58);
@@ -58,29 +58,29 @@ header a{
 
  
 .main{
-    margin-top: 60px;
+    margin-top: 50px;
 }
 .main h1{
 
-    margin-left: 82px;
+    margin-left: 90px;
     font-size: 25px;
 }
 .main .task::before{
     content: '';
-    border: 3px solid rgb(103, 103, 208);
+    border: 2.5px solid rgb(103, 103, 208);
     border-radius: 5px;
     letter-spacing: 2px;
-    margin-right: 20px;
+    margin-right: 13px;
 }
 .sub-main{
     display: flex;
-    margin-top: 30px;
+    margin-top: 40px;
 
 }
 .left{
     background-color: white;
     width: 35vw;
-    margin-left: 80px;
+    margin-left: 90px;
     padding: 1px 10px;
     box-shadow: 0 0 10px rgb(219, 211, 211);
     border-radius: 15px;
@@ -261,6 +261,7 @@ textarea::placeholder{
 }
 #i{
     margin-right: 4px;
+
 }
 #btn1{
     padding: 25px 35px;
@@ -268,23 +269,26 @@ textarea::placeholder{
     color: white;
     font-weight: bold;
     width: 56%;
+    margin-bottom: 200px;
 }
 #btn2{
-    padding-top: 15px;
-    padding-bottom: 24px;
-    /* padding: 20px 20px; */
+    /* padding-top: 2px; */
+    /* padding-bottom: 24px; */
+    padding: 16px 20px;
     width: 32%;
     /* font-size: 13px; */
+    position: relative;
+    top: 7px;
     font-weight: bold;
 }
-#x{
+#i1{
+    padding-top: 2px;
     /* margin-top: 20px; */
-    font-size: 10px;
-    font-weight: bold;
-    display: block;
+    position: relative;
+    /* bottom: 20px; */
+    /* margin-top: 20px; */
+    top: 4px;
 }
-
-
 
 
 
@@ -305,7 +309,7 @@ textarea::placeholder{
 }
 .head ul{
     /* margin:45px 28px; */
-    margin-top: 45px;
+    margin-top: 38px;
     margin-right: 28px;
 }
 .head li{
@@ -314,7 +318,7 @@ textarea::placeholder{
 }
 .head h2{
     margin-left: 33px;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 .head a{
     text-decoration: none;
@@ -332,7 +336,7 @@ textarea::placeholder{
     display: grid;
     /* grid-template-columns: 400px 400px; */
     grid-template-columns: auto auto;
-    margin-top: 23px;
+    margin-top: 33px;
     gap: 20px;
     padding: 0px 20px;
 
@@ -520,7 +524,7 @@ textarea::placeholder{
 
  }
  .foot-main div{
-    margin: 30px 80px;
+    margin: 30px 100px;
 
  }
  .foot-main ul{
@@ -541,7 +545,7 @@ textarea::placeholder{
  }
 
 #bottom{
-    width:1200px;
+    width:85vw;
     margin: 0 auto ;
     /* padding: 20px; */
     text-align: center;
@@ -647,7 +651,7 @@ textarea::placeholder{
     }
     
     .foot-main div{
-        margin: 40px 15px;
+        margin: 40px 22px;
     }
     #bottom{
         width: 90vw;
@@ -745,8 +749,7 @@ textarea::placeholder{
        width: 80%;
        /* width: 90vw; */
        border-radius: 20px;
-       /* margin-right: 50%; */
-       /* padding-right: 50%; */
+
    }
 
    .left h4{
@@ -797,10 +800,12 @@ textarea::placeholder{
 
    
    #btn2{
-       /* padding:% 1px; */
+       padding:6.5% 1px;
        font-size: 13px;
        width: 38%;
        font-weight: bold;
+       position: relative;
+       top: 9px;
    }
    .file{
     margin-left:4%;
@@ -864,7 +869,7 @@ textarea::placeholder{
        text-align: center;
    }
    .foot-main div{
-       padding-top: 25px;
+       padding-top: 17px;
       
 
    }
