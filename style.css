@@ -56,6 +56,11 @@ header a{
 
 
 
+
+
+
+
+
  
 .main{
     margin-top: 50px;
@@ -77,6 +82,15 @@ header a{
     margin-top: 40px;
 
 }
+
+
+
+
+
+
+
+
+
 .left{
     background-color: white;
     width: 35vw;
@@ -151,7 +165,6 @@ textarea{
     font-weight: bold;
 }
 
-
  #di{
     margin-left: 6px;
     width: 95%;
@@ -163,7 +176,6 @@ textarea{
     margin-top: 20px;
 
 }
-
 
 textarea::placeholder{
     /* font-size: 20px; */
@@ -183,8 +195,6 @@ textarea::placeholder{
     margin-top: 5px;
 
 }
-
-
 .check input[type="radio"],input[type="checkbox"]{
     width: 17px;
     height: 15px;
@@ -205,9 +215,6 @@ textarea::placeholder{
     /* margin-top: 200px; */
     margin-left: 6px;
 }
-
-
-
 
 .file{
     margin: 10px 25px;
@@ -295,6 +302,11 @@ textarea::placeholder{
 
 
 
+
+
+
+
+
 .right{
     background-color: white;
     margin-left: 40px;
@@ -331,6 +343,10 @@ textarea::placeholder{
     background-color: rgb(99, 99, 203);
     color: white;
 }
+
+
+
+
 
 .sub-right{
     display: grid;
@@ -453,8 +469,6 @@ textarea::placeholder{
     margin-right: 10px;
 }
 
-
-
 .con h3{
     margin: 20px 25px;
     font-size: 20px;
@@ -513,6 +527,9 @@ textarea::placeholder{
 
 
 
+
+
+
  footer{
     background-color: white;
     margin-top: 6%;
@@ -563,6 +580,11 @@ textarea::placeholder{
 
 
 
+ /* Tablet view */
+
+
+
+
  @media screen and (max-width:1185px) {
      
      
@@ -585,6 +607,10 @@ textarea::placeholder{
         padding-top: 20px;
     }
 
+
+
+
+
     .sub-main{
         display: block;
     }
@@ -592,6 +618,11 @@ textarea::placeholder{
     .main h1{
         margin-left: 6%;
     }
+
+
+
+
+
     
     .left{
         margin-left: 5%;
@@ -632,6 +663,9 @@ textarea::placeholder{
     #btn2{
         width: 30vw;
     }
+
+
+
    
     
     
@@ -649,6 +683,11 @@ textarea::placeholder{
     .sub-right .con{
         margin: 1%;
     }
+
+
+
+
+
     
     .foot-main div{
         margin: 40px 22px;
@@ -667,7 +706,7 @@ textarea::placeholder{
 
 
 
-
+/* Mobile view */
 
 
 
@@ -686,7 +725,6 @@ textarea::placeholder{
        margin: 0;
    }
  
-
    header #bar{
        display: block;
        font-size: 30px;
@@ -730,6 +768,10 @@ textarea::placeholder{
    }
 
 
+
+
+
+
    .main{
        margin-left: 0px ;
    }
@@ -741,6 +783,12 @@ textarea::placeholder{
    .sub-main{
        display: block;
    }
+
+
+
+
+
+
    .left{
 
        box-shadow: 0 0 10px rgb(219, 211, 211);
@@ -763,10 +811,6 @@ textarea::placeholder{
        width: 90%;
        /* background-color: aqua; */
    }
-
-
-
-
    #ip{
     margin-left: 2px;
    }
@@ -781,9 +825,6 @@ textarea::placeholder{
         width: 70vw;
     }
 
-
-
-
    .inpt{
        width: 94%;
    }
@@ -797,7 +838,6 @@ textarea::placeholder{
        padding: 9.5% 2%;
        width: 50%;
    }
-
    
    #btn2{
        padding:6.5% 1px;
@@ -815,6 +855,9 @@ textarea::placeholder{
     width: 88%;
     margin-left: 0%;
    }
+
+
+
 
 
 
