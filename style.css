@@ -281,11 +281,11 @@ textarea::placeholder{
 #btn2{
     /* padding-top: 2px; */
     /* padding-bottom: 24px; */
-    padding: 4% 4%;
+    padding: 4.8% 4%;
     width: 32%;
     /* font-size: 13px; */
     position: relative;
-    top: 7px;
+    top: 8px;
     font-weight: bold;
 }
 #i1{
@@ -293,7 +293,7 @@ textarea::placeholder{
     /* margin-top: 20px; */
     position: relative;
     /* bottom: 20px; */
-    top: 4px;
+    /* top: px; */
 }
 
 
@@ -674,6 +674,7 @@ textarea::placeholder{
         padding: 5%;
     }
     #btn2{
+        padding: 3.8%;
         width: 30vw;
     }
 
