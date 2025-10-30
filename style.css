@@ -11,7 +11,7 @@ header{
     justify-content: space-between;
     background-color: white;
     box-shadow: 0 0 12px rgb(182, 176, 176);
-    height: 7vh;
+    height: 75px;
 }
 header span{
     background-color: rgb(103, 103, 208);
@@ -26,7 +26,9 @@ header span{
 header h3{
     margin-left: 90px;
     /* padding-top: 15px; */
-    margin-top: 20px;
+    font-size: 23px;
+    margin-top: 8%;
+    margin-top: px;
     color: rgb(61, 58, 58);
 }
 header #bar{
@@ -36,7 +38,7 @@ header #bar{
 header ul{
 
     margin-right: 80px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 header li{
     display: inline-block;
@@ -95,7 +97,6 @@ header a{
     background-color: white;
     width: 35vw;
     margin-left: 90px;
-    padding: 1px 10px;
     box-shadow: 0 0 10px rgb(219, 211, 211);
     border-radius: 15px;
 }
@@ -123,27 +124,43 @@ header a{
     font-size: 12px;
     color: rgb(40, 40, 214);
 }
-
+form{
+    margin: 2px 5px;
+}
+.act{
+    padding-right: 8px;
+    margin: 2px 6%;
+}
 
 .left .ip{
-    width: 85%;
-    margin: 1px 8%;
-    padding: 10px 1px;
+    width: 95%;
+    padding: 10px 0px;
     
 }
+
 .inpt{
-    padding:10px;
+    padding:10px ;
     border-radius: 5px;
-    width: 90%;
+    /* width: 19rem; */
+    width: 100%;
+    /* max-width: 100%; */
     display: inline-block;
     border: 2px solid rgb(220, 215, 215);
 }
+#up{
+    /* width: 102.5%; */
+    width: 108.5%;
+}
 
 #select{
-    width: 99%;
+    /* margin-right: 50%; */
+    /* width: 105.5%; */
+    width: 100%;
+
 }
+
+
 textarea{
-    
     height: 8vh;
 }
 
@@ -154,27 +171,28 @@ textarea{
 }
 #progress{
     display: block;
-    width: 98%;
-    margin-top: 5px;
+    width: 107%;
+    margin-top: 12px;
+    cursor: pointer;
 }
 .ip p{
     text-align: center;
     color: rgb(62, 62, 235);
-    margin-top: 10px;
+    margin-top:15px;
    
     font-weight: bold;
 }
 
- #di{
-    margin-left: 6px;
-    width: 95%;
+
+ #div{
+    /* margin-left: 6px; */
+    width: 101%;
+    margin-left: 2px;
     height: 38px;
-    /* background-color: black; */
-    outline-offset: 6px;
-    /* outline: 1px solid rgb(146, 136, 136); */
+    cursor: pointer;
     border-radius: 8px;
-    margin-top: 20px;
-    padding: 2px;
+    margin-top: 15px;
+    padding: 2px ;
 
 }
 
@@ -184,8 +202,11 @@ textarea::placeholder{
    
 }
 
+
 .lab{
-    color: rgb(155, 150, 150);
+    color: rgb(74, 69, 69);
+    /* margin-top: 220px; */
+    
 }
 
 .che-sub{
@@ -201,6 +222,13 @@ textarea::placeholder{
     height: 15px;
     cursor: pointer;
     background-color: blue;
+}
+#ip{
+    margin-left: 0px;
+}
+.label {
+    cursor: pointer;
+    /* margin-top: 20px; */
 }
 
 .check input[type="checkbox"],input[type="radio"]{
@@ -218,12 +246,13 @@ textarea::placeholder{
 }
 
 .file{
-    margin: 10px 25px;
+    margin: 10px 2px;
 }
 .upload{
     text-align: center;
     font-family: Arial, sans-serif;
 }
+
         
 .file-upload{
     display: inline-block;
@@ -234,7 +263,7 @@ textarea::placeholder{
     
     cursor: pointer;
     margin-bottom: 10px;
-    width: 80%;
+    width: 88%;
     background-color: rgb(254, 252, 252);
 }
         
@@ -245,7 +274,7 @@ textarea::placeholder{
 }
 
 .supported {
-    font-size: 12px;
+    font-size: 13px;
     color: #666;
     margin-top: 10px;
     
@@ -257,15 +286,18 @@ textarea::placeholder{
 
 #btn{
     margin-top: 30px;
-    margin-left: 20px;
-    width: 90%;
+    margin-left: 0px;
+    width: 110%;
     padding-bottom: 40px;
 }
 #btn button{
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    margin: 6px;
+    /* margin: 5px; */
+    margin-left: 1px;
+    margin-right: 2px;
+    /* padding: 2px; */
 }
 #i{
     margin-right: 4px;
@@ -276,14 +308,15 @@ textarea::placeholder{
     background-color: rgb(113, 113, 221);
     color: white;
     font-weight: bold;
-    width: 56%;
-    margin-bottom: 200px;
+    width: 58%;
+    margin-bottom: 20px;
 }
 #btn2{
     /* padding-top: 2px; */
     /* padding-bottom: 24px; */
     padding: 4.8% 4%;
-    width: 32%;
+    margin-right: 10px;
+    width: 34%;
     /* font-size: 13px; */
     position: relative;
     top: 8px;
@@ -361,7 +394,16 @@ textarea::placeholder{
     border: 1px solid rgb(226, 220, 220);
     margin: 2px 15px;
     border-radius: 15px;
+    cursor: pointer;
     
+}
+.sub-right .con:hover{
+    /* width: 50%; */
+
+    
+    transform: scale(1.03);
+    /* transform: translate(2.25); */
+
 }
 .main-high{
     display: flex;
@@ -488,7 +530,7 @@ textarea::placeholder{
 
 .p2{
 
-    border-bottom: 1px solid rgb(226, 220, 220);
+    border-bottom: 1px solid rgb(204, 196, 196);
     padding-bottom: 15px;
 }
 .ul{
@@ -585,29 +627,39 @@ textarea::placeholder{
 
 
 
- @media screen and (max-width:1200px) {
+ @media screen and (max-width:1220px) {
      
      
      header{
-        height: 20%;
+        height: 75px;
      }
      header h3{
         margin-left:42px;
-        margin-top: 8%;
+        /* margin-top: 25px; */
         font-size: 25px;
     }
     .un{
-        margin-right: 40px;
-        margin-top: 0px;
+        margin-right: 30px;
+        margin-top: 5px;
         /* margin-top: %; */
         padding-top: 10px;
     }
     header li{
         /* margin-top: 20px; */
-        padding-top: 20px;
+        /* padding-top: 20px; */
     }
 
 
+    form{
+       
+        padding:1px 1%;
+        /* margin-right: 6%; */
+        margin-right: 30px;
+    }
+    .act{
+        margin: 1px 2%;
+        padding: 2px 0px;
+    }
 
 
 
@@ -630,53 +682,74 @@ textarea::placeholder{
     }
 
     .left .ip{
-        width: 88%;
-        margin: 1px 2.5%;
+        width: 100%;
+        /* margin: 1px 2%; */
     }
     .inpt{
-        margin: 1px .1%;
-        width: 103%;
+        /* margin:1px 20px; */
+        width: 100%;
     }
 
     #select, #progress{
-        width: 106%;
+        /* width: 104.1%; */
+        width: 81.5vw;
     }
-    /* #progress{
-        width: 106.5%;
-    } */
-    #di{
-        width: 105%;
+
+
+ 
+    #div{
+        width: 104%;
+        margin-left: 2px;
     }
     #ip{
         margin-left: 3%;
     }
+    .che-sub{
+        grid-template-columns: auto auto auto;
+    }
+
+
+    #select div{
+        width: 10px;
+        color: aqua;
+    }
+    
+
+
     .file{
-        margin: 2%;
+        margin: 0;
     }
     .upload{
         margin: 0;
+        /* width: 100%; */
     }
     .file-upload{
+        
         width: 100%;
-        margin-left: 0px;
-        /* padding: 2px 5px; */
+        margin-left: 8px;
+        padding: 40px 42px;
     }
 
     #btn{
         /* margin: 40px; */
-        margin-left: 3%;
-        width: 97%;
-        /* padding: 25px; */
-        /* padding-left: 18px; */
+        margin-left: 0;
+        width: 108%;
+    }
+    #btn button{
+        /* margin: 0; */
+        /* margin-left: 0; */
     }
     
     #btn1{
-        width: 57%;
+        /* margin-left: 200px; */
+        width: 55%;
         padding: 5%;
     }
     #btn2{
+
+        /* margin-left: 200px; */
         padding: 3.8%;
-        width: 30vw;
+        width: 40%;
     }
 
 
@@ -725,15 +798,17 @@ textarea::placeholder{
 
 
 
-@media screen and (max-width:630px) {
+@media screen and (max-width:620px) {
    header{
     
        position: fixed;
        top: 0;
-       width: 100vw;
+       width: 100%;
        z-index: 1;
-       height: 8%;
-       /* height: 8.5vh; */
+       height: 75px;
+       /* height: 8.9%; */
+       
+       /* height: 8.7vh; */
    }
    header li{
        display:block;
@@ -743,14 +818,15 @@ textarea::placeholder{
    header #bar{
        display: block;
        font-size: 30px;
-       margin-right: 35px;
+       margin-right: 11px;
        background-color: rgb(233, 230, 230);
        padding: 2px;
        border-radius: 10px;
    }
    .menu-bar{
        font-size: 30px;
-       margin-top: 4%;
+       /* margin-top: 5.1%; */
+       margin-top: 20px;
        position: relative;
        
    }
@@ -777,9 +853,11 @@ textarea::placeholder{
 
 
    header h3{
-       margin-left: 10%;
-       margin-top: 10%;
+
+       margin-top: 25px;
+       margin-left: 9px;
        font-size: 22px;
+    
    }
 
 
@@ -791,82 +869,120 @@ textarea::placeholder{
        margin-left: 0px ;
    }
    .main h1{
-       margin-top: 120px;
-       margin-left: 7%;
+       margin-top: 110px;
+       margin-left: 5%;
        font-size: 24px;
    }
    .sub-main{
        display: block;
+       margin-top: 35px;
    }
 
 
 
+   form{
+    margin: 1px 1px;
+   }
 
+   .act{
+    /* margin-left: 0.5%; */
+    padding: 1px 2px;
+    margin-right: 1.8rem;
+   }
 
 
    .left{
 
        box-shadow: 0 0 10px rgb(219, 211, 211);
-       margin: 7%;
 
-       width: 80%;
+       margin-top: 0px;
+       margin-left: 2.7%;
+       width: 95%;
        /* width: 90vw; */
        border-radius: 20px;
 
    }
 
    .left h4{
-       padding: 5px 0;
+       padding: 15px 0;
        margin-top: 10px;
-       margin-left: px;
+       margin-left: 12px;
    }
    .left .ip{
-       padding: 13px 8px;
-       margin: 1.5%;
-       width: 90%;
+       margin-left: 0.1rem;
+       /* margin-left: 5px; */
+       width: 100%;
        /* background-color: aqua; */
+   }
+   .inpt{
+       width: 98.4%;
+   }
+   #task{
+    margin: 4px 0;
+   }
+   #up{
+    /* width: 103.9%; */
+    max-width: 100%;
+    width: 100%;
+    margin-right: 20rem;
    }
 
    #select,#progress{
-        width: 101%;
+        /* width: 100%; */
+        width: 87vw;
+        /* max-width: 105%; */
     }
-    .file-upload{
-        margin-left: 20px;
-        /* padding: 2px; */
-    }
-    #di{
-        width: 70vw;
+    #div{
+
+        margin: 15px 2px;
+        width: 87vw;
     }
 
-   .inpt{
-       width: 94%;
+     #color{
+        padding-top: 0px;
+        margin: 0;
+    }
+
+
+
+    .che-sub{
+       grid-template-columns: 125px 110px;
+
    }
 
    #btn {
-      /* margin: 2%; */
-       margin-left: 3%;
-       width:96%;
-   }  
+       /* margin: 2%; */
+       margin-left: 1%;
+       width:113%;
+    }  
+    #btn button{
+        margin-left: 2px;
+    }
    #btn1{
-       padding: 9.5% 2%;
-       width: 50%;
-   }
-   
-   #btn2{
-       padding:6.5% 1px;
-       font-size: 13px;
-       width: 38%;
-       font-weight: bold;
-       position: relative;
-       top: 9px;
-   }
-   .file{
-    /* margin-left:4%; */
-   }
- 
+       padding: 9.5% 1.8%;
+       width: 52%;
+    }
+    
+    #btn2{
+        padding:6.8% 8px;
+        font-size: 13px;
+        width: 38%;
+        font-weight: bold;
+        position: relative;
+        top: 9px;
+    }
+    .file{
+        /* margin-left:4%; */
+        margin: 10px 5px;
+    }
+    
+
    .file-upload{
-    width: 80%;
-    margin: 1%;
+    width: 93%;
+    padding: 20px;
+
+    margin-left: 0px;
+    /* margin: 1%; */
    }
 
 
@@ -876,8 +992,9 @@ textarea::placeholder{
 
 
    .right{
-       width: 83%;
-       margin: 8%;
+       width: 94%;
+       margin-left: 3%;
+       /* margin: 8%; */
        border-radius: 15px;
        box-shadow: 0 0 10px rgb(219, 211, 211);
    }
@@ -889,14 +1006,17 @@ textarea::placeholder{
        /* margin-top: 10px; */
        padding: 20px 0;
    }
+   #ip{
+    margin-left: 3px;
+   }
    .head ul{
-       margin: 2% 4%;
-       /* padding-right: 0px; */
-       /* margin-right: 2px; */
+       /* margin: 2% 1%; */
+       margin: 2px 2%;
    }
    .head li{
-       padding: 2px 0.5%;
-       /* margin-right: px; */
+       padding: 2px 2%;
+       /* padding: 2px 4px; */
+      
    }
    .head a{
        font-size: 13px;

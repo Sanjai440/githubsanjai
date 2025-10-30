@@ -13,22 +13,21 @@
     <header>
         <div>
             <h3><span>TM</span>TaskManager</h3>
-
+            
         </div>
         <div class="menu-bar">
             <i class="fa-solid fa-bars" id="bar"></i>
-           <nav class="nav">
-            <ul class="un">
-                <li><a href="#" id="dash">Dashboard</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-           </nav>
-
+            <nav class="nav">
+                <ul class="un">
+                    <li><a href="#" id="dash">Dashboard</a></li>
+                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+            
         </div>
     </header>
-
-
+    
 
     <div class="main">
         <h1 class="h1"><span class="task"></span>Task Dashboard</h1>
@@ -39,20 +38,27 @@
             <div class="left">
                 <h4>📝Create New Task</h4>
                 <form action="">
-                    <div class="ip">
-                        <input type="text" name="task name"  placeholder="Task Name *" class="inpt" id="red">
+
+                    <div class="act">
+
+                    
+                    <div class="ip" > 
+                        <input type="text" name="task name"  placeholder="Task Name *"  class="inpt" id="red" required >
                         
                     </div>
                     <div class="ip">
-                        <input type="email" name="email" placeholder="Assignee Email *" class="inpt" id="red">
+                        <input type="email" name="email" placeholder="Assignee Email *" class="inpt" id="red" required>
                     </div>
 
 
 
+
+
+                    
                     <div class="ip">
                         <div class="up">
                             <label for="due date"> Due Date *</label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red">
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red" required>
                             
                         </div>
             
@@ -61,21 +67,24 @@
 
                     <div class="ip">
                         <div class="up">
-                            <label for="due time">Due Time</label>
-                            <input type="time" name="due time" class="inpt" >
-    
+                            <label for="time">Due Time</label>
+                            <input type="time" id="time" name="time" class="inpt">
+                            
                         </div>
-
+                        
                     </div>
 
 
-                    <div class="ip">
-                        <div class="up">
+                    <div class="ip" id="sel">
+                        <div class="up" id="up">
                             <label for="priority">Priority Level *</label>
-                            <select name="level" id="select" class="inpt">
-                                <option value="low priority" id="select">Low Priority</option>
-                                <option value="medium priority">Medium Priority</option>
-                                <option value="high priority">High Priority</option>
+                            <select name="level" id="select" class="inpt" required >
+                                <div class="">
+                                    <option value="low priority" id="selects">Low Priority</option>
+                                    <option value="medium priority">Medium Priority</option>
+                                    <option value="high priority">High Priority</option>
+
+                                </div>
                             </select>
 
                         </div>
@@ -85,7 +94,7 @@
                     <div class="ip">
                         <div class="up">
                             <label for="estimate hour">Estimated Hours</label>
-                            <input type="number" name="estimate hours" value="" class="inpt">
+                            <input type="number" name="estimate hours" value="" id="inpt" class="inpt" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
 
                         </div>
                     </div>
@@ -96,20 +105,19 @@
                         <input type="text" name="project url" placeholder="Project URL" class="inpt">
                     </div>
                     <div class="ip">
-                        <textarea name="Task-description" id="" placeholder="Task Description" class="inpt" ></textarea>
+                        <textarea name="Task-description" id="" placeholder="Task Description" class="inpt"></textarea>
                     </div>
 
 
                     <div class="ip">
                         <label for="task progress" class="lab">Task Progress</label>
-                        <input type="range" name="task progress"  min="0" max="100"  id="progress">
+                        <input type="range" name="task progress"  min="0" max="100"  id="progress" required>
                         <p>0%</p>
                     </div>
 
-                    <div class="ip" id="color">
+                    <div class="" id="color">
                         <label for="task color"   class="lab">Task Color</label>
-                        <input type="color" id="di">
-                        <!-- <div id="di"></div> -->
+                        <input type="color" id="div" required>
                     </div>
 
 
@@ -117,19 +125,21 @@
                     <div class="ip" id="ip">
                        <label for="task" id="task">Task Type</label>
                        <div class="che-sub">
+                          
+                          <div class="check">
+                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" class="che" checked required><label for="bug fix" class="label">Bug Fix</label>
 
-                        <div class="check">
-                            <input type="checkbox"  name="task type" value="Bug fix" class="che" checked><label for="bug" class="label">Bug Fix</label>
+                          </div>
 
-                        </div>
-                        <div class="check">
-                            <input type="checkbox" name="task type"  value="Feature" class="che"><label for="feature" class="label">Feature</label>
+                          <div class="check">
+                            <input type="checkbox" id="feature" name="task type"  value="Feature" class="che"><label for="feature" class="label">Feature</label>
 
-                        </div>
-                        <div class="check">
-                            <input type="checkbox" name="task type" value="Enhancement" class="che"><label for="enhancement" class="label">Enhancement</label>
+                          </div>
 
-                        </div>
+                          <div class="check">
+                            <input type="checkbox" id="enhancement" name="task type" value="Enhancement" class="che"><label for="enhancement" class="label">Enhancement</label>
+
+                          </div>
                        </div>
                     </div>
 
@@ -141,14 +151,14 @@
                             
                             <div class="check">
     
-                                <input type="radio" name="Status" value="pending"><label for="pending" class="label">Pending</label>
+                                <input type="radio" id="pending" name="Status" value="pending" ><label for="pending" class="label">Pending</label>
                             </div>
                             <div class="check">
-                                <input type="radio" name="Status" value="in progress"><label for="in progress" class="label">In Progress</label>
+                                <input type="radio" id="in progress" name="Status" value="in progress"><label for="in progress" class="label">In Progress</label>
     
                             </div>
                             <div class="check">
-                                <input type="radio" name="Status" value="completed"><label for="completed" class="label">Completed</label>
+                                <input type="radio" id="completed" name="Status" value="completed"><label for="completed" class="label">Completed</label>
     
                             </div>
                         </div>
@@ -159,7 +169,7 @@
                             <label for="file-upload" class="file-upload">
                                 <div class="text"><i class="fa-solid fa-paperclip"></i>Click to upload attachments</div>
                                 <div class="supported">Supported: PDF, DOC, Images</div>
-                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple>
+                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple required>
                             </label>
                         </div>
                     </div>
@@ -168,8 +178,9 @@
 
                     <div class="" id="btn">
                         <button id="btn1" type="submit"><i class="fa-solid fa-check" id="i"></i>Create Task</button>
-                        <button id="btn2" type="submit"><i class="fa-solid fa-xmark" id="i1"></i> <br>Reset</button>
+                        <button id="btn2" type="reset"><i class="fa-solid fa-xmark" id="i1"></i> <br>Reset</button>
 
+                    </div>
                     </div>
                 </form>
 
@@ -189,9 +200,9 @@
                     <nav>
                         <ul>
                             <li><a href="" id="all">All</a></li>
-                            <li><a href="">High</a></li>
-                            <li><a href="">Medium</a></li>
-                            <li><a href="">Low</a></li>
+                            <li><a href="#">High</a></li>
+                            <li><a href="#">Medium</a></li>
+                            <li><a href="#">Low</a></li>
                         </ul>
                     </nav>
 
@@ -338,28 +349,28 @@
             <div>
                 <h3>Features</h3>
                     <ul>
-                        <li><a href="">Task Management</a></li>
-                        <li><a href="">Team Colaboration</a></li>
-                        <li><a href="">Analytics</a></li>
-                        <li><a href="">Integrations</a></li>
+                        <li><a href="#">Task Management</a></li>
+                        <li><a href="#">Team Colaboration</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Integrations</a></li>
                     </ul>
             </div>
             <div>
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="">Documentation</a></li>
-                    <li><a href="">Tutorials</a></li>
-                    <li><a href="">ApI Reference</a></li>
-                    <li><a href="">Support</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">ApI Reference</a></li>
+                    <li><a href="#">Support</a></li>
                 </ul>
             </div>
             <div>
                 <h3>Company</h3>
                 <ul>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Careers</a></li>
-                    <li><a href="">Privacy Policy</a></li>
-                    <li><a href="">Terms of Service</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
