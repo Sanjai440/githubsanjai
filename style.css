@@ -415,7 +415,7 @@ textarea::placeholder{
     display: inline-block;
     margin-left: 25px;
     border-radius: 15px;
-    padding: 5px 15px;
+    padding: 5px 12px;
     background-color: rgb(253, 207, 207,0.5);
     color: red;
     font-weight: bold;
@@ -694,11 +694,14 @@ textarea::placeholder{
         width: 95.1%;
         /* width: 81.5vw; */
     }
+    #progress{
+        width: 103%;
+    }
 
 
  
     #div{
-        width: 104%;
+        width: 103%;
         margin-left: 2px;
     }
     #ip{
@@ -979,7 +982,7 @@ textarea::placeholder{
 
    .file-upload{
     width: 93%;
-    padding: 20px;
+    padding: 40px 20px;
 
     margin-left: 0px;
     /* margin: 1%; */
@@ -1009,13 +1012,21 @@ textarea::placeholder{
    #ip{
     margin-left: 3px;
    }
+   nav{
+    
+   }
    .head ul{
        /* margin: 2% 1%; */
-       margin: 2px 2%;
+       margin: 0 3.8%;
+
+       margin-top: 15px;
+       /* padding-left: 5px; */
+       margin-right: 0;
    }
    .head li{
-       padding: 2px 2%;
-       /* padding: 2px 4px; */
+       margin: 2px 2.1%;
+       /* padding: 2px 2%; */
+       padding-right: 0;
       
    }
    .head a{
@@ -1026,13 +1037,14 @@ textarea::placeholder{
        display: block;
        padding: 1px 1px;
        margin-top: 5px;
-       /* margin-right: 4px; */
    }
 
    .sub-right .con{
 
        margin: 30px 15px;
    }
+
+
 
 
 

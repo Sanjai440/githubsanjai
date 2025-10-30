@@ -58,7 +58,7 @@
                     <div class="ip">
                         <div class="up">
                             <label for="due date"> Due Date *</label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red" required>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red" >
                             
                         </div>
             
@@ -78,7 +78,7 @@
                     <div class="ip" id="sel">
                         <div class="up" id="up">
                             <label for="priority">Priority Level *</label>
-                            <select name="level" id="select" class="inpt" required >
+                            <select name="level" id="select" class="inpt"  >
                                 <div class="">
                                     <option value="low priority" id="selects">Low Priority</option>
                                     <option value="medium priority">Medium Priority</option>
@@ -102,7 +102,7 @@
 
                     <div class="ip">
                         
-                        <input type="text" name="project url" placeholder="Project URL" class="inpt">
+                        <input type="url" name="project url" placeholder="Project URL" class="inpt">
                     </div>
                     <div class="ip">
                         <textarea name="Task-description" id="" placeholder="Task Description" class="inpt"></textarea>
@@ -111,13 +111,13 @@
 
                     <div class="ip">
                         <label for="task progress" class="lab">Task Progress</label>
-                        <input type="range" name="task progress"  min="0" max="100"  id="progress" required>
+                        <input type="range" name="task progress"  min="0" max="100"  id="progress">
                         <p>0%</p>
                     </div>
 
                     <div class="" id="color">
                         <label for="task color"   class="lab">Task Color</label>
-                        <input type="color" id="div" required>
+                        <input type="color" id="div" >
                     </div>
 
 
@@ -127,7 +127,7 @@
                        <div class="che-sub">
                           
                           <div class="check">
-                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" class="che" checked required><label for="bug fix" class="label">Bug Fix</label>
+                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" class="che" checked ><label for="bug fix" class="label">Bug Fix</label>
 
                           </div>
 
@@ -169,7 +169,7 @@
                             <label for="file-upload" class="file-upload">
                                 <div class="text"><i class="fa-solid fa-paperclip"></i>Click to upload attachments</div>
                                 <div class="supported">Supported: PDF, DOC, Images</div>
-                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple required>
+                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple >
                             </label>
                         </div>
                     </div>
