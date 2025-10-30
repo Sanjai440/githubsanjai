@@ -128,37 +128,27 @@ form{
     margin: 2px 5px;
 }
 .act{
-    padding-right: 8px;
+    /* padding-right: 4px; */
     margin: 2px 6%;
 }
 
 .left .ip{
-    width: 95%;
+    width: 100%;
     padding: 10px 0px;
     
 }
 
-.inpt{
+.inpt ,select{
     padding:10px ;
     border-radius: 5px;
     /* width: 19rem; */
     width: 100%;
+    cursor: pointer;
     /* max-width: 100%; */
     display: inline-block;
     border: 2px solid rgb(220, 215, 215);
+    box-sizing: border-box;
 }
-#up{
-    /* width: 102.5%; */
-    width: 108.5%;
-}
-
-#select{
-    /* margin-right: 50%; */
-    /* width: 105.5%; */
-    width: 100%;
-
-}
-
 
 textarea{
     height: 8vh;
@@ -178,7 +168,7 @@ textarea{
 .ip p{
     text-align: center;
     color: rgb(62, 62, 235);
-    margin-top:15px;
+    margin-top:10px;
    
     font-weight: bold;
 }
@@ -186,7 +176,7 @@ textarea{
 
  #div{
     /* margin-left: 6px; */
-    width: 101%;
+    width: 100%;
     margin-left: 2px;
     height: 38px;
     cursor: pointer;
@@ -312,8 +302,7 @@ textarea::placeholder{
     margin-bottom: 20px;
 }
 #btn2{
-    /* padding-top: 2px; */
-    /* padding-bottom: 24px; */
+
     padding: 4.8% 4%;
     margin-right: 10px;
     width: 34%;
@@ -326,10 +315,7 @@ textarea::placeholder{
     padding-top: 2px;
     /* margin-top: 20px; */
     position: relative;
-    /* bottom: 20px; */
-    /* top: px; */
 }
-
 
 
 
@@ -644,17 +630,11 @@ textarea::placeholder{
         /* margin-top: %; */
         padding-top: 10px;
     }
-    header li{
-        /* margin-top: 20px; */
-        /* padding-top: 20px; */
-    }
 
 
     form{
        
         padding:1px 1%;
-        /* margin-right: 6%; */
-        margin-right: 30px;
     }
     .act{
         margin: 1px 2%;
@@ -673,8 +653,6 @@ textarea::placeholder{
 
 
 
-
-
     
     .left{
         margin-left: 5%;
@@ -686,26 +664,18 @@ textarea::placeholder{
         /* margin: 1px 2%; */
     }
     .inpt{
-        /* margin:1px 20px; */
         width: 100%;
     }
 
-    #select, #progress{
-        width: 95.1%;
-        /* width: 81.5vw; */
-    }
-    #progress{
-        width: 103%;
-    }
 
 
  
     #div{
-        width: 103%;
+        /* width: 103%; */
         margin-left: 2px;
     }
     #ip{
-        margin-left: 3%;
+        margin-left: 2px;
     }
     .che-sub{
         grid-template-columns: auto auto auto;
@@ -728,20 +698,17 @@ textarea::placeholder{
     }
     .file-upload{
         
-        width: 100%;
+        width: 95%;
         margin-left: 1px;
-        padding: 40px 6.2%;
+        padding: 40px 3.2%;
     }
 
     #btn{
         /* margin: 40px; */
         margin-left: 0;
-        width: 108%;
+        width: 103%;
     }
-    #btn button{
-        /* margin: 0; */
-        /* margin-left: 0; */
-    }
+   
     
     #btn1{
         /* margin-left: 200px; */
@@ -797,6 +764,9 @@ textarea::placeholder{
 
 
 
+
+
+
 /* Mobile view */
 
 
@@ -809,9 +779,7 @@ textarea::placeholder{
        width: 100%;
        z-index: 1;
        height: 75px;
-       /* height: 8.9%; */
-       
-       /* height: 8.7vh; */
+  
    }
    header li{
        display:block;
@@ -890,7 +858,7 @@ textarea::placeholder{
    .act{
     /* margin-left: 0.5%; */
     padding: 1px 2px;
-    margin-right: 1.8rem;
+    margin: 1px 4%;
    }
 
 
@@ -918,7 +886,7 @@ textarea::placeholder{
        /* background-color: aqua; */
    }
    .inpt{
-       width: 98.4%;
+       width: 100%;
    }
    #task{
     margin: 4px 0;
@@ -927,18 +895,13 @@ textarea::placeholder{
     /* width: 103.9%; */
     max-width: 100%;
     width: 100%;
-    margin-right: 20rem;
+    /* margin-right: 20rem; */
    }
 
-   #select,#progress{
-        /* width: 100%; */
-        width: 87vw;
-        /* max-width: 105%; */
-    }
     #div{
 
         margin: 15px 2px;
-        width: 87vw;
+        width: 100%;
     }
 
      #color{
@@ -956,7 +919,7 @@ textarea::placeholder{
    #btn {
        /* margin: 2%; */
        margin-left: 1%;
-       width:113%;
+       width:105%;
     }  
     #btn button{
         margin-left: 2px;
@@ -982,7 +945,7 @@ textarea::placeholder{
 
    .file-upload{
     width: 93%;
-    padding: 40px 20px;
+    padding: 40px 8px;
 
     margin-left: 0px;
     /* margin: 1%; */
@@ -1024,9 +987,13 @@ textarea::placeholder{
        margin-right: 0;
    }
    .head li{
+
+
+
        margin: 2px 2.1%;
        /* padding: 2px 2%; */
        padding-right: 0;
+
       
    }
    .head a{
@@ -1037,6 +1004,7 @@ textarea::placeholder{
        display: block;
        padding: 1px 1px;
        margin-top: 5px;
+       /* margin-right: 4px; */
    }
 
    .sub-right .con{
