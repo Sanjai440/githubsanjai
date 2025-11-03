@@ -27,7 +27,7 @@ header h3{
     margin-left: 90px;
     /* padding-top: 15px; */
     font-size: 23px;
-    margin-top: 8%;
+    margin-top: 9%;
     margin-top: px;
     color: rgb(61, 58, 58);
     /* cursor: pointer */
@@ -39,7 +39,7 @@ header #bar{
 header ul{
 
     margin-right: 80px;
-    margin-top: 15px;
+    margin-top: 18px;
 }
 header li{
     display: inline-block;
@@ -163,12 +163,7 @@ textarea{
     display: block;
     margin-top: 18px;
 }
-#progress{
-    display: block;
-    width: 107%;
-    margin-top: 12px;
-    cursor: pointer;
-}
+
 .ip p{
     text-align: center;
     color: rgb(62, 62, 235);
@@ -182,6 +177,7 @@ textarea{
  #div{
     /* margin-left: 6px; */
     width: 100%;
+
     height: 38px;
     cursor: pointer;
     border-radius: 8px;
@@ -195,7 +191,7 @@ textarea::placeholder{
    
 }
 #color{
-    margin-top: 0;
+    margin-top: 0px;
 }
 
 
