@@ -16,10 +16,10 @@
             
         </div>
         <div class="menu-bar">
-            <i class="fa-solid fa-bars" id="bar"></i>
+            <i class="fa-solid fa-bars" id="bar-icon"></i>
             <nav class="nav">
-                <ul class="un">
-                    <li><a href="#" id="dash">Dashboard</a></li>
+                <ul class="ul-element">
+                    <li><a href="#" id="dashboard">Dashboard</a></li>
                     <li><a href="#">Tasks</a></li>
                     <li><a href="#">Profile</a></li>
                 </ul>
@@ -42,12 +42,12 @@
                     <div class="act">
 
                     
-                    <div class="ip" > 
-                        <input type="text" name="task name"  placeholder="Task Name *"  class="inpt" id="red" required >
+                    <div class="input-field" > 
+                        <input type="text" name="task name"  placeholder="Task Name *"  class="input-type" id="name" required >
                         
                     </div>
-                    <div class="ip">
-                        <input type="email" name="email" placeholder="Assignee Email *" class="inpt" id="red" required>
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Assignee Email *" class="input-type" id="email" required>
                     </div>
 
 
@@ -55,30 +55,30 @@
 
 
                     
-                    <div class="ip">
-                        <div class="up">
+                    <div class="input-field">
+                        <div class="upper-field">
                             <label for="due date"> Due Date *</label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="inpt" id="red"  required>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date"  required>
                             
                         </div>
             
                     </div>
 
 
-                    <div class="ip">
-                        <div class="up">
+                    <div class="input-field">
+                        <div class="upper-field">
                             <label for="time">Due Time</label>
-                            <input type="time" id="time" name="time" class="inpt">
+                            <input type="time" id="time" name="time" class="input-type">
                             
                         </div>
                         
                     </div>
 
 
-                    <div class="ip" id="sel">
-                        <div class="up" id="up">
+                    <div class="input-field" id="sel">
+                        <div class="upper-field" >
                             <label for="priority">Priority Level *</label>
-                            <select name="level" id="select" class="inpt"  >
+                            <select name="level" id="priority" class="input-type"  >
                                 <div class="">
                                     <option value="low priority" id="selects">Low Priority</option>
                                     <option value="medium priority">Medium Priority</option>
@@ -91,53 +91,53 @@
                     </div>
 
 
-                    <div class="ip">
-                        <div class="up">
+                    <div class="input-field">
+                        <div class="upper-field">
                             <label for="estimate hour">Estimated Hours</label>
-                            <input type="number" name="estimate hours" value="54" id="inpt" class="inpt" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
+                            <input type="number" name="estimate hours" value="" id="estimate hour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
 
                         </div>
                     </div>
 
 
-                    <div class="ip">
+                    <div class="input-field">
                         
-                        <input type="url" name="project url" placeholder="Project URL" class="inpt">
+                        <input type="url" name="project url" placeholder="Project URL" class="input-type">
                     </div>
-                    <div class="ip">
-                        <textarea name="Task-description" id="" placeholder="Task Description" class="inpt"></textarea>
+                    <div class="input-field">
+                        <textarea name="Task-description" id="" placeholder="Task Description" class="input-type"></textarea>
                     </div>
 
 
-                    <div class="ip">
+                    <div class="input-field">
                         <label for="task progress" class="lab">Task Progress</label>
-                        <input type="range" name="task progress"  min="0" max="100"  class="inputs">
+                        <input type="range" id="task progress" name="task progress"  min="0" max="100" value="0" class="range-field">
                         <p>0%</p>
                     </div>
 
                     <div class="" id="color">
-                        <label for="task color"   class="lab">Task Color</label>
-                        <input type="color" id="div" >
+                        <label for="task-color"   class="lab">Task Color</label>
+                        <input type="color" id="task-color" >
                     </div>
 
 
 
-                    <div class="ip" id="ip">
+                    <div class="input-field" >
                        <label for="task" id="task">Task Type</label>
-                       <div class="che-sub">
+                       <div class="checkbox-field">
                           
-                          <div class="check">
-                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" class="che" checked ><label for="bug fix" class="label">Bug Fix</label>
+                          <div class="check-box">
+                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" ><label for="bug fix" class="checkbox-label">Bug Fix</label>
 
                           </div>
 
-                          <div class="check">
-                            <input type="checkbox" id="feature" name="task type"  value="Feature" class="che"><label for="feature" class="label">Feature</label>
+                          <div class="check-box">
+                            <input type="checkbox" id="feature" name="task type"  value="Feature"><label for="feature" class="checkbox-label">Feature</label>
 
                           </div>
 
-                          <div class="check">
-                            <input type="checkbox" id="enhancement" name="task type" value="Enhancement" class="che"><label for="enhancement" class="label">Enhancement</label>
+                          <div class="check-box">
+                            <input type="checkbox" id="enhancement" name="task type" value="Enhancement" ><label for="enhancement" class="checkbox-label">Enhancement</label>
 
                           </div>
                        </div>
@@ -145,20 +145,20 @@
 
 
 
-                    <div class="ip" id="ip">
+                    <div class="input-field" id="ip">
                             <label for="Status">Status</label>
-                        <div class="che-sub">
+                        <div class="checkbox-field">
                             
-                            <div class="check">
+                            <div class="check-box">
     
-                                <input type="radio" id="pending" name="Status" value="pending" ><label for="pending" class="label">Pending</label>
+                                <input type="radio" id="pending" name="Status" value="pending" ><label for="pending" class="checkbox-label">Pending</label>
                             </div>
-                            <div class="check">
-                                <input type="radio" id="in progress" name="Status" value="in progress"><label for="in progress" class="label">In Progress</label>
+                            <div class="check-box">
+                                <input type="radio" id="in progress" name="Status" value="in progress"><label for="in progress" class="checkbox-label">In Progress</label>
     
                             </div>
-                            <div class="check">
-                                <input type="radio" id="completed" name="Status" value="completed"><label for="completed" class="label">Completed</label>
+                            <div class="check-box">
+                                <input type="radio" id="completed" name="Status" value="completed"><label for="completed" class="checkbox-label">Completed</label>
     
                             </div>
                         </div>
@@ -197,11 +197,11 @@
             <div class="right">
 
 
-                <div class="head">
+                <div class="header-field">
                     <h2>✅Active Tasks</h2>
                     <nav>
                         <ul>
-                            <li><a href="" id="all">All</a></li>
+                            <li><a href="#" id="all">All</a></li>
                             <li><a href="#">High</a></li>
                             <li><a href="#">Medium</a></li>
                             <li><a href="#">Low</a></li>
@@ -211,124 +211,154 @@
                 </div>
 
 
-                <div class="sub-right">
+                <div class="parent-container">
 
 
-                    <div class="con">
+                    <div class="child-container">
                         <h3>Design Homepage Mockup</h3>
-                        <p class="p">Create Wireframes and high-frdelity mochups for the new homepage redesign project with modern ul elements.</p>
+                        <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
 
-                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Sarath Jonhson</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Sarath Jonhson</p>
 
 
-                        <div class="main-high">
+
+
+                        <div class="main-content">
                             <div class="high">
-                                <span class="dot"></span> HIGH
+                                <span class="high-field"></span> HIGH
                             </div>
-                            <div class="inpro" >
-                                <span class="dot3"></span>In Progress
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>In Progress
                                 
                             </div>
                         </div>
+
+
+
                 
                     </div> 
                     
                     
                     
-                    <div class="con">
-                        <h3>Fix login authentication Bug</h3>
-                        <p class="p">Resolve the issuse where users are logged out unexpectedly after 5 minutes of inactivity.</p>
-                        <p class="p1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 15,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Michael Chen</p>
+                    <div class="child-container">
+                        <h3>Fix login Authentication Bug</h3>
+                        <p class="p">Resolve the issue where users are logged out unexpectedly after 5 minutes of inactivity.</p>
+                        <p class="images1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 15,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Michael Chen</p>
                         
-                        <div class="main-high">
+
+
+
+                        <div class="main-content">
                             <div class="high">
-                                <span class="dot"></span> HIGH
+                                <span class="high-field"></span> HIGH
                             </div>
-                            <div class="inpro" >
-                                <span class="dot4"></span>Pending
+                            <div class="pending" >
+                                <span class="pending-field"></span>Pending
                                 
                             </div>
 
                         </div>
+
+
+
                     </div>
                     
                     
                     
-                    <div class="con">
-                        <h3>Updates Documentation </h3>
-                        <p class="p">Review and updates the API documentation with the latest endpoint changes and examples.</p>
-                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 25,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Emily Rodriguez</p>
+                    <div class="child-container">
+                        <h3>Update Documentation </h3>
+                        <p class="p">Review and update the API documentation with the latest endpoint changes and examples.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 25,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Emily Rodriguez</p>
                         
-                        <div class="main-high">
+
+
+                        <div class="main-content">
                             
                             <div class="medium">
-                                <span class="dot1"></span> MEDIUM
+                                <span class="medium-field"></span> MEDIUM
                             </div>
                             
-                            <div class="inpro" >
-                                <span class="dot3"></span>In Progress
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>In Progress
                                 
                             </div>
                         </div>
+
+
+
+
                     </div>
                     
                     
                     
-                    <div class="con">
+                    <div class="child-container">
                         <h3>Database Performance <br> Optimization</h3>
                         <p class="p">Analyze and optimize slow-running queries to improve overall database Performance by 30%.</p>
-                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 30,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >David Kim</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 30,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >David Kim</p>
                         
-                        <div class="main-high">
+
+
+                        <div class="main-content">
                             <div class="medium">
-                                <span class="dot1"></span> MEDIUM
+                                <span class="medium-field"></span> MEDIUM
                             </div>
                             
-                            <div class="inpro" >
-                                <span class="dot4"></span>Pending
+                            <div class="pending" >
+                                <span class="pending-field"></span>Pending
                                 
                             </div>
                         </div>
+
+
+
+
                     </div>
                     
                     
-                    <div class="con">
+                    <div class="child-container">
                         <h3>Implement Dark Mode </h3>
-                        <p class="p">Add dark mode theme support across the applicationwith user preference persistence.</p>
-                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Nov 05,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Alex Thompson</p>
-                        <div class="main-high">
+                        <p class="p">Add dark mode theme support across the application with user preference persistence.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Nov 05,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Alex Thompson</p>
+
+
+
+
+                        <div class="main-content">
 
                             <div class="low">
-                                <span class="dot2"></span> LOW
+                                <span class="low-field"></span> LOW
                             </div>
                             
-                            <div class="inpro" >
-                                <span class="dot4"></span>Pending
+                            <div class="pending" >
+                                <span class="pending-field"></span>Pending
                                 
                             </div>
                         </div>
+
+
+                        
                     </div>
                     
 
 
-                    <div class="con">
+                    <div class="child-container">
                         <h3>User Testing Session </h3>
                         <p class="p">Conduct user testing sessions with 10 participants to gather feedback on the new interface.</p>
-                        <p class="p1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 28,2025</p>
-                        <p class="p2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Lisa Anderson</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 28,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Lisa Anderson</p>
                         
-                        <div class="main-high">
+                        <div class="main-content">
                             
                             <div class="high">
-                                <span class="dot"></span> HIGH
+                                <span class="high-field"></span> HIGH
                             </div>
-                            <div class="inpro" >
-                                <span class="dot5"></span>Completed
+                            <div class="completed" >
+                                <span class="completed-field"></span>Completed
                                 
                             </div>
                         </div>
@@ -343,7 +373,7 @@
 
 
     <footer>
-        <div class="foot-main">
+        <div class="foot-content">
             <div>
                 <h3>TaskManager</h3>
                 <p>Organize your work and life,finally</p>
@@ -352,7 +382,7 @@
                 <h3>Features</h3>
                     <ul>
                         <li><a href="#">Task Management</a></li>
-                        <li><a href="#">Team Colaboration</a></li>
+                        <li><a href="#">Team Collaboration</a></li>
                         <li><a href="#">Analytics</a></li>
                         <li><a href="#">Integrations</a></li>
                     </ul>
@@ -362,7 +392,7 @@
                 <ul>
                     <li><a href="#">Documentation</a></li>
                     <li><a href="#">Tutorials</a></li>
-                    <li><a href="#">ApI Reference</a></li>
+                    <li><a href="#">API Reference</a></li>
                     <li><a href="#">Support</a></li>
                 </ul>
             </div>
@@ -380,7 +410,7 @@
 
         
         <div id="bottom">
-            <p>“© 2025 TaskManager. All rights reserved. Built With ❤️for productivity.”</p>
+            <p>© 2025 TaskManager. All rights reserved.  Built with for ❤️productivity.</p>
         </div>
     </footer>
 </body>
