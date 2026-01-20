@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/665eca08a4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="color"> </div>
+
+
+    
+    <header>
+        <div>
+            <h3><span>TM</span>TaskManager</h3>
+            
+        </div>
+        <div class="menu-bar">
+            <i class="fa-solid fa-bars" id="bar-icon"></i>
+            <nav class="nav">
+                <ul class="ul-element">
+                    <li><a href="#" id="dashboard">Dashboard</a></li>
+                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+
+           <!-- <div class="leftside">
+                <h4>📝Create New Task</h4>
+                <form action="" id="form-validate">
+
+                    <div class="act">
+
+           
+                    <div class="input-field" > 
+                        <input type="text" name="user name"  placeholder="User Name *"  class="input-type" id="username" >
+
+                        <span id="errorusername" class="span"></span>
+
+                        
+                        
+                    </div>
+                    <div class="input-field" > 
+                        <input type="text" name="task name"  placeholder="Task Name *"  class="input-type" id="taskname" >
+                        
+                        <span id="errortaskname" class="span"></span>
+                        
+                        
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Assignee Email *" class="input-type" id="email" >
+                        <span class="span" id="erroremail"></span>
+                    </div>
+
+
+
+
+
+                    
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="due date"> Due Date *</label>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
+                            <span class="span" id="errordue-date"></span>
+                            
+                        </div>
+            
+                    </div>
+
+
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="time">Due Time</label>
+                            <input type="time" id="time" name="time" class="input-type">
+                            
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="input-field" id="sel">
+                        <div class="upper-field" >
+                            <label for="priority">Priority Level *</label>
+                            <select name="level" id="priority" class="input-type"  > 
+            
+                                    <option value="" disabled selected>Select levels--</option>
+                                    <option value="low" id="selects" >Low Priority</option>
+                                    <option value="medium">Medium Priority</option>
+                                    <option value="high">High Priority</option>
+
+                            
+                            </select>
+                            <span class="span" id="errorpriority"></span>
+
+                        </div>
+                    </div>
+
+
+            
+                    <div class="input-field">
+                        <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
+                        <span class="span" id="errordescription"></span>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="input-field" id="ip">
+                            <label for="Status">Status</label>
+                        <div class="checkbox-field">
+                            
+                            <div class="check-box" >
+    
+                                <input type="radio" id="pending" name="status" value="pending" ><label for="pending" class="checkbox-label">Pending</label>
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="in progress" name="status" value="In Progress"><label for="in progress" class="checkbox-label">In Progress</label>
+    
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="completed" name="status" value="completed"><label for="completed" class="checkbox-label">Completed</label>
+    
+                            </div>
+                        </div>
+                        <span class="span" id="errorstatus"></span>
+
+                    </div>
+
+                
+                    </div>
+        
+                    
+                </form>
+
+            </div>
+     -->
+
+
+
+<!-- <div class="color"> </div> -->
+    
+    <div class="main">
+        <h1 class="h1"><span class="task"></span>Task Dashboard</h1>
+        <div class="sub-main">
+            
+            <!-- <div class="color">fgv</div> -->
+            
+            <div class="left">
+                <h4>📝Create New Task</h4>
+                <form action="" id="form-validate">
+
+                    <div class="act">
+
+                    
+                    <!-- <div class="input-field" > 
+                        <input type="text" name="user name"  placeholder="User Name *"  class="input-type" id="username" >
+
+                        <span id="errorusername" class="span"></span>
+
+                        
+                        
+                    </div> -->
+                    <div class="input-field" > 
+                        <input type="text" name="user name"  placeholder="User Name *"  class="input-type" id="username" >
+
+                        <span id="errorusername" class="span"></span>
+
+                        
+                        
+                    </div>
+                    <div class="input-field" > 
+                        <input type="text" name="task name"  placeholder="Task Name *"  class="input-type" id="taskname" >
+                        
+                        <span id="errortaskname" class="span"></span>
+                        
+                        <!-- <h6 class="child"></h6> -->
+                        
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Assignee Email *" class="input-type" id="email" >
+                        <span class="span" id="erroremail"></span>
+                    </div>
+
+
+
+
+
+                    
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="due date"> Due Date *</label>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
+                            <span class="span" id="errordue-date"></span>
+                            
+                        </div>
+            
+                    </div>
+
+
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="time">Due Time</label>
+                            <input type="time" id="time" name="time" class="input-type">
+                            
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="input-field" id="sel">
+                        <div class="upper-field" >
+                            <label for="priority">Priority Level *</label>
+                            <select name="level" id="priority" class="input-type"  > 
+            
+                                    <option value="" disabled selected>Select levels--</option>
+                                    <option value="low" id="selects" >Low Priority</option>
+                                    <option value="medium">Medium Priority</option>
+                                    <option value="high">High Priority</option>
+
+                            
+                            </select>
+                            <span class="span" id="errorpriority"></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="estimate hour">Estimated Hours</label>
+                            <input type="number" name="estimate hours" value="" id="estimate hour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
+
+                        </div>
+                    </div>
+
+
+                    <div class="input-field">
+                        
+                        <input type="url" name="project url" placeholder="Project URL" class="input-type">
+                    </div>
+                    <div class="input-field">
+                        <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
+                        <span class="span" id="errordescription"></span>
+                    </div>
+
+
+                    <div class="input-field">
+                        <label for="task progress" class="lab">Task Progress</label>
+                        <input type="range" id="task-progress" name="task progress"  min="0" max="100" value="0" class="range-field" >
+                        <p id="percentage">0%</p>
+                    </div>
+
+                    <!-- <div class="" id="color">
+                        <label for="task-color"   class="lab">Task Color</label>
+                        <input type="color" id="task-color" >
+                    </div> -->
+
+
+
+                    <div class="input-field" >
+                       <label for="task" id="task">Task Type</label>
+                       <div class="checkbox-field">
+                          
+                          <div class="check-box">
+                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" ><label for="bug fix" class="checkbox-label">Bug Fix</label>
+
+                          </div>
+
+                          <div class="check-box">
+                            <input type="checkbox" id="feature" name="task type"  value="Feature"><label for="feature" class="checkbox-label">Feature</label>
+
+                          </div>
+
+                          <div class="check-box">
+                            <input type="checkbox" id="enhancement" name="task type" value="Enhancement" ><label for="enhancement" class="checkbox-label">Enhancement</label>
+
+                          </div>
+                       </div>
+                    </div>
+
+
+
+                    <div class="input-field" id="ip">
+                            <label for="Status">Status</label>
+                            <!-- <span class="span" id="errorstatus"></span> -->
+                        <div class="checkbox-field">
+                            
+                            <div class="check-box" >
+    
+                                <input type="radio" id="pending" name="status" value="pending" ><label for="pending" class="checkbox-label">Pending</label>
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="in progress" name="status" value="In Progress"><label for="in progress" class="checkbox-label">In Progress</label>
+    
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="completed" name="status" value="completed"><label for="completed" class="checkbox-label">Completed</label>
+    
+                            </div>
+                        </div>
+                        <span class="span" id="errorstatus"></span>
+
+                    </div>
+
+                    <!-- <div class="file">
+                        <div class="upload">
+                            <label for="file-upload" class="file-upload">
+                                <div class="text"><i class="fa-solid fa-paperclip"></i>Click to upload attachments</div>
+                                <div class="supported">Supported: PDF, DOC, Images</div>
+                                <input type="file" id="file-upload" class="fileinput" accept=".pdf,.doc,.docx,image/*" multiple >
+                            </label>
+                        </div>
+                    </div> -->
+
+
+
+                    <div class="" id="btn">
+                        <button id="btn1" type="submit"><i class="fa-solid fa-check" id="i"></i>Create Task</button>
+                        <button id="btn2" type="reset"> <i class="fa-solid fa-xmark" id="i1"></i> <br> Reset</button>
+
+                    </div>
+                    </div>
+        
+                    
+                </form>
+
+            </div>
+
+
+
+
+
+
+        <!-- <div class="overlay"> -->
+
+            <div class="right">
+
+
+                <div class="header-field">
+                    <h2>✅Active Tasks</h2>
+                    <nav>
+                        <ul>
+                            <li><a href="#"data-filter="all" class="taskfilter active" id="all">All</a></li>
+                            <li><a href="#"data-filter="high" class="taskfilter ">High</a></li>
+                            <li><a href="#" data-filter="medium" class="taskfilter">Medium</a></li>
+                            <li><a href="#" data-filter="low" class="taskfilter">Low</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+
+
+
+
+
+                <div class="leftside">
+                    <div class="side">
+
+                    
+                <h4>📝Edit Task</h4>
+                <form action="" id="form-validate">
+
+                    <div class="act">
+
+           
+                    <div class="input-field" > 
+                        <input type="text" name="user name"  placeholder="User Name "  class="input-type" id="username" >
+
+                        <span id="errorusername" class="span"></span>
+
+                        
+                        
+                    </div>
+                    <div class="input-field" > 
+                        <input type="text" name="task name"  placeholder="Task Name "  class="input-type" id="taskname" >
+                        
+                        <span id="errortaskname" class="span"></span>
+                        
+                        <!-- <h6 class="child"></h6> -->
+                        
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Assignee Email " class="input-type" id="email" >
+                        <span class="span" id="erroremail"></span>
+                    </div>
+
+
+
+
+
+                    
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="due date"> Due Date </label>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
+                            <!-- <span class="span" id="errordue-date"></span> -->
+                            
+                        </div>
+            
+                    </div>
+
+
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="time">Due Time</label>
+                            <input type="time" id="time" name="time" class="input-type">
+                            
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="input-field" id="sel">
+                        <div class="upper-field" >
+                            <label for="priority">Priority Level </label>
+                            <select name="level" id="priority" class="input-type"  > 
+            
+                                    <option value="" disabled selected>Select levels--</option>
+                                    <option value="low" id="selects" >Low Priority</option>
+                                    <option value="medium">Medium Priority</option>
+                                    <option value="high">High Priority</option>
+
+                            
+                            </select>
+                            <span class="span" id="errorpriority"></span>
+
+                        </div>
+                    </div>
+
+
+            
+                    <div class="input-field">
+                        <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
+                        <span class="span" id="errordescription"></span>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="input-field" id="ip">
+                            <label for="Status">Status</label>
+                            <!-- <span class="span" id="errorstatus"></span> -->
+                        <div class="checkbox-field">
+                            
+                            <div class="check-box" >
+    
+                                <input type="radio" id="Pending" name="status" value="pending" ><label for="Pending" class="checkbox-label">Pending</label>
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="inprogress" name="status" value="In Progress"><label for="inprogress" class="checkbox-label">In Progress</label>
+    
+                            </div>
+                            <div class="check-box">
+                                <input type="radio" id="Completed" name="status" value="completed"><label for="Completed" class="checkbox-label">Completed</label>
+    
+                            </div>
+                        </div>
+                        <span class="span" id="errorstatus"></span>
+
+                    </div>
+
+                    <div class="btn">
+                        <button id="btnadd">Add</button>
+                        <button id="btncancel">Cancel</button>
+
+                    </div>
+
+
+                
+                    </div>
+        
+                    
+                </form>
+
+                    </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="parent-container">
+
+
+                    <div class="child-container" data-priority="high">
+                        <button class="add" type="button">Edit</button>
+                        <button class="delete" type="button">Delete</button>
+                        
+                        <h3 id="headname">Design Homepage Mockup</h3>
+                        <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
+
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Sarath Jonhson</p>
+
+
+
+
+                        <div class="main-content" >
+                            <div class="high" >
+                                <span class="high-field"></span>
+                                <span>HIGH</span>
+                            </div>
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>
+                                <span>In Progress</span>
+                                
+                            </div>
+                        </div>
+                        <!-- <div class="main-content">
+                            <div class="high">
+                                <span class="high-field"></span> HIGH
+                            </div>
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>In Progress
+                                
+                            </div>
+                        </div> -->
+
+
+
+                
+                    </div> 
+                    
+                    
+                    
+                    <div class="child-container" data-priority="high">
+                        <h3>Fix login Authentication Bug</h3>
+                        <p class="p">Resolve the issue where users are logged out unexpectedly after 5 minutes of inactivity.</p>
+                        <p class="images1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 15,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Michael Chen</p>
+                        
+
+
+
+                        <div class="main-content" >
+                            <div class="high">
+                                <span class="high-field" ></span> 
+                                <span>HIGH</span>
+                            </div>
+                            <div class="pending" >
+                                <span class="pending-field"></span>
+                                <span>Pending</span>
+                                
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    
+                    
+                    
+                    <div class="child-container" data-priority="medium">
+                        <h3>Update Documentation </h3>
+                        <p class="p">Review and update the API documentation with the latest endpoint changes and examples.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 25,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Emily Rodriguez</p>
+                        
+
+
+                        <div class="main-content" >
+                            
+                            <div class="medium"  >
+                                <span class="medium-field"></span> 
+                                <span >MEDIUM</span>
+                            </div>
+                            
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>
+                                <span>In Progress</span>
+                                
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    
+                    
+                    
+                    <div class="child-container" data-priority="medium">
+                        <h3>Database Performance <br> Optimization</h3>
+                        <p class="p">Analyze and optimize slow-running queries to improve overall database Performance by 30%.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 30,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >David Kim</p>
+                        
+
+
+                        <div class="main-content" >
+                            <div class="medium">
+                                <span class="medium-field"></span>
+                                <span id="text" class="text">MEDIUM</span>
+                            </div>
+                            
+                            <div class="pending" >
+                                <span class="pending-field"></span>
+                                <span>Pending</span>
+                                
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    
+                    
+                    <div class="child-container" data-priority="low">
+                        <h3>Implement Dark Mode </h3>
+                        <p class="p">Add dark mode theme support across the application with user preference persistence.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Nov 05,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Alex Thompson</p>
+
+
+
+
+                        <div class="main-content" >
+
+                            <div class="low"  >
+                                <span class="low-field"></span> 
+                                <span>LOW</span>
+                            </div>
+                            
+                            <div class="pending" >
+                                <span class="pending-field"></span>
+                                <span>Pending</span>
+                                
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                    
+
+
+                    <div class="child-container" data-priority="high">
+                        <h3>User Testing Session </h3>
+                        
+                        <p class="p">Conduct user testing sessions with 10 participants to gather feedback on the new interface.</p>
+                        <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 28,2025</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >Lisa Anderson</p>
+                        
+                        <div class="main-content" >
+                            
+                            <div class="high">
+                                <span class="high-field"></span> 
+                                <span>HIGH</span>
+                            </div>
+                            <div class="completed" >
+                                <span class="completed-field"></span>
+                                <span>Completed</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="child-container">
+                        
+                    </div> -->
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- </div> -->
+
+    <footer>
+        <div class="foot-content">
+            <div>
+                <h3>TaskManager</h3>
+                <p>Organize your work and life,finally</p>
+            </div>
+            <div>
+                <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Task Management</a></li>
+                        <li><a href="#">Team Collaboration</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Integrations</a></li>
+                    </ul>
+            </div>
+            <div>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        
+        <div id="bottom">
+            <p>© 2025 TaskManager. All rights reserved.  Built with for ❤️productivity.</p>
+        </div>
+    </footer>
+
+   <script src="task.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
