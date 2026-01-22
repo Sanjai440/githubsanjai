@@ -199,8 +199,8 @@
                     <div class="input-field">
                         <div class="upper-field">
                             <label for="due date"> Due Date *</label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
-                            <span class="span" id="errordue-date"></span>
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="dueDate" >
+                            <span class="span" id="errordueDate"></span>
                             
                         </div>
             
@@ -364,18 +364,20 @@
 
 
 
-                <div class="leftside">
+
+
+            <div class="leftside">
                     <div class="side">
 
                     
                 <h4>📝Edit Task</h4>
-                <form action="" id="form-validate">
+                <form action=""  class="formvalidate">
 
                     <div class="act">
 
            
                     <div class="input-field" > 
-                        <input type="text" name="user name"  placeholder="User Name "  class="input-type" id="username" >
+                        <input type="text" name="user name"  placeholder="User Name "  class="input-type" id="editusername" >
 
                         <span id="errorusername" class="span"></span>
 
@@ -383,7 +385,7 @@
                         
                     </div>
                     <div class="input-field" > 
-                        <input type="text" name="task name"  placeholder="Task Name "  class="input-type" id="taskname" >
+                        <input type="text" name="task name"  placeholder="Task Name "  class="input-type" id="edittaskname" >
                         
                         <span id="errortaskname" class="span"></span>
                         
@@ -391,7 +393,7 @@
                         
                     </div>
                     <div class="input-field">
-                        <input type="email" name="email" placeholder="Assignee Email " class="input-type" id="email" >
+                        <input type="email" name="email" placeholder="Assignee Email " class="input-type" id="editemail" >
                         <span class="span" id="erroremail"></span>
                     </div>
 
@@ -403,7 +405,7 @@
                     <div class="input-field">
                         <div class="upper-field">
                             <label for="due date"> Due Date </label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
+                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="editdue-date" >
                             <!-- <span class="span" id="errordue-date"></span> -->
                             
                         </div>
@@ -424,7 +426,7 @@
                     <div class="input-field" id="sel">
                         <div class="upper-field" >
                             <label for="priority">Priority Level </label>
-                            <select name="level" id="priority" class="input-type"  > 
+                            <select name="level" id="editpriority" class="input-type"  > 
             
                                     <option value="" disabled selected>Select levels--</option>
                                     <option value="low" id="selects" >Low Priority</option>
@@ -441,7 +443,7 @@
 
             
                     <div class="input-field">
-                        <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
+                        <textarea name="Task-description" id="editdescription" placeholder="Task Description" class="input-type"></textarea>
                         <span class="span" id="errordescription"></span>
                     </div>
 
@@ -454,18 +456,18 @@
                     <div class="input-field" id="ip">
                             <label for="Status">Status</label>
                             <!-- <span class="span" id="errorstatus"></span> -->
-                        <div class="checkbox-field">
+                        <div class="editcheckbox-field">
                             
                             <div class="check-box" >
     
-                                <input type="radio" id="Pending" name="status" value="pending" ><label for="Pending" class="checkbox-label">Pending</label>
+                                <input type="radio" id="Pending" name="editstatus" value="pending" ><label for="Pending" class="checkbox-label">Pending</label>
                             </div>
                             <div class="check-box">
-                                <input type="radio" id="inprogress" name="status" value="In Progress"><label for="inprogress" class="checkbox-label">In Progress</label>
+                                <input type="radio" id="inprogress" name="editstatus" value="In Progress"><label for="inprogress" class="checkbox-label">In Progress</label>
     
                             </div>
                             <div class="check-box">
-                                <input type="radio" id="Completed" name="status" value="completed"><label for="Completed" class="checkbox-label">Completed</label>
+                                <input type="radio" id="Completed" name="editstatus" value="completed"><label for="Completed" class="checkbox-label">Completed</label>
     
                             </div>
                         </div>
@@ -474,7 +476,7 @@
                     </div>
 
                     <div class="btn">
-                        <button id="btnadd">Add</button>
+                        <button id="btnadd" type="button">Add</button>
                         <button id="btncancel">Cancel</button>
 
                     </div>
@@ -499,14 +501,18 @@
 
 
 
+
+
                 <div class="parent-container">
 
 
                     <div class="child-container" data-priority="high">
-                        <button class="add" type="button">Edit</button>
-                        <button class="delete" type="button">Delete</button>
+                        <i class="fa-solid fa-x" id="delete"></i>
+                        <i class="fa-regular fa-pen-to-square " id="add"></i>
+                        <!-- <button class="add" type="button">Edit</button> -->
+                        <!-- <button class="delete" type="button">Delete</button> -->
                         
-                        <h3 id="headname">Design Homepage Mockup</h3>
+                        <h3 id="headname" class="headname">Design Homepage Mockup</h3>
                         <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
 
                         <p class="images1"><img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt="">Due: Oct 20,2025</p>
