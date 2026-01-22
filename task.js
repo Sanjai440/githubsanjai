@@ -115,21 +115,21 @@ function getIntput(event) {
 }
 
 
-let reset=document.getElementById("btn2")
+// let reset=document.getElementById("btn2")
 
-reset.addEventListener("click",function(){
+// reset.addEventListener("click",function(){
     
-    console.log("hii");
+//     console.log("hii");
     
-    if(formValidation==""){
+//     if(formValidation==""){
 
-        // formValidation.remove()
-        // input.style.border="none"
-        // span.innerText=""
-        errorName.innerText=""
+//         // formValidation.remove()
+//         // input.style.border="none"
+//         // span.innerText=""
+//         errorName.innerText=""
         
-    }
-})
+//     }
+// })
 
 
 
@@ -246,25 +246,25 @@ function setvalue() {
 
     let newArr = ["username", "taskname", "email", "dueDate", "priority", "description"]
 
-    newArr.forEach((id,index) => {
+    newArr.forEach((id) => {
 
-        let newVal = document.getElementById(id,index)
+        let newVal = document.getElementById(id)
         // let newval=index
         if (newVal) {
 
             newVal.addEventListener("input", () => {
 
                 let errorEle = document.getElementById("error" + id)
-                let names = document.getElementById(id,index)
+                let names = document.getElementById(id)
                 // if(name==userName){
                 // errorEle.innerText="enter your full name"
                 // }
-                if(!name.test(index[0])){
-                            errorName.innerText="enter your full name"
+                // if(!name.test(index[0])){
+                //             errorName.innerText="enter your full name"
 
 
-                }
-                else if ((errorEle || names)) {
+                // }
+                if (errorEle || names) {
                     // errorEle.innerText=""
                     errorEle.innerText = ""
                     names.style.border = "2px solid rgb(218, 213, 213)"
@@ -279,7 +279,7 @@ function setvalue() {
 
     })
 
-    // return isvalid
+    return isvalid
 
     // if(!values){
     // // values=true
