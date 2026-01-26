@@ -11,6 +11,9 @@
 
     <div class="color"> </div>
 
+    <div class="detailspopup-color"></div>
+
+
 
     
     <header>
@@ -32,123 +35,55 @@
     </header>
 
 
-           <!-- <div class="leftside">
-                <h4>📝Create New Task</h4>
-                <form action="" id="form-validate">
-
-                    <div class="act">
-
-           
-                    <div class="input-field" > 
-                        <input type="text" name="user name"  placeholder="User Name *"  class="input-type" id="username" >
-
-                        <span id="errorusername" class="span"></span>
-
-                        
-                        
-                    </div>
-                    <div class="input-field" > 
-                        <input type="text" name="task name"  placeholder="Task Name *"  class="input-type" id="taskname" >
-                        
-                        <span id="errortaskname" class="span"></span>
-                        
-                        
-                    </div>
-                    <div class="input-field">
-                        <input type="email" name="email" placeholder="Assignee Email *" class="input-type" id="email" >
-                        <span class="span" id="erroremail"></span>
-                    </div>
-
-
-
-
-
-                    
-                    <div class="input-field">
-                        <div class="upper-field">
-                            <label for="due date"> Due Date *</label>
-                            <input type="date" name="due date" placeholder="dd/mm/yyyy" class="input-type" id="due-date" >
-                            <span class="span" id="errordue-date"></span>
-                            
-                        </div>
-            
-                    </div>
-
-
-                    <div class="input-field">
-                        <div class="upper-field">
-                            <label for="time">Due Time</label>
-                            <input type="time" id="time" name="time" class="input-type">
-                            
-                        </div>
-                        
-                    </div>
-
-
-                    <div class="input-field" id="sel">
-                        <div class="upper-field" >
-                            <label for="priority">Priority Level *</label>
-                            <select name="level" id="priority" class="input-type"  > 
-            
-                                    <option value="" disabled selected>Select levels--</option>
-                                    <option value="low" id="selects" >Low Priority</option>
-                                    <option value="medium">Medium Priority</option>
-                                    <option value="high">High Priority</option>
-
-                            
-                            </select>
-                            <span class="span" id="errorpriority"></span>
-
-                        </div>
-                    </div>
-
-
-            
-                    <div class="input-field">
-                        <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
-                        <span class="span" id="errordescription"></span>
-                    </div>
-
-
-
-
-
-
-
-                    <div class="input-field" id="ip">
-                            <label for="Status">Status</label>
-                        <div class="checkbox-field">
-                            
-                            <div class="check-box" >
-    
-                                <input type="radio" id="pending" name="status" value="pending" ><label for="pending" class="checkbox-label">Pending</label>
-                            </div>
-                            <div class="check-box">
-                                <input type="radio" id="in progress" name="status" value="In Progress"><label for="in progress" class="checkbox-label">In Progress</label>
-    
-                            </div>
-                            <div class="check-box">
-                                <input type="radio" id="completed" name="status" value="completed"><label for="completed" class="checkbox-label">Completed</label>
-    
-                            </div>
-                        </div>
-                        <span class="span" id="errorstatus"></span>
-
-                    </div>
-
-                
-                    </div>
         
-                    
-                </form>
-
-            </div>
-     -->
-
 
 
 <!-- <div class="color"> </div> -->
-    
+<section class="details-popup">
+    <div class="child-container" data-priority="high" id="childpopup">
+                        <i class="fa-solid fa-x" id="delete"></i>
+                        <!-- <i class="fa-regular fa-pen-to-square " id="add"></i> -->
+                        <!-- <button class="add" type="button">Edit</button> -->
+                        <!-- <button class="delete" type="button">Delete</button> -->
+                        
+                        <h3 id="headname" class="headname">Design Homepage Mockup</h3>
+                        <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
+
+                    <div class="details-cards">
+                        <p>Email : sanjai@gmail.com</p>
+                        <p class="due-date">Due Date : Oct 20,2025</p>
+                        <p class="user">User Name : Sarath Jonhson</p>
+                        <p>Due Time : 10:40am</p>
+                        <p>Esatimate Hours : 52</p>
+                        <!-- <p>Progress : 0%</p> -->
+                         <p>Project Url: www.com</p>
+
+                    </div>
+                    <div id="progress">Progress : 0%</div>
+                    <div id="border-color"></div>
+
+                        <div class="main-content" >
+                            <div class="high" >
+                                <span class="high-field"></span>
+                                <span>HIGH</span>
+                            </div>
+                            <div class="tasktype-content">
+                                <span>Bug Fix</span>
+                            </div>
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>
+                                <span>In Progress</span>
+                                
+                            </div>
+                        </div>
+
+     
+                    </div> 
+    </div>
+</section>
+
+
+
     <div class="main">
         <h1 class="h1"><span class="task"></span>Task Dashboard</h1>
         <div class="sub-main">
@@ -210,7 +145,7 @@
                     <div class="input-field">
                         <div class="upper-field">
                             <label for="time">Due Time</label>
-                            <input type="time" id="time" name="time" class="input-type">
+                            <input type="time" id="time" name="time" class="input-type" >
                             
                         </div>
                         
@@ -238,7 +173,7 @@
                     <div class="input-field">
                         <div class="upper-field">
                             <label for="estimate hour">Estimated Hours</label>
-                            <input type="number" name="estimate hours" value="" id="estimate hour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
+                            <input type="number" name="estimate hours" value="" id="estimatehour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
 
                         </div>
                     </div>
@@ -246,7 +181,7 @@
 
                     <div class="input-field">
                         
-                        <input type="url" name="project url" placeholder="Project URL" class="input-type">
+                        <input type="url" name="project url" placeholder="Project URL" class="input-type"  id="url">
                     </div>
                     <div class="input-field">
                         <textarea name="Task-description" id="description" placeholder="Task Description" class="input-type"></textarea>
@@ -272,17 +207,17 @@
                        <div class="checkbox-field">
                           
                           <div class="check-box">
-                            <input type="checkbox" id="bug fix"  name="task type" value="Bug fix" ><label for="bug fix" class="checkbox-label">Bug Fix</label>
+                            <input type="checkbox" id="bug fix"  name="task-type" value="Bug fix" ><label for="bug fix" class="checkbox-label">Bug Fix</label>
 
                           </div>
 
                           <div class="check-box">
-                            <input type="checkbox" id="feature" name="task type"  value="Feature"><label for="feature" class="checkbox-label">Feature</label>
+                            <input type="checkbox" id="feature" name="task-type"  value="Feature"><label for="feature" class="checkbox-label">Feature</label>
 
                           </div>
 
                           <div class="check-box">
-                            <input type="checkbox" id="enhancement" name="task type" value="Enhancement" ><label for="enhancement" class="checkbox-label">Enhancement</label>
+                            <input type="checkbox" id="enhancement" name="task-type" value="Enhancement" ><label for="enhancement" class="checkbox-label">Enhancement</label>
 
                           </div>
                        </div>
@@ -365,7 +300,8 @@
 
 
 
-
+<section class="leftpopup">
+        
             <div class="leftside">
                     <div class="side">
 
@@ -416,7 +352,7 @@
                     <div class="input-field">
                         <div class="upper-field">
                             <label for="time">Due Time</label>
-                            <input type="time" id="time" name="time" class="input-type">
+                            <input type="time" id="editTime" name="time" class="input-type" >
                             
                         </div>
                         
@@ -441,10 +377,60 @@
                     </div>
 
 
+                    <div class="input-field">
+                        <div class="upper-field">
+                            <label for="estimate hour">Estimated Hours</label>
+                            <input type="number" name="estimate hours" value="" id="editEstimatehour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
+
+                        </div>
+                    </div>
+
+
+                    <div class="input-field">
+                        
+                        <input type="url" name="project url" placeholder="Project URL" class="input-type"  id="ediUrl">
+                    </div>
+
+
             
                     <div class="input-field">
                         <textarea name="Task-description" id="editdescription" placeholder="Task Description" class="input-type"></textarea>
                         <span class="span" id="errordescription"></span>
+                    </div>
+
+
+                     <div class="input-field">
+                        <label for="task progress" class="lab">Task Progress</label>
+                        <input type="range" id="task-progress" name="task progress"  min="0" max="100" value="0" class="range-field" >
+                        <p id="percentage">0%</p>
+                    </div>
+
+                    <!-- <div class="" id="color">
+                        <label for="task-color"   class="lab">Task Color</label>
+                        <input type="color" id="task-color" >
+                    </div> -->
+
+
+
+                    <div class="input-field" >
+                       <label for="task" id="task">Task Type</label>
+                       <div class="editcheckbox-field">
+                          
+                          <div class="check-box">
+                            <input type="checkbox" id="bug fix"  name="editTaskType" value="Bug fix" ><label for="bug fix" class="checkbox-label">Bug Fix</label>
+
+                          </div>
+
+                          <div class="check-box">
+                            <input type="checkbox" id="feature" name="editTaskType"  value="Feature"><label for="feature" class="checkbox-label">Feature</label>
+
+                          </div>
+
+                          <div class="check-box">
+                            <input type="checkbox" id="enhancement" name="editTaskType" value="Enhancement" ><label for="enhancement" class="checkbox-label">Enhancement</label>
+
+                          </div>
+                       </div>
                     </div>
 
 
@@ -476,7 +462,7 @@
                     </div>
 
                     <div class="btn">
-                        <button id="btnadd" type="button">Add</button>
+                        <button id="btnadd" class="addBtn" type="button">Add</button>
                         <button id="btncancel">Cancel</button>
 
                     </div>
@@ -495,9 +481,7 @@
 
 
 
-
-
-
+</section>
 
 
 
@@ -505,10 +489,10 @@
 
                 <div class="parent-container">
 
-
+                    
                     <div class="child-container" data-priority="high">
                         <i class="fa-solid fa-x" id="delete"></i>
-                        <i class="fa-regular fa-pen-to-square " id="add"></i>
+                        <i class="fa-regular fa-pen-to-square edit-btn" id="add"></i>
                         <!-- <button class="add" type="button">Edit</button> -->
                         <!-- <button class="delete" type="button">Delete</button> -->
                         
@@ -532,16 +516,7 @@
                                 
                             </div>
                         </div>
-                        <!-- <div class="main-content">
-                            <div class="high">
-                                <span class="high-field"></span> HIGH
-                            </div>
-                            <div class="in-progress" >
-                                <span class="progress-field"></span>In Progress
-                                
-                            </div>
-                        </div> -->
-
+                     
 
 
                 

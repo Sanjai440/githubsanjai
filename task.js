@@ -10,20 +10,12 @@ let formValidation = document.getElementById("form-validate")
 
 formValidation.addEventListener('submit', getIntput);
 
-let userName, taskName, userEmail, dueDate, taskDescription, prioritySelect, radio
+let userName, taskName, userEmail, dueDate, taskDescription, prioritySelect, radio, dueTime,estimateHours,projectUrl,checkBox
 
 
 
 
-// let taskProgress=document.getElementById("task-progress")
-// let percentage=document.getElementById("percentage")
 
-
-
-// taskProgress.addEventListener('input',function(){
-    //     percentage.innerText=`${taskProgress.value}%`
-    
-    // })
     
     let span
     
@@ -32,11 +24,12 @@ let userName, taskName, userEmail, dueDate, taskDescription, prioritySelect, rad
     
     // let name = /^[a-z,A-Z]+[a-z,A-Z]$/
 let values = false
+let checkBoxValue
 
 function getIntput(event) {
     event.preventDefault()
 
-    userName = document.getElementById("username").value
+    userName = document.getElementById("username")
 
     // let sum=document.getElementById("headname")
 
@@ -51,10 +44,31 @@ function getIntput(event) {
 
     // console.log(dueDate);
 
-    taskDescription = document.getElementById("description").value
+    taskDescription = document.getElementById("description")
 
 
     prioritySelect = document.getElementById("priority");
+
+
+    dueTime=document.getElementById("time").value
+
+
+    estimateHours=document.getElementById("estimatehour").value
+
+    projectUrl=document.getElementById("url")
+
+
+
+    checkBox=document.querySelectorAll(`input[name="task-type"]:checked`)
+
+
+     checkBoxValue=[...checkBox].map(cb => cb.value),
+
+    // console.log(newcheck);
+    
+    
+// console.log(checkBox);
+
 
     radio = document.querySelector(`input[name="status"]:checked`)?.value || "";
 
@@ -78,35 +92,20 @@ function getIntput(event) {
     errorstatus = document.getElementById("errorstatus")
 
 
-    // localStorage.setItem("taskNames",taskName)
-
-    // let value1={
-    //     taskName:taskName,
-    //     // userEmail:userEmail
-    //     taskDescription:taskDescription,
-
-    // }
-    // localStorage.setItem("data",JSON.stringify(value1))
-
-
-    // submits()
-
-
-    // let isvalid=setvalue()
-
-    // if(isvalid){
-    //     createDiv()
-    //     getEditvalue()
-    // }
-
-
 
     let isvalid = setvalue();
     if (isvalid) {
         // setlocalstorage();
-        setLocalStorage();
+        // setLocalStorage();
         // setlocalstorage()
-        createDiv();
+        setlocalstorage()
+
+
+
+        
+    let tasks = JSON.parse(localStorage.getItem("task"));
+    let index = tasks.length - 1
+        createDiv(index);
 
     }
 
@@ -132,6 +131,7 @@ function getIntput(event) {
 // })
 
 
+window.addEventListener("DOMContentLoaded", () => {
 
 
 let taskProgress = document.getElementById("task-progress")
@@ -142,7 +142,7 @@ taskProgress.addEventListener('input', function () {
     // isvalid=false
 })
 
-
+})
 
 function setvalue() {
 
@@ -150,27 +150,42 @@ function setvalue() {
     let child = document.querySelectorAll(".child")
 
     let isvalid = true
+    let newValid=true
  
- let name = /^[a-z,A-Z]+ [a-z,A-Z]$/
-    if (userName == "") {
-        errorName.innerText = "Enter your Name"
+ let namePattern = /^[A-Za-z\s]{6,}$/
+
+ let tasknamePattern=/^[A-Za-z\s]{10,}$/
+let descriptionPattern=/^.\s{25,}$/
+
+
+//  let descriptionPattern=/^[A-Za-z\s]{50,}/
+    if (userName.value == "") {
+        errorName.innerHTML = `<div class="error-icon">!</div>Enter your Name`
+        userName.style.border = " 2px solid red "
+        // errorIcon.style.display="block"
+
 
         isvalid = false
     }
 
-    // else if(!name.test(userName)){
-    //     errorName.innerText="enter your full name"
 
-    // }
-    // else {
-    //     errorName.innerText=""
-        
-    // }
+    
+    else if(!namePattern.test(userName.value)){
+        errorName.innerHTML=`<div class="error-icon">!</div>Enter your Full Name ,more than 5 charater`
+
+        userName.style.border = " 2px solid red "
+
+        newValid=false
+        // isvalid=false
 
 
+    }
+  
+
+   
 
     if (taskName.value == "") {
-        errorTask.innerText = "Enter your Task Name *"
+        errorTask.innerHTML = `<div class="error-icon">!</div>Enter your Task Name *`
         taskName.style.border = " 2px solid red "
 
 
@@ -178,8 +193,13 @@ function setvalue() {
 
     }
 
+    else if(!tasknamePattern.test(taskName.value)){
+        errorTask.innerHTML=`<div class="error-icon">!</div> Enter your task name must be more than 10 character *`
+        newValid=false
+    }
+
     if (userEmail.value == "") {
-        errorEmail.innerText = "Enter your Email *"
+        errorEmail.innerHTML = `<div class="error-icon">!</div>Enter your Email *`
         userEmail.style.border = "2px solid red"
 
         isvalid = false
@@ -187,39 +207,84 @@ function setvalue() {
     }
 
     if (dueDate.value == "") {
-        errorDate.innerText = "Enter the Date *"
+        errorDate.innerHTML = `<div class="error-icon">!</div>Enter the Date *`
         dueDate.style.border = "2px solid red"
 
         isvalid = false
     }
 
-    if (taskDescription == "") {
-        errorDescription.innerText = "Write the description *"
+
+   
+
+    if (taskDescription.value == "") {
+        errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description *`
         isvalid = false
     }
 
+    else if(!descriptionPattern.test(taskDescription.value)){
+        errorDescription.innerHTML= `<div class="error-icon">!</div>Write the description must be more than 50 character *`
+        newValid=false
+    }
 
 
     if (prioritySelect.value == "") {
-        errorpriority.innerText = "Select the Priority *"
+        errorpriority.innerHTML = `<div class="error-icon">!</div>Select the Priority *`
         prioritySelect.style.border = "2px solid red"
         isvalid = false
     }
 
 
     if (radio == "") {
-        errorstatus.innerText = "select the status"
+        errorstatus.innerHTML = `<div class="error-icon">!</div>Select the status *`
         isvalid = false
     }
+
+
+
+
+     if(dueTime==""){
+        isvalid=false
+    }
+
+    if(estimateHours==""){
+        isvalid=false
+    }
+    if(projectUrl==""){
+        isvalid=false
+    }
+
+
+
+
+    if(checkBoxValue==""){
+        isvalid=false
+    }
+
+
+
+
+
+
+
+
+//  if(newValid){
+
+ 
     let scrollEle = [
+        {name:userName, error: errorName},
         { name: taskName, error: errorTask },
         { name: userEmail, error: errorEmail },
         { name: dueDate, error: errorDate },
-        { name: prioritySelect, error: errorpriority }]
+        { name: prioritySelect, error: errorpriority },
+        {name:taskDescription, error: errorDescription}
+    ]
 
 
     for (let element of scrollEle) {
         if (element.name.value == "") {
+            if(newValid){
+
+            
             element.name.scrollIntoView({
                 behavior: "smooth",
                 block: "center"
@@ -227,59 +292,78 @@ function setvalue() {
             element.name.focus()
             break;
 
+        }
 
 
         }
     }
 
 
+//  }
 
 
 
 
 
+    if(newValid){
+
+    
 
 
-
-
-
-
-    let newArr = ["username", "taskname", "email", "dueDate", "priority", "description"]
+    let newArr = ["username", "taskname", "email", "dueDate", "priority", "description","status"]
 
     newArr.forEach((id) => {
 
         let newVal = document.getElementById(id)
         // let newval=index
-        if (newVal) {
+        if (newVal && id !== "status") {
 
-            newVal.addEventListener("input", () => {
+            newVal.addEventListener("input",clearerror )
 
-                let errorEle = document.getElementById("error" + id)
-                let names = document.getElementById(id)
-                // if(name==userName){
-                // errorEle.innerText="enter your full name"
-                // }
-                // if(!name.test(index[0])){
-                //             errorName.innerText="enter your full name"
+            newVal.addEventListener("change",clearerror)
 
-
-                // }
-                if (errorEle || names) {
-                    // errorEle.innerText=""
-                    errorEle.innerText = ""
-                    names.style.border = "2px solid rgb(218, 213, 213)"
-
-
-
-
-                }
+            function clearerror(){
+                // let names = document.getElementById(id)
                 
-            })
+                let errorEle = document.getElementById("error" + id)
+                if (errorEle ) {
+             
+                    errorEle.innerText = ""
+                    
+                    
+                    
+                    
+                }
+                if(newVal.style){
+                    
+                    newVal.style.border = "2px solid rgb(218, 213, 213)"
+                }
+            }
+                
+        
         }
 
-    })
 
+        if (id === "status") {
+    let radios = document.querySelectorAll('input[name="status"]');
+
+    radios.forEach(radioBtn => {
+      radioBtn.addEventListener("change", () => {
+        let errorEle = document.getElementById("errorstatus");
+        if (errorEle) {
+          errorEle.innerText = "";
+        }
+      });
+    });
+  }
+
+
+    })
+}
+
+if(newValid){
     return isvalid
+}
 
     // if(!values){
     // // values=true
@@ -320,6 +404,19 @@ filtertask.forEach(link => { // high
 })
 
 
+// let newDiv
+const parentContainer = document.querySelector(".parent-container")
+
+const childcontainer=document.querySelectorAll(".child-container")
+
+const popupcolor=document.querySelector(".detailspopup-color")
+
+const childpopup=document.getElementById("childpopup")
+
+
+let edit=document.getElementById("edit")
+
+ 
 
 
 
@@ -335,52 +432,133 @@ filtertask.forEach(link => { // high
 
 
 
+parentContainer.addEventListener("clck", function (e) {
+    let child = e.target.closest(".child-container");
+
+    if (child) {
+        let index = child.dataset.index
+        showPopup(index);
+
+        popupcolor.style.display = "block"
+        childpopup.style.display = "block"
+    }
+});
 
 
 
 
 
 
+function showPopup(index) {
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
+    let task = tasks[index];
 
-// Save the task to LocalStorage
-function setLocalStorage() {
-    // Get existing tasks or empty array
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const popupContent = document.getElementById("childpopup")
 
-    // Create a new task object
-    let task = {
-        userName: userName,
-        taskName: taskName.value,
-        email: userEmail.value,
-        dueDate: dueDate.value,
-        description: taskDescription,
-        priority: prioritySelect.value,
-        status: radio,
-        progress: taskProgress ? taskProgress.value : "0"
-    };
+    popupContent.innerHTML =
+`
+      <i class="fa-solid fa-x" id="delete"></i>
+                        <!-- <i class="fa-regular fa-pen-to-square " id="add"></i> -->
+                        <!-- <button class="add" type="button">Edit</button> -->
+                        <!-- <button class="delete" type="button">Delete</button> -->
+                        
+                        <h3 id="headname" class="headname">${task.taskname}</h3>
+                        <p class="p">${task.description}</p>
 
-    // Add the new task
-    tasks.push(task);
+                    <div class="details-cards">
+                        <p>Email : ${task.useremail}</p>
+                        <p class="due-date">Due Date : ${task.duedate}</p>
+                        <p class="user">User Name : ${task.username}</p>
+                        <p>Due Time : ${task.duetime}</p>
+                        <p>Esatimate Hours : ${task.estimatehours}</p>
+                        <!-- <p>Progress : 0%</p> -->
+                         <p>Project Url: ${task.projecturl}</p>
 
-    // Save back to LocalStorage
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+                    </div>
+                    <div id="progress">Progress : 0%</div>
+                    <div id="border-color"></div>
+
+                        <div class="main-content" >
+                            <div class="high" >
+                                <span class="high-field"></span>
+                                <span>${task.priorityselect}</span>
+                            </div>
+                            <div class="tasktype-content">
+                                <span>${task.checkbox}</span>
+                            </div>
+                            <div class="in-progress" >
+                                <span class="progress-field"></span>
+                                <span>${task.radioValue}</span>
+                                
+                            </div>
+                        </div>
+
+     
+                    </div> `
+    ;
 }
 
-// Load tasks from LocalStorage on page load
-window.addEventListener("DOMContentLoaded", () => {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(task => {
-        // Assign values temporarily
-        userName = task.userName;
-        taskName = { value: task.taskName };
-        userEmail = { value: task.email };
-        dueDate = { value: task.dueDate };
-        taskDescription = task.description;
-        prioritySelect = { value: task.priority };
-        radio = task.status;
 
-        // Create the task card
-        createDiv();
+
+
+
+
+
+
+
+
+
+function setlocalstorage() {
+
+    let tasks = JSON.parse(localStorage.getItem("task")) || [];
+
+    let taskValue = {
+        username: userName.value,
+        taskname: taskName.value,
+        useremail: userEmail.value,
+        duedate: dueDate.value,
+        duetime: dueTime,
+        priorityselect: prioritySelect.value,
+        estimatehours: estimateHours,
+        description: taskDescription.value,
+        projecturl: projectUrl.value,
+        // progress: taskProgress.value,
+        checkbox: checkBoxValue,
+        radioValue: radio
+    };
+
+ 
+
+
+    
+    tasks.push(taskValue)
+
+    localStorage.setItem("task", JSON.stringify(tasks))
+
+}
+
+
+
+
+window.addEventListener("DOMContentLoaded",function(){
+
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
+
+    tasks.forEach((item,index) => {
+        userName = { value: item.username }
+        taskName = { value: item.taskname }
+        userEmail = { value: item.useremail }
+        dueDate = { value: item.duedate }
+        dueTime=item.dueTime
+
+        prioritySelect = { value: item.priorityselect }
+        estimateHours=item.estimateHours
+        taskDescription = { value: item.description }
+        projectUrl=item.projecturl
+        taskProgress=item.taskProgress
+        checkBoxValue=item.checkBoxValue
+        radio = item.radioValue
+        createDiv(index);
     });
 });
 
@@ -427,7 +605,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-function createDiv() {
+
+
+
+
+function createDiv(index) {
 
 
 
@@ -439,6 +621,12 @@ function createDiv() {
     newDiv.classList.add('child-container')
 
     // newDiv.setAttribute("data-priority",prioritySelect)
+
+
+        newDiv.dataset.index = index
+
+
+
     let selectedValue = prioritySelect.value;
     newDiv.dataset.priority = selectedValue
 
@@ -511,9 +699,9 @@ function createDiv() {
     newDiv.innerHTML = ` <i class="fa-solid fa-x" id="delete"></i>
                         <i class="fa-regular fa-pen-to-square " id="add"></i>
                         <h3>${taskName.value}</h3>
-                        <p class="p">${taskDescription}</p>
+                        <p class="p">${taskDescription.value}</p>
                         <p class="images1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt=""> Due : ${dueDate}</p>
-                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >${userName}</p>
+                        <p class="images2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >${userName.value}</p>
                         
 
 
@@ -542,9 +730,36 @@ function createDiv() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let leftside = document.querySelector(".side")
 
-// let btn=document.querySelector(".add")
 
 let color = document.querySelector(".color")
 
@@ -558,63 +773,54 @@ let head = document.getElementById("headname")
 
 let deletes = document.getElementById("delete")
 
-// let childcon=document.querySelector(".child-container")
-
-// let editingCard = null;
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let editingCard = null;
-
-
+let editingIndex = null;
 
 
 
 
 document.addEventListener("click", function (event) {
+
     if (event.target.id === "add") {
 
-        editingCard = event.target.closest(".child-container");
-
-        leftside.style.display = "block";
-        color.style.display = "block";
+        // let card = event.target.closest(".child-container");
+        // editingIndex = card.dataset.index;
 
 
-        document.getElementById("editusername").value =
-            editingCard.querySelector(".images2").innerText.trim();
+        let card = event.target.closest(".child-container");
+        if (!card) return;
 
-        document.getElementById("edittaskname").value =
-            editingCard.querySelector("h3").innerText;
+        editingIndex = Number(card.dataset.index);
 
-        document.getElementById("editdescription").value =
-            editingCard.querySelector(".p").innerText;
+        let tasks = JSON.parse(localStorage.getItem("task")) || [];
+        let task = tasks[editingIndex];
 
-        document.getElementById("editpriority").value =
-            editingCard.dataset.priority;
+        document.getElementById("editusername").value = task.username
+        document.getElementById("edittaskname").value = task.taskname
+        document.getElementById("editemail").value=task.useremail
+        document.getElementById("editdue-date").value=task.duedate
+        document.getElementById("editTime").value=task.duetime
+        document.getElementById("editpriority").value = task.priorityselect
+        document.getElementById("editEstimatehour").value=task.estimatehours
 
-        let statusText =
-            editingCard.querySelector(".main-content div:last-child span:last-child").innerText;
+        document.getElementById("ediUrl").value=task.projecturl
+        document.getElementById("editdescription").value = task.description;
 
+        document.querySelector(   `input[name="editTaskType"][value="${task.checkbox}"]`).checked = true
         document.querySelector(
-            `input[name="editstatus"][value="${statusText}"]`
-        ).checked = true;
+            `input[name="editstatus"][value="${task.radioValue}"]`).checked = true
+
+        leftside.style.display = "block"
+        color.style.display = "block"
+
+        leftside.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
     }
 });
 
@@ -623,132 +829,147 @@ document.addEventListener("click", function (event) {
 
 
 
+btnadd.addEventListener("click", function (e) {
 
-function updateCard() {
+    e.stopPropagation()
+    
+    if (editingIndex === null) return
 
-    editingCard.querySelector("h3").innerText =
-        document.getElementById("edittaskname").value
+    let tasks = JSON.parse(localStorage.getItem("task")) || [];
 
-    editingCard.querySelector(".p").innerText = document.getElementById("editdescription").value;
+    let updatedTask = {
+        username: document.getElementById("editusername").value,
+        taskname: document.getElementById("edittaskname").value,
+        useremail: document.getElementById("editemail").value,
+        duedate:document.getElementById("editdue-date").value,
+        duetime: document.getElementById("editTime").value,
+        priorityselect: document.getElementById("editpriority").value,
+        estimatehours: document.getElementById("editEstimatehour").value,
+        projecturl: document.getElementById("ediUrl").value,
+        description: document.getElementById("editdescription").value,
+        checkbox: document.querySelector(
+            `input[name="editTaskType"]:checked`
+        )?.value || "",
+        radioValue: document.querySelector(
+            `input[name="editstatus"]:checked`
+        )?.value || ""
+    };
+
+    tasks[editingIndex] = updatedTask
+
+    localStorage.setItem("task", JSON.stringify(tasks))
+
+   
+
+        updateSingleCard(updatedTask, editingIndex)
 
 
-    let priority = document.getElementById("editpriority").value
-    editingCard.dataset.priority = priority;
-
-    let priorityDiv = editingCard.querySelector(".main-content div:first-child")
-    let fieldSpan = priorityDiv.querySelector("span:first-child")
-    let textSpan = priorityDiv.querySelector("span:last-child")
-
-    priorityDiv.className = priority;
-    fieldSpan.className = `${priority}-field`
-    textSpan.innerText = priority.toUpperCase()
-
-
-    let status =
-        document.querySelector('input[name="editstatus"]:checked').value
-
-    let statusDiv = editingCard.querySelector(".main-content div:last-child")
-    let statusField = statusDiv.querySelector("span:first-child")
-    let statusText = statusDiv.querySelector("span:last-child")
-
-    statusDiv.className =
-        status === "pending" ? "pending" :
-            status === "In Progress" ? "in-progress" :
-                "completed"
-
-    statusField.className =
-        status === "pending" ? "pending-field" :
-            status === "In Progress" ? "progress-field" :
-                "completed-field"
-
-    statusText.innerText = status;
+    editingIndex = null
 
     leftside.style.display = "none"
     color.style.display = "none"
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-function updateLocalStorage() {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-    let oldTaskName = editingCard.querySelector("h3").innerText;
-    let oldUserName = editingCard.querySelector(".images2").innerText.trim();
-
-    tasks = tasks.map(task => {
-        if (task.taskName === oldTaskName && task.userName === oldUserName) {
-            // Update this task
-            return {
-                userName: document.getElementById("editusername").value,
-                taskName: document.getElementById("edittaskname").value,
-                description: document.getElementById("editdescription").value,
-                priority: document.getElementById("editpriority").value,
-                status: document.querySelector('input[name="editstatus"]:checked').value,
-                email: task.email, // keep same or update if editable
-                dueDate: task.dueDate,
-                progress: task.progress
-            };
-        } else {
-            return task;
-        }
-    });
-
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-
-
-
-
-btnadd.addEventListener("click", function () {
-    if (!editingCard) return;
-
-    updateCard();
-    updateLocalStorage(); // <---- Update storage
-    document.querySelector(".formvalidate").reset();
-    editingCard = null;
 });
+
+
+
+
+function updateSingleCard(task, index) {
+
+    let card = document.querySelector(
+        `.child-container[data-index="${index}"]`
+    );
+
+    if (!card) return
+
+
+
+
+      let formattedDueDate = ""
+    if (task.duedate) {
+        let newDate = new Date(task.duedate)
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let getMon = months[newDate.getMonth()]
+        let getDate = newDate.getDate()
+        let getYear = newDate.getFullYear()
+        formattedDueDate = `${getMon} ${getDate},${getYear}`
+    }
+
+
+
+
+
+
+    let priorityClass = task.priorityselect === "low" ? "low" :
+                        task.priorityselect === "medium" ? "medium" : "high";
+
+    let FieldClass = task.priorityselect === "low" ? "low-field" :
+                     task.priorityselect === "medium" ? "medium-field" : "high-field";
+
+    let firstClass = task.radioValue === "pending" ? "pending" :
+                     task.radioValue === "In Progress" ? "in-progress" : "completed";
+
+    let secondClass = task.radioValue === "pending" ? "pending-field" :
+                      task.radioValue === "In Progress" ? "progress-field" : "completed-field";
+
+    card.innerHTML = `
+        <i class="fa-solid fa-x" id="delete"></i>
+        <i class="fa-regular fa-pen-to-square" id="add"></i>
+
+        <h3>${task.taskname}</h3>
+        <p class="p">${task.description}</p>
+
+        <p class="images1"> <p class="images1"> <img src="https://images.emojiterra.com/google/android-pie/512px/1f4c5.png" alt=""> Due : ${formattedDueDate}</p>
+        <p class="images2" > <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ-C-5ZnEZQbhUxy5gKKh1JD4GfygjBMk_72H3uDMbBIujfG_fu7G3Jx8IZXeaj0DnOHU&usqp=CAU" alt="" >    ${task.username}</p>
+
+        <div class="main-content">
+            <div class="${priorityClass}">
+                <span class="${FieldClass}"></span>
+                <span>${task.priorityselect.toUpperCase()}</span>
+            </div>
+
+            <div class="${firstClass}">
+                <span class="${secondClass}"></span>
+                <span>${task.radioValue}</span>
+            </div>
+        </div>
+    `;
+}
 
 
 
 document.addEventListener("click", function (event) {
-    if (event.target.id == "delete") {
-        event.preventDefault();
 
-        let taskDiv = event.target.parentElement;
-        let taskName = taskDiv.querySelector("h3").innerText;
-        let userName = taskDiv.querySelector(".images2").innerText.trim();
+    if (event.target.id === "delete") {
 
-        // Remove from localStorage
-        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        tasks = tasks.filter(task => !(task.taskName === taskName && task.userName === userName));
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        let card = event.target.closest(".child-container")
+        if (!card) return
 
-        // Remove from DOM
-        taskDiv.remove();
+        let index = Number(card.dataset.index)
+
+        let tasks = JSON.parse(localStorage.getItem("task")) || [];
+        tasks.splice(index, 1)
+        localStorage.setItem("task", JSON.stringify(tasks))
+
+        card.remove()
+        updateIndexes()
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -762,45 +983,6 @@ btncancel.addEventListener("click", function (event) {
     leftside.style.display = "none"
     color.style.display = "none"
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
