@@ -5,6 +5,7 @@
 }
 body{
     background-color: rgb(250, 250, 250);
+    /* width: 100%; */
 }
 header{
     display: flex;
@@ -365,6 +366,8 @@ textarea::placeholder{
     margin-right: 95px;
     border-radius: 15px;
      box-shadow: 0 0 10px rgb(219, 211, 211);
+     /* position: fixed; */
+     width: 100%;
 }
 
 .right .header-field{
@@ -394,6 +397,10 @@ textarea::placeholder{
     padding: 10px 15px;
     border-radius: 25px;
 }
+
+
+
+
 /* #all{
     background-color: rgb(99, 99, 203);
     color: white;
@@ -417,6 +424,46 @@ textarea::placeholder{
 }
 
 
+
+.header-field .countElement{
+    color: red;
+    position: relative;
+    bottom: 20px;
+    right: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+/* .header-field .countElement{
+
+    display: block;
+
+
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .overlay{
     background-color: #333;
     width: 100%;
@@ -424,7 +471,7 @@ textarea::placeholder{
     z-index: 2;
 }
 
-.leftpopup{
+.editpopup{
     position: fixed;
     width: 60%;
     z-index: 3;
@@ -443,7 +490,7 @@ textarea::placeholder{
     /* background-color: red; */
 }
 
-.leftside{
+.editcontainer{
     border-radius: 10px;
     z-index: 1;
     position: relative;
@@ -477,7 +524,7 @@ textarea::placeholder{
     margin-top: 12px;
 }
 
-.leftside .input-field{
+.editcontainer .input-field{
     padding: 10px;
 }
 
@@ -563,25 +610,97 @@ textarea::placeholder{
 
 .details-popup{
 
-    position:relative ;
-    top: 10%;
+    position:fixed ;
+    top: 20%;
     display: flex;
     justify-content: center;
-    /* margin: 0 50%; */
-    /* width: 100%;
-    height: 40vh; */
+    margin: 0 25%;
+     width: 50%;
+    /* height: 40vh;  */
+    z-index: 1;
+    /* margin: auto auto; */
 }
-#childpopup{
+.popup-container{
     /* z-index: 1; */
     z-index: 1;
-     position: absolute; 
+     /* position: absolute;  */
     background: white;
     padding: 20px;
-    width: 45%;
+    /* width: 100%; */
     display: none;
     /* height: 22vh; */
+    overflow: hidden;
+
+
+  
+    border: 1px solid rgb(204, 201, 201);
+    margin: 2px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 30px; 
+    
+
+
+    
+        
+
 }
 
+
+
+
+.popup-container h3{
+    margin: 20px 25px;
+    font-size: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+.popup-container .p{
+    margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    /* width: 50%; */
+}
+.child-container .images1{
+    margin-top: 25px;
+
+}
+.popup-container p{
+    margin: 15px 25px;
+    /* width: 10; */
+    font-size: 18px;
+    color: rgb(103, 95, 95);
+}
+
+
+
+
+.popup-container #urlHref{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Popup{
+    float: right;
+}
 
 .details-cards{
     display: grid;
@@ -589,6 +708,10 @@ textarea::placeholder{
     border-width: 10%;
     /* padding-bottom: 10px; */
 }
+
+/* .details-cards p{
+    font-weight: bold;
+} */
 #border-color{
     border-top: 1px solid rgb(121, 118, 118);
     margin: 10px 25px;
@@ -603,7 +726,7 @@ textarea::placeholder{
 .tasktype-content span{
     margin-top: 5px;
     display: block;
-    font-size: 17px;
+    font-size: 19px;
     color: rgb(123, 118, 118);
     font-weight: bold;
     /* color: red; */
@@ -664,6 +787,63 @@ textarea::placeholder{
 
 
 
+.empty-state {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  margin-top: 20%;
+}
+
+.empty-state button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #6c63ff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.empty-state button:hover {
+  background-color: #554ee2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.toast {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  background: #4caf50;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 
@@ -678,6 +858,42 @@ textarea::placeholder{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.overflow{
+    overflow-y: auto;
+
+    height: 1050px;
+}
 
 .parent-container{
     display: grid;
@@ -686,10 +902,11 @@ textarea::placeholder{
     margin-top: 33px;
     /* gap: 20px; */
     padding: 0px 20px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    /* flex-wrap: wrap; */
     /* height: 100%; */
     /* max-height: 200vh; */
-    /* height: 1050px; */
+    /* height: 2050px; */
 
 }
 .child-container{
@@ -698,8 +915,30 @@ textarea::placeholder{
     border-radius: 15px;
     cursor: pointer;
     margin-bottom: 30px;
+    /* width: 80%; */
+    /* word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; */
+        /* display: flex;
+    flex-direction: column;  */
+    /* white-space: normal; */
+    overflow: hidden;
+  
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 .parent-container .child-container:hover{
     /* width: 50%; */
     transform: scale(1.03);
@@ -842,9 +1081,19 @@ textarea::placeholder{
 .child-container h3{
     margin: 20px 25px;
     font-size: 20px;
+     margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
 }
 .child-container .p{
     margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    /* width: 50%; */
 }
 .child-container .images1{
     margin-top: 25px;
@@ -852,6 +1101,7 @@ textarea::placeholder{
 }
 .child-container p{
     margin: 15px 25px;
+    /* width: 10; */
     font-size: 18px;
     color: rgb(103, 95, 95);
 }
@@ -935,20 +1185,51 @@ textarea::placeholder{
  @media screen and (max-width:1150px) {
      
 
-    .leftpopup{
+    .editpopup{
         width: 90%;
 
     }
 
-    .leftside{
+    .editcontainer{
         display: flex;
         justify-content: center;
     }
+
+    .editcontainer .formvalidate{
+        overflow-y: auto;
+        height: 800px;
+
+    }
+
+
     .color{
         height: 185rem;
 
 
     }
+
+
+
+    .details-popup{
+        width: 90%;
+        margin: 0 5%;
+        /* height: 40%; */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      
     
 
@@ -1117,17 +1398,23 @@ textarea::placeholder{
 
 @media screen and (max-width:620px) {
 
-    .leftpopup{
-        top: 2%;
+    .editpopup{
+        /* margin-top: 30%; */
+        top:10%;
+        /* top: 10px; */
+        left: 5%;
         /* position: fixed; */
         /* z-index: 3; */
     }
 
-    .leftside{
+    .editcontainer{
         display: flex;
         justify-content: center;
      
-        top: 0;
+        /* margin-top: 150px; */
+        /* margin-top: 10%; */
+        /* margin: 50% 0; */
+        /* top: 100%; */
       
 
         z-index:1 ;
@@ -1135,6 +1422,11 @@ textarea::placeholder{
 
     }
 
+    .editcontainer .formvalidate{
+
+        overflow-y: auto;
+        height: 500px;
+    }
     .side{
         width: 90%;
         top: 100%;
@@ -1168,6 +1460,98 @@ textarea::placeholder{
         z-index: 3;
         top: 0;
     }
+
+
+
+
+
+
+    .details-popup{
+        /* width: 80vw; */
+        /* position: relative; */
+        top: 12%;
+        /* height: 10%; */
+        /* top: 10px; */
+        display: flex;
+        justify-content: center;
+        margin:  0;
+        width: 100%;
+        /* height: 100%; */
+        z-index: 3;
+
+    }
+
+    #childpopup{
+        /* width: 8000vw; */
+        padding: 5px;
+        height: 600px;
+        overflow-y: auto;
+    }
+    .details-cards{
+        display: grid;
+        grid-template-columns: auto;
+        /* text-align: center; */
+        margin: 20px 15%;
+    }
+
+
+    .detailspopup-color{
+        position: fixed;
+        height: 100%;
+        z-index: 3;
+        top: 0;
+    }
+    .main-content{
+        /* display: flex;
+        justify-content: space-between; */
+
+        /* margin: 10px 0px; */
+        /* display: block;
+        text-align: center;
+        margin: 0;
+        padding: 0; */
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1234,6 +1618,8 @@ textarea::placeholder{
 
 
 
+
+   
 
 
 
