@@ -1596,15 +1596,15 @@ textarea::placeholder{
        right: 1px;
 
    }
-   .menu-bar:hover .ul-element{
+   .menu-bar:active .ul-element{
        display: block;
        /* margin-top: 150px; */
 
    }
-   header:active .h1{
+   /* header:active .h1{
        margin-top: 1500px;
        color: red;
-   }
+   } */
 
 
 
@@ -1619,7 +1619,7 @@ textarea::placeholder{
 
 
 
-   
+
 
 
 
