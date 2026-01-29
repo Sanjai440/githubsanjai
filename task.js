@@ -548,7 +548,7 @@ function createDiv(index) {
 
     let parentElement = document.querySelector(".parent-container")
 
-    newDiv = document.createElement('div')
+    let newDiv = document.createElement('div')
 
     newDiv.classList.add('child-container')
 
