@@ -70,7 +70,7 @@ function getIntput(event) {
 
     checkBox.forEach(currentItem=>{
         currentItem.addEventListener("change",function(){
-            storedValues=[...checkBox].filter(box=>box.checked==true).map(box=>box.value)
+            storedValues=[...checkBox].filter(box=>box.checked).map(box=>box.value)
 
                                 
         })
@@ -407,7 +407,7 @@ function setvalue() {
 
 
 
-//  if(newValid){
+
 
  
     let scrollEle = [
@@ -439,13 +439,12 @@ function setvalue() {
     }
 
 
-//  }
 
 
 
 
 
-    if(newValid){
+    // if(newValid){
 
     
 
@@ -501,7 +500,7 @@ function setvalue() {
 
 
     })
-}
+
 
 if(newValid){
     return isvalid
