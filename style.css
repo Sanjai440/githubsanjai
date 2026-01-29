@@ -368,7 +368,7 @@ textarea::placeholder{
      box-shadow: 0 0 10px rgb(219, 211, 211);
      /* position: fixed; */
      width: 100%;
-     height: 165vh;
+     height: 166vh;
 }
 
 .right .header-field{
@@ -894,13 +894,14 @@ textarea::placeholder{
     overflow-y: auto;
 
     height: 1050px;
+    margin-top: 20px;
 }
 
 .parent-container{
     display: grid;
     /* grid-template-columns: 400px 400px; */
     grid-template-columns: auto auto;
-    margin-top: 33px;
+    margin-top: 10px;
     /* gap: 20px; */
     padding: 0px 20px;
     /* overflow-y: auto; */
@@ -1354,6 +1355,7 @@ textarea::placeholder{
         width: 90%;
         margin: 5%;
         padding-bottom: 40px;
+        height: 100%;
     }
 
     .parent-container{
@@ -1787,7 +1789,7 @@ textarea::placeholder{
 
    .parent-container .child-container{
 
-       margin: 30px 15px;
+       margin: 15px 15px;
    }
 
 
