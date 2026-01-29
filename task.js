@@ -70,7 +70,7 @@ function getIntput(event) {
 
     checkBox.forEach(currentItem=>{
         currentItem.addEventListener("change",function(){
-            storedValues=[...checkBox].filter(box=>box.checked).map(box=>box.value)
+            storedValues=[...checkBox].filter(box=>box.checked==true).map(box=>box.value)
 
                                 
         })
@@ -200,7 +200,7 @@ reset.addEventListener("click",function(){
 
 
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     
     let taskProgress = document.getElementById("task-progress")
     
@@ -209,7 +209,7 @@ window.addEventListener("DOMContentLoaded", () => {
     taskProgressValue = taskProgress.value;
     
     taskProgress.addEventListener('input', function () {
-        taskProgressValue=this.value
+        taskProgressValue=taskProgress.value
         percentage.innerText = `${taskProgressValue}%`
     // isvalid=false
     })
@@ -495,8 +495,8 @@ function setvalue() {
                     if (errorEle) {
                         errorEle.innerText = ""
                     }
-                });
-             });
+                })
+             })
         }
 
 
@@ -1069,12 +1069,16 @@ function toggleEmptyState() {
 
 
 
-function isDuplicateTask(taskName) {
+function isDuplicateTask(taskName,currentTaskIndex = null) {
     let tasks = JSON.parse(localStorage.getItem("task")) || []
 
-    return tasks.some(task =>
-        task.taskname === taskName
-    )
+    
+        return tasks.some((task, index) => {
+        if (currentTaskIndex !== null && index === currentTaskIndex) {
+            return false; 
+        }
+        return task.taskname.trim().toLowerCase() === taskName.trim().toLowerCase();
+    })
 }
 
 
@@ -1226,6 +1230,57 @@ document.addEventListener("click", function (event) {
 
 
 
+  let editnamePattern = /^[A-Za-z]+ [A-Za-z]+$/
+
+  let edittasknamePattern=/^[A-Za-z]+( [A-Za-z]+)+$/
+  let editdescriptionPattern= /^(?=.*[A-Za-z])[A-Za-z0-9\s.,!@#$%^&*()\-_=+:";'?/<>]+$/;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let errorfield = ["editusername","edittaskname","editdescription"]
+
+    errorfield.forEach(id => {
+        let inputEle = document.getElementById(id);
+        let errorEle = document.getElementById("error"+id);
+        inputEle.addEventListener("input", () => {
+            errorEle.innerHTML = ""
+            inputEle.style.border = "2px solid rgb(218, 213, 213)"
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 btnadd.addEventListener("click", function (e) {
 
@@ -1233,17 +1288,152 @@ btnadd.addEventListener("click", function (e) {
     
     if (editingIndex === null) return
 
-    let tasks = JSON.parse(localStorage.getItem("task")) || [];
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
 
 
-        let updatedCheckbox = Array.from(
-            document.querySelectorAll('input[name="editTaskType"]:checked')
-        ).map(cb => cb.value);
+    let editTaskName = document.getElementById("edittaskname").value
+
+    let editErrorTaskname=document.getElementById("erroredittaskname")
+
+    
+
+    let editusername=document.getElementById("editusername").value
+    let editErrorname=document.getElementById("erroreditusername")
+
+
+    let editTaskdescription=document.getElementById("editdescription").value.trim()
+    let editErrodescription=document.getElementById("erroreditdescription")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if(!editnamePattern.test(editusername)){
+        editErrorname.innerHTML=`<div class="editerror-icon">!</div> Enter your full name *`
+        editErrorname.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        return
+
+    }
+    else if(editusername.length<=7){
+        editErrorname.innerHTML=`<div class="editerror-icon">!</div> your name must be more than 7 character  *`
+        editErrorname.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+
+
+        return
+
+    }
+
+
+
+
+
+    if(!edittasknamePattern.test(editTaskName)){
+        editErrorTaskname.innerHTML=`<div class="editerror-icon">!</div> Enter the task full name`
+        editErrorTaskname.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        return
+    }
+    else if(editTaskName.length<=10){
+        editErrorTaskname.innerHTML=`<div class="editerror-icon">!</div> Task name must be more than 10 character *`
+         editErrorTaskname.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        
+        return
+
+    }
+
+
+
+
+
+
+    if(!editdescriptionPattern.test(editTaskdescription)){
+        editErrodescription.innerHTML=`<div class="editerror-icon">!</div> Write the description`
+        editErrodescription.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        return
+    }
+    else if(editTaskdescription.length<=25){
+         editErrodescription.innerHTML=`<div class="editerror-icon">!</div> Description must be more than 25 character`
+         editErrodescription.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        return
+        
+    }
+
+
+
+
+
+
+
+
+
+     if(isDuplicateTask(editTaskName, editingIndex)) {
+        editErrorTaskname.innerHTML= `<div class="error-icon">!</div> Task name already exists`
+
+        editErrorTaskname.scrollIntoView({
+             behavior: "smooth",
+            block: "center"
+
+        })
+        return;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let updatedCheckbox = Array.from(document.querySelectorAll('input[name="editTaskType"]:checked')).map(cb => cb.value);
 
 
     let updatedTask = {
-        username: document.getElementById("editusername").value,
-        taskname: document.getElementById("edittaskname").value,
+        username:editusername,
+        taskname: editTaskName,
         useremail: document.getElementById("editemail").value,
         duedate:document.getElementById("editdue-date").value,
         duetime: document.getElementById("editTime").value,
@@ -1253,12 +1443,10 @@ btnadd.addEventListener("click", function (e) {
 
         progress:document.getElementById("edittask-progress").value,
 
-        description: document.getElementById("editdescription").value,
+        description: editTaskdescription,
       
         checkbox:updatedCheckbox,
-        radioValue: document.querySelector(
-            `input[name="editstatus"]:checked`
-        )?.value || ""
+        radioValue: document.querySelector(`input[name="editstatus"]:checked`)?.value || ""
     }
 
     tasks[editingIndex] = updatedTask
@@ -1415,6 +1603,12 @@ btncancel.addEventListener("click", function (event) {
 
 
 
+// let barIcon = document.getElementById("bar-icon");
+// let menu = document.querySelector(".ul-element");
+
+// barIcon.addEventListener("click", function () {
+//     menu.classList.toggle("active");
+// });
 
 
 
