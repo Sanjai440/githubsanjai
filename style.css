@@ -5,14 +5,17 @@
 }
 body{
     background-color: rgb(250, 250, 250);
-    /* width: 100%; */
 }
 header{
+    position: fixed;
     display: flex;
     justify-content: space-between;
     background-color: white;
     box-shadow: 0 0 12px rgb(182, 176, 176);
     height: 75px;
+    width: 100%;
+    top: 0;
+    z-index: 1;
 }
 header span{
     background-color: rgb(103, 103, 208);
@@ -21,24 +24,17 @@ header span{
     border-radius: 8px;
     font-weight: 500;
     margin-right: 7px;
-    
-
 }
 header h3{
     margin-left: 90px;
-    /* padding-top: 15px; */
     font-size: 23px;
     margin-top: 9%;
-    /* margin-top: px; */
     color: rgb(61, 58, 58);
-    /* cursor: pointer */
 }
 header #bar-icon{
     display: none;
 }
-
 header ul{
-
     margin-right: 80px;
     margin-top: 18px;
 }
@@ -46,38 +42,35 @@ header li{
     display: inline-block;
     padding: 10px 20px;
 }
-
 header a{
     text-decoration: none;
     color: rgb(124, 119, 119);
 }
-#dashboard{
+.active{
     color: rgb(92, 92, 227);
     background-color:#f1f0f0;
     padding: 5px 15px;
     border-radius: 6px;
 }
-header a:hover:not(#dash){
+header a:hover:not(.active){
     color: black;
 }
-
-
-
-
-
-
+ #dashboard {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+  }
 
 
  
 .main{
-    margin-top: 50px;
+    margin-top: 120px;
 }
 .main h1{
-
     margin-left: 90px;
     font-size: 25px;
 }
-.main .task::before{
+.main .taskSpan::before{
     content: '';
     border: 2.5px solid rgb(103, 103, 208);
     border-radius: 5px;
@@ -87,14 +80,7 @@ header a:hover:not(#dash){
 .sub-main{
     display: flex;
     margin-top: 40px;
-
 }
-
-
-
-
-
-
 
 
 
@@ -112,42 +98,25 @@ header a:hover:not(#dash){
     margin-left: 7px;
     font-size: 20px;
 }
-
-
-
-
-
 form{
-
     margin: 2px 5px;
 }
 .act{
-    /* padding-right: 4px; */
     margin: 2px 6%;
 }
-
 .left .input-field{
     width: 100%;
-    padding: 12px 0px;
-    
+    padding: 9px 0px;  
 }
-
-
 .span{
     color: red;
     margin: 8px 5px;
     display: block;
     font-size: 13px;
-    /* font-weight: 500; */
-    /* padding-top: 20px; */
      position: relative;
-    /* top: 15px;  */
 }
-
 .error-icon{
-  /* margin: 3px px; */
   margin-right: 5px;
-/* margin-top: 10px; */
   width: 12px;
   height: 13px;
   border-radius: 50%;
@@ -156,26 +125,19 @@ form{
   font-weight: bold;
   font-size: 8px;
   position: relative;
-  /* top: 10px; */
   bottom: 2px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-
-
-
- 
 #name{
     border: 2px solid rgb(218, 213, 213);
 } 
-
 .input-type ,select{
     padding:10px ;
     border-radius: 5px;
     width: 100%;
     cursor: pointer;
-    /* max-width: 100%; */
     display: inline-block;
     border: 2px solid rgb(220, 215, 215);
     box-sizing: border-box;
@@ -184,9 +146,7 @@ form{
     width: 100%;
     cursor: pointer;
     margin-top: 8px;
-    
 }
-
 
 .upper-field{
     position: relative;
@@ -200,18 +160,13 @@ form{
     font-size: 12px;
     color: rgb(40, 40, 214);
 }
-
-
 textarea{
     height: 10vh;
 }
-
-
 #task{
     display: inline-block;
     margin-top: 18px;
 }
-
 .input-field p{
     text-align: center;
     color: rgb(62, 62, 235);
@@ -219,34 +174,26 @@ textarea{
    
     font-weight: bold;
 }
-
-
-
  #task-color{
-    /* margin-left: 6px; */
     width: 100%;
-
     height: 38px;
     cursor: pointer;
     border-radius: 8px;
     margin-top: 15px;
     padding: 2px ;
-
 }
-
 textarea::placeholder{
-    padding-top: 20px;
+    padding-top: 30px;
+    /* height: 400px; */
    
 }
-
-
-
+textarea{
+    height: 110px;
+}
 .lab{
     margin-top: 0;
     color: rgb(74, 69, 69);
-    
 }
-
 .checkbox-field{
     display: grid;
     padding: 10px 0px;
@@ -264,19 +211,13 @@ textarea::placeholder{
 #ip{
     margin-left: 0px;
 }
-
-
-
 .input-field input[type="range"]{
     accent-color: rgb(90, 90, 232);
-    /* background-color: #f1f0f0; */
 }
-
 .checkbox-label{
     cursor: pointer;
     margin-left: 6px;
 }
-
 .file{
     margin: 12px 0px;
     width: 100%;
@@ -284,9 +225,7 @@ textarea::placeholder{
 .upload{
     text-align: center;
     font-family: Arial, sans-serif;
-}
-
-        
+}   
 .file-upload{
     display: inline-block;
     border: 2px dashed rgb(225, 218, 218);
@@ -296,32 +235,28 @@ textarea::placeholder{
     margin-bottom: 10px;
     width: 98%;
     background-color: rgb(254, 252, 252);
-}
-        
+}    
 .text {
     font-size: 16px;
     color: #333;
     font-weight: normal;
 }
-
 .supported {
     font-size: 13px;
     color: #666;
-    margin-top: 10px;
-    
+    margin-top: 10px; 
 }
-
 .fileinput {
     display: none;
 }
-
 #btn{
-    margin: 30px 40px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    /* margin: 40px 40px; */
     margin-left: 0px;
     width: 100%;
     display: grid;
     grid-template-columns: 65% 38%;
-
 }
 #btn button{
     border-radius: 5px;
@@ -332,60 +267,51 @@ textarea::placeholder{
 }
 #i{
     margin-right: 4px;
-
 }
 #btn1{
-    /* padding: 8.9% 6%; */
     padding: 12% 1px;
     background-color: rgb(113, 113, 221);
     color: white;
     font-weight: bold;
 }
+#btn1:hover{
+    /* background-color: ; */
+    box-shadow: 1px 2px 10px rgb(113, 113, 221);
+}
 #btn2{
-
     padding:10% 20px;
     position: relative;
-    /* top: .5rem; */
     font-weight: bold;
+}
+#btn2:hover{
+    box-shadow: 1px 2px 10px gray;
 }
 
 
-
-
-
-
-
-
-
-
-
-
+.maintaskcard{
+    height: 100%;
+    /* width: 700vw; */
+}  
 .right{
     background-color: white;
     margin-left: 40px;
     margin-right: 95px;
     border-radius: 15px;
      box-shadow: 0 0 10px rgb(219, 211, 211);
-     /* position: fixed; */
      width: 100%;
-     /* height: 166vh; */
-     height: 78.rem;
+     /* height: 54.5vh; */
+     /* height: 60vh; */
 }
-
 .right .header-field{
     display: flex;
     justify-content:space-between;
 }
 .header-field nav{
-
     margin-right: 3%;
     margin-top: 40px;
 }
-
-
 .header-field li{
     display: inline-block;
-
     padding-right: 10px;
 }
 .header-field h2{
@@ -400,8 +326,12 @@ textarea::placeholder{
     border-radius: 25px;
 }
 
-
-
+.taskcardsView{
+    margin:0 6% ;
+}
+.dashboardView{
+    margin: 0 6% 0 2.5%;
+}
 
 /* #all{
     background-color: rgb(99, 99, 203);
@@ -410,23 +340,14 @@ textarea::placeholder{
 /* .header-field a:hover:not(#all){
     background-color: rgb(226, 221, 221);
 } */
-
 .taskfilter.active{
     background-color: rgb(99, 99, 203);
     color: white;
-
 }
-
-
-
 .header-field a:hover:not(.taskfilter.active){
-    /* background-color:rgb(99, 99, 203) ; */
-        background-color: rgb(226, 221, 221);
+    background-color: rgb(226, 221, 221);
 
 }
-
-
-
 .header-field .countElement{
     color: red;
     position: relative;
@@ -436,529 +357,19 @@ textarea::placeholder{
     display: none;
 }
 
-/* .header-field .countElement{
-
-    display: block;
-
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.overlay{
-    background-color: #333;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
-.editpopup{
-    position: fixed;
-    width: 60%;
-    z-index: 3;
-    /* top: 50%; */
-
-    /* margin-top: 50%; */
-    margin: 5% 0;
-
-
-
-    /* height: 10vh; */
-
-} 
-/* .leftpopup{
-    position: relative;
-    top: 50%;
-} */
-
-.formvalidate{
-    overflow-y: auto;
-    height:580px;
-    /* background-color: red; */
-}
-
-.editcontainer{
-    border-radius: 10px;
-    z-index: 1;
-    position: relative;
-
-    top: 45%;
-    /* height: 50vh; */
-
-    display: flex;
-
-    align-items: center;
-    
-}
-.side{
-    display: none;
-    width: 70%;
-
-    background-color: white;
-    position: absolute;
-    border-radius: 10px;
-    padding: 15px 5px;
-}
-
-.side h4{
-    margin: 2px 15px;
-    display: block;
-    padding-right: 2px;
-    font-size: 17px;
-    
-}
-.side form{
-    margin-top: 12px;
-}
-
-.editcontainer .input-field{
-    padding: 10px;
-}
-
-.side .act{
-    margin: 1px 2%;
-}
-
-
-
-.side .editcheckbox-field{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    margin-top: 17px;
-}
-
-.editspan{
-    color: red;
-    /* margin-left: px; */
-    margin-top: 7px;
-    font-size: 10px;
-    display: block;
-
-}
-
-
-.editerror-icon{
-
-/* margin-right: 1px; */
-  width: 10px;
-  height:10px;
-  border-radius: 50%;
-  background-color: #d93025;
-  color: white;
-  font-weight: bold;
-  font-size: 8px;
-  position: relative;
-  /* top: 10px; */
-  bottom: px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 3px;
-  /* display: none; */
-}
-
-
-
-
-
-
-
-
-
-
-
-.color{
-    background-color: black;
-    width: 100vw;
-    height: 245vh;
-    min-height: 200vh;
-    /* max-height: 250vh; */
-    /* margin-top: 2; */
-    position:fixed;
-    z-index: 1;
-    opacity: 0.5;
-    display: none;
-}
-
-.side .btn{
-    margin: 10px 4px;
-}
-.btn button{
-    
-    padding: 5px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 7px;
-}
-
-#btnadd{
-    background-color: green;
-    color: white;
-}
-
-
-#btncancel{
-    color: white;
-    background-color: red;
-}
-
-
-
-
-#delete{
-        border: none;
-    padding: 9px 5px ;
-    /* padding-top: 9px;
-    padding-right: 6px; */
-    font-size: 13px;
-    border-radius: 5px;
-    float: right;
-    cursor: pointer;
-
-}
-
-
-
-
-
-.detailspopup-color{
-    background-color: black;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    height: 100%;
-    opacity: 0.5;
-    display: none;
-
-}
-
-
-.details-popup{
-
-    position:fixed ;
-    top: 20%;
-    /* margin: 50% 0; */
-    display: flex;
-    justify-content: center;
-    margin: 0 25%;
-     width: 50%;
-    /* height: 40vh;  */
-    z-index: 1;
-    /* margin: auto auto; */
-}
-.popup-container{
-    /* z-index: 1; */
-    z-index: 1;
-     /* position: absolute;  */
-    background: white;
-    padding: 20px;
-    /* width: 100%; */
-    display: none;
-    /* margin-top: 200%; */
-    /* height: 22vh; */
-    overflow: hidden;
-
-
-  
-    border: 1px solid rgb(204, 201, 201);
-    margin: 2px 15px;
-    border-radius: 15px;
-    cursor: pointer;
-    margin-bottom: 30px; 
-    
-
-
-    
-        
-
-}
-
-
-
-
-.popup-container h3{
-    margin: 20px 25px;
-    font-size: 20px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    max-width: 100%;
-}
-.popup-container .p{
-    margin-top: 30px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    max-width: 100%;
-    /* width: 50%; */
-}
-.child-container .images1{
-    margin-top: 25px;
-
-}
-.popup-container p{
-    margin: 15px 25px;
-    /* width: 10; */
-    font-size: 18px;
-    color: rgb(103, 95, 95);
-}
-
-
-
-
-.popup-container #urlHref{
-    text-decoration: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Popup{
-    float: right;
-}
-
-.details-cards{
-    display: grid;
-    grid-template-columns: auto auto;
-    border-width: 10%;
-    /* padding-bottom: 10px; */
-}
-
-/* .details-cards p{
-    font-weight: bold;
-} */
-#border-color{
-    border-top: 1px solid rgb(121, 118, 118);
-    margin: 10px 25px;
-
-}
-#progress{
-    text-align: center;
-    font-size: 20px;
-    padding: 10px 0;
-}
-
-.tasktype-content span{
-    margin-top: 5px;
-    display: block;
-    font-size: 19px;
-    color: rgb(123, 118, 118);
-    font-weight: bold;
-    /* color: red; */
-}
-.main-cards{
-    /* border-color: red; */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.empty-state {
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #777;
-  margin-top: 20%;
-}
-
-.empty-state button {
-  margin-top: 10px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: #6c63ff;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.empty-state button:hover {
-  background-color: #554ee2;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.toast {
-  position: fixed;
-  top: 90px;
-  right: 30px;
-  background: #4caf50;
-  color: white;
-  padding: 14px 22px;
-  border-radius: 8px;
-  font-size: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(-15px);
-  transition: all 0.3s ease;
-  z-index: 9999;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .overflow{
     overflow-y: auto;
-
-    height: 1050px;
-    /* height: 100remh; */
+    height: 970px;
     margin-top: 20px;
+    margin-bottom: 15px;
 }
-
 .parent-container{
     display: grid;
-    /* grid-template-columns: 400px 400px; */
     grid-template-columns: auto auto;
     margin-top: 10px;
-    /* gap: 20px; */
     padding: 0px 20px;
-    /* overflow-y: auto; */
-    /* flex-wrap: wrap; */
-    /* height: 100%; */
-    /* max-height: 200vh; */
-    /* height: 2050px; */
-
+    /* height: 1000rem; */
 }
 .child-container{
     border: 1px solid rgb(204, 201, 201);
@@ -966,70 +377,62 @@ textarea::placeholder{
     border-radius: 15px;
     cursor: pointer;
     margin-bottom: 30px;
-    /* width: 80%; */
-    /* word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal; */
-        /* display: flex;
-    flex-direction: column;  */
-    /* white-space: normal; */
-    overflow: hidden;
-  
-    
+    overflow: hidden; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+.child-container:hover{
+    box-shadow: 1px 1px 8px rgb(220, 216, 216);
+}
 .parent-container .child-container:hover{
-    /* width: 50%; */
     transform: scale(1.03);
-
 }
 .main-content{
     display: flex;
     justify-content: space-between;
     margin: 18px 1px;
 }
-
-
-
-
 #add{
-    /* color: white; */
-    /* background-color: rgb(85, 80, 180); */
     border: none;
     padding: 8px 5px;
     border-radius: 5px;
-    /* height: 100px; */
     font-size: 15px;
-    /* float: left; */
     float: right;
     cursor: pointer;
-    /* margin: 10px; */
-    /* display: non; */
-    /* visibility: ; */
 }
-
-/* #add1{
-    border: none;
-    padding: 8px 5px;
-    font-size: 15px;
-    border-radius: 5px;
-    float: right;
-    cursor: pointer;
-
-} */
-
+.child-container img{
+    width: 18px;
+    margin-right: 6px;
+    position: relative;
+    top: 2px;
+}
+.child-container h3{
+    margin: 20px 25px;
+    font-size: 20px;
+     margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+.child-container .p{
+    margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    font-size: 18px;
+}
+.child-container .images1{
+    margin-top: 25px;
+}
+.child-container p{
+    margin: 15px 25px;
+    font-size: 18px;
+    color: rgb(103, 95, 95);
+}
+.images2{
+    border-bottom: 1px solid rgb(204, 196, 196);
+    padding-bottom: 15px;
+}
 .high{
     display: inline-block;
     margin-left: 25px;
@@ -1047,9 +450,7 @@ textarea::placeholder{
     color: rgb(105, 100, 100);
     font-weight: bold;
     margin-right: 8px;
-    
 }
-
 .medium{
      display: inline-block;
     margin-left: 25px;
@@ -1067,21 +468,14 @@ textarea::placeholder{
     background-color: rgb(193, 238, 193);
     color: green;
     font-weight: bold;
-    
 }
-
-
-
-
 .high-field{
     height: 10px;
     width: 10px;
     background-color: red;
     display: inline-block;
-    border-radius: 50%;
-    
+    border-radius: 50%; 
 }
-
 .progress-field{
     height: 10px;
     width: 10px;
@@ -1106,9 +500,7 @@ textarea::placeholder{
     display: inline-block;
     border-radius: 50%;
     margin-right: 4px;
-    
 }
-
 .medium-field{
     height: 10px;
     width: 10px;
@@ -1118,77 +510,16 @@ textarea::placeholder{
 }
 
 
-
-
-
-
-
-.child-container img{
-    width: 18px;
-
-    margin-right: 10px;
-}
-
-.child-container h3{
-    margin: 20px 25px;
-    font-size: 20px;
-     margin-top: 30px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    max-width: 100%;
-}
-.child-container .p{
-    margin-top: 30px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    max-width: 100%;
-    /* width: 50%; */
-}
-.child-container .images1{
-    margin-top: 25px;
-
-}
-.child-container p{
-    margin: 15px 25px;
-    /* width: 10; */
-    font-size: 18px;
-    color: rgb(103, 95, 95);
-}
-
-.images2{
-
-    border-bottom: 1px solid rgb(204, 196, 196);
-    padding-bottom: 15px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
  footer{
     background-color: white;
     margin-top: 6%;
  }
-
  .foot-content{
     display:flex;
     justify-content: center;
-
  }
  .foot-content div{
-    /* margin: 30px 100px; */
     margin: 30px 7%;
-
  }
  .foot-content ul{
     margin-top: 10px;
@@ -1206,16 +537,12 @@ textarea::placeholder{
     color: rgb(143, 140, 140);
     font-size: 18px;
  }
-
 #bottom{
     width:85vw;
     margin: 0 auto ;
-    /* padding: 20px; */
     text-align: center;
     border-top: 1px solid rgb(211, 199, 199);
-    /* font-size: 0.9rem; */
 }
-
 #bottom p{
      color:rgb(99, 96, 96);
     margin-top: 3%;
@@ -1226,68 +553,347 @@ textarea::placeholder{
 
 
 
+/* Edit and delete, show details */
+
+.overlay{
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.editpopup{
+    position: fixed;
+    width: 60%;
+    z-index: 3;
+    margin: 16% 27%;
+} 
+.formvalidate{
+    overflow-y: auto;
+    height:580px;
+}
+.editcontainer{
+    border-radius: 10px;
+    z-index: 1;
+    position: relative;
+    top: 45%;
+    display: flex;
+    align-items: center;
+}
+.side{
+    display: none;
+    width: 70%;
+    background-color: white;
+    position: absolute;
+    border-radius: 10px;
+    padding: 15px 5px;
+}
+.side h4{
+    margin: 2px 15px;
+    display: block;
+    padding-right: 2px;
+    font-size: 17px;
+}
+.side form{
+    margin-top: 12px;
+}
+.editcontainer .input-field{
+    padding: 10px;
+}
+.side .act{
+    margin: 1px 2%;
+}
+.side .editcheckbox-field{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 17px;
+}
+.editspan{
+    color: red;
+    margin-top: 7px;
+    font-size: 11px;
+    display: block;
+}
+.editerror-icon{
+  width: 10px;
+  height:10px;
+  border-radius: 50%;
+  background-color: #d93025;
+  color: white;
+  font-weight: bold;
+  font-size: 8px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3px;
+  margin-right: 1px;
+}
+
+.color{
+    background-color: black;
+    width: 100vw;
+    height: 245vh;
+    min-height: 200vh;
+    position:fixed;
+    z-index: 3;
+    opacity: 0.5;
+    display: none;
+    top: 0;
+}
+.side .btn{
+    margin: 10px 4px;
+}
+.btn button{
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 7px;
+}
+#btnadd{
+    background-color: green;
+    color: white;
+}
+#btncancel{
+    color: white;
+    background-color: red;
+}
+#delete{
+     border: none;
+    padding: 9px 5px ;
+    font-size: 13px;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+.detailspopup-color{
+    background-color: black;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    opacity: 0.5;
+    display: none;
+    top: 0;
+}
+.details-popup{
+    position:fixed ;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    margin: 0 25%;
+     width: 50%;
+    z-index: 2;
+}
+.popup-container{
+    background: white;
+    padding: 20px;
+    display: none;
+    overflow: hidden;
+    border: 1px solid rgb(204, 201, 201);
+    margin: 2px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 30px;     
+}
+.popup-container h3{
+    margin: 20px 25px;
+    font-size: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+.popup-container .p{
+    margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+.child-container .images1{
+    margin-top: 25px;
+}
+.popup-container p{
+    margin: 15px 25px;
+    font-size: 18px;
+    color: rgb(103, 95, 95);
+}
+
+.popup-container #urlHref{
+    text-decoration: none;
+}
+
+
+
+#Popup{
+    float: right;
+}
+.details-cards{
+    display: grid;
+    grid-template-columns: auto auto;
+    border-width: 10%;
+}
+#border-color{
+    border-top: 1px solid rgb(121, 118, 118);
+    margin: 10px 25px;
+}
+#progress{
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0;
+}
+.tasktype-content span{
+    margin-top: 5px;
+    display: block;
+    font-size: 19px;
+    color: rgb(123, 118, 118);
+    font-weight: bold;
+}
+ #emptystatediv{ 
+     position: relative;
+ } 
+
+.empty-state {
+  /* height: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  /* margin: 50% 50px; */
+  /* margin-top: 20%; */
+  /* margin: 1000px 0; */
+  position: absolute;
+  margin: 0 40%;
+  top:200px;
+  /* left: 20%; */
+  /* left: 30%; */
+  /* padding-top: 30%; */
+  /* right: 35%; */
+}
+.empty-state p{
+    font-size: 23px;
+}
+.empty-state button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #6c63ff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+.empty-state button:hover {
+  background-color: #554ee2;
+}
+
+
+#taskEmptystate{
+    font-size: 20px;
+    position: relative;
+    font-weight: 600;
+    top: 200px;
+    margin: 0 30%;
+    /* left: 30%; */
+    display: none;
+    color: rgb(82, 75, 75);
+}
+
+
+
+.toast {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  background: #4caf50;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+#deletepopup-colors{
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    opacity: 0.5;
+    display: none;
+    top: 0;
+}
+#deletepopup{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#delete-container{
+    background-color: white;
+    width: 20%;
+    border-radius: 12px;
+    position: absolute;
+    display: none;
+    top: 80px;
+    text-align: center;
+    padding: 4% 40px;
+    margin: 10px 40%;
+}
+#delete-container h3{
+    font-size: 22px;
+}
+#delete-container p{
+    margin-top: 25px;
+    font-size: 19px;
+}
+#delete-container button{
+
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+#deletePopup-btn{
+    background-color: red;
+    color: white;
+    margin: 0 30px; 
+}
+
+#deletePopup-btn:hover{
+    background-color: red;
+    box-shadow: 1px 1px 10px red;
+
+}
+#cancelPopup-btn{
+    background-color: green;
+    color: white;
+}
+#cancelPopup-btn:hover{
+    background-color: green;
+    box-shadow: 1px 1px 10px green;
+}
+
 
 
  /* Tablet view */
-
-
-
-
  @media screen and (max-width:1150px) {
-     
-
-    .editpopup{
-        /* margin: 50% 0; */
-        width: 90%;
-        /* top: 50%; */
-        bottom: 50%;
-
-    }
-
-    .editcontainer{
-        display: flex;
-        justify-content: center;
-    }
-
-    .editcontainer .formvalidate{
-        overflow-y: auto;
-        height: 800px;
-
-    }
-
-
-    .color{
-        height: 185rem;
-
-
-    }
-
-
-
-    .details-popup{
-        width: 90%;
-        margin: 0 5%;
-        /* height: 40%; */
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-    
-
-
      header{
         height: 75px;
      }
@@ -1299,51 +905,34 @@ textarea::placeholder{
     .ul-element{
         margin-right: 1.8rem;
         margin-top: 8px;
-        /* margin-top: %; */
         padding-top: 10px;
     }
-
-
     form{
-       
         padding:1px 1%;
     }
     .act{
         margin: 1px 2%;
         padding: 2px 0px;
     }
-
-
-
     .sub-main{
         display: block;
     }
-    
     .main h1{
         margin-left: 5.5%;
     }
-
-
 
     
     .left{
         margin-left: 5%;
         width: 90%;
     }
-
     .left .input-field{
         width: 100%;
-        /* margin: 1px 2%; */
     }
     .input-type{
         width: 100%;
     }
-
-
-
- 
     #task-color{
-        /* width: 103%; */
         margin-left: 0px;
     }
     #ip{
@@ -1352,54 +941,30 @@ textarea::placeholder{
     .checkbox-field{
         grid-template-columns: auto auto auto;
     }
-    
-
-
     .file{
         margin-top: 25px;
-        /* margin:  0px 20px; */
         width: 100%;
     }
     .upload{
         margin: 0;
-        /* width: 100%; */
     }
     .file-upload{
-        
         width: 80%;
-        /* margin-right: 500px; */
         padding: 40px 4.2%;
     }
     .file-upload div{
         font-size: 18px;
-
     }
-
     #btn{
-        /* margin: 40px; */
         margin-left: 2px;
         width: 99%;
     }
-   
-    
     #btn1{
-    
         padding: 5%;
     }
     #btn2{
-
-        /* margin-left: 200px; */
         padding: 3.8%;
-        /* width: 40%; */
     }
-
-
-
-   
-    
-
-
-    
 
     
     .right{
@@ -1409,7 +974,6 @@ textarea::placeholder{
         padding-bottom: 40px;
         height: 100%;
     }
-
     .parent-container{
         gap: 10px;
     }
@@ -1418,217 +982,71 @@ textarea::placeholder{
     }
 
 
-
-
-
-
-
-    
     .foot-content div{
-        /* margin: 40px 22px; */
         margin: 40px 5%;
     }
     #bottom{
         width: 90vw;
     }
 
-    .file-upload{
-        width: 90%;
-    }
-
-
-}
-
-
-
-
-
-/* .color{
-    height: 410%;
-} */
-
-/* Mobile view */
-
-
-
-@media screen and (max-width:620px) {
 
     .editpopup{
-        /* margin-top: 30%; */
-        top:0;
-        margin-bottom: 70%;
-        /* margin: 0% 0; */
-        /* top: 10px; */
-        left: 5%;
-        /* position: fixed; */
-        /* z-index: 3; */
+        width: 90%;
+        /* bottom: 50%; */
+        margin: 55% 5%;
     }
-
     .editcontainer{
         display: flex;
         justify-content: center;
-     
-        /* margin-top: 150px; */
-        /* margin-top: 10%; */
-        /* margin: 50% 0; */
-        /* top: 100%; */
-      
-
-        z-index:1 ;
-        /* height: 60vw; */
-
     }
-
     .editcontainer .formvalidate{
-
         overflow-y: auto;
-        height: 500px;
+        height: 800px;
     }
-    .side{
-        width: 90%;
-        top: 100%;
-    }
-    .side .act{
-        margin: 0;
-
-    }
-
-
-
-
-    .side .editcheckbox-field{
-        display: grid;
-        grid-template-columns: auto auto;
-        /* margin-top: 8px; */
-    }
-    .editcheckbox-field .check-box{
-        margin-top: 17px;
-    }
-
-
-
-
-
     .color{
-        /* height: 515vh; */
-        /* height: 498%; */
-        /* height: 300rem; */
-        position: fixed;
-        z-index: 3;
-        top: 0;
+        height: 185rem;
     }
-
-
-
-
-
-
     .details-popup{
-        /* width: 80vw; */
-        /* position: relative; */
-        top: 4%;
-        /* height: 10%; */
-        /* top: 10px; */
-        display: flex;
-        justify-content: center;
-        margin:   0;
-        /* margin-bottom: 20%; */
+        width: 90%;
+        margin: 0 5%;
+    }
+
+    #deletepopup{
         width: 100%;
-        /* height: 100%; */
-        z-index: 3;
-
+        margin: 25% 0;
     }
-
-    #childpopup{
-        /* width: 8000vw; */
-        padding: 5px;
-        height: 600px;
-        overflow-y: auto;
+    #delete-container{
+        width: 60%;
     }
-    .details-cards{
-        display: grid;
-        grid-template-columns: auto;
-        /* text-align: center; */
-        margin: 20px 15%;
+    #delete-container h3{
+        margin-top: 20px;
+        font-size: 25px;
     }
-
-
-    .detailspopup-color{
-        position: fixed;
-        height: 100%;
-        z-index: 3;
-        top: 0;
+    #delete-container button{
+        margin: 40px 10px;
     }
-    .main-content{
-        /* display: flex;
-        justify-content: space-between; */
-
-        /* margin: 10px 0px; */
-        /* display: block;
-        text-align: center;
-        margin: 0;
-        padding: 0; */
-
+    #taskEmptystate{
+        margin: 0 55px;
+        top: 350px;
+        font-size: 25px;
     }
+}
 
 
+/* Mobile view */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width:620px) {
    header{
-    
-       position: fixed;
-       top: 0;
+       /* position: fixed; */
+       /* top: 0; */
        width: 100%;
        z-index: 2;
-       height: 75px;
-       /* background-color: black; */
-  
+       height: 75px;  
    }
    header li{
        display:block;
        margin: 0;
    }
- 
    header #bar-icon{
        display: block;
        font-size: 30px;
@@ -1639,11 +1057,9 @@ textarea::placeholder{
    }
    .menu-bar{
        font-size: 30px;
-       /* margin-top: 5.1%; */
        margin-top: 20px;
        position: relative;
        cursor: pointer;
-       
    }
    .ul-element{
        display: none;
@@ -1651,48 +1067,46 @@ textarea::placeholder{
        text-align: center;
        background-color: white;
        position: absolute;
+       padding: 20px 20px;
+       /* height: 200px; */
        top: 40px;
        right: 1px;
-
+       z-index: 1;
    }
-
-      .menu-bar:hover .ul-element{
-       display: block;
-       /* margin-top: 150px; */
-
+   .ul-element li{
+    padding: 20px 10px;
    }
-   /* .ul-element.active{
+    /* .menu-bar:hover .ul-element{
        display: block;
 
    } */
+    .ul-element.active{
+       display: block;
+
+   }
    /* header:active .h1{
        margin-top: 1500px;
        color: red;
    } */
-
-
-
    header h3{
-
        margin-top: 25px;
        margin-left: 10px;
        font-size: 22px;
-    
    }
-
-
-
-
-
-
+    /* #dashboard {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+  } */
 
 
    .main{
+       /* height: 100vh; */
+       /* overflow-y:auto; */
        margin-left: 0px ;
    }
    .main h1{
-       /* margin-top: 110px; */
-       padding-top: 70px;
+       /* padding-top: 10px; */
        margin-left: 20px;
        font-size: 24px;
    }
@@ -1700,40 +1114,29 @@ textarea::placeholder{
        display: block;
        margin-top: 35px;
    }
-
-
-
    form{
     margin: 1px 1px;
    }
 
    .act{
-    /* margin-left: 0.5%; */
     padding: 1px 2px;
     margin: 1px 4%;
    }
 
-
    .left{
-
        box-shadow: 0 0 10px rgb(219, 211, 211);
-
        margin-top: 0px;
        margin-left: 2.7%;
        width: 95%;
        border-radius: 20px;
-
    }
-
    .left h4{
        padding: 15px 0;
        margin-top: 10px;
        margin-left: 12px;
    }
    .left .input-field{
-       /* margin-left: 0.1rem; */
        width: 100%;
-       /* background-color: aqua; */
    }
    .input-type{
        width: 100%;
@@ -1741,79 +1144,52 @@ textarea::placeholder{
    #task{
     margin: 4px 0;
    }
- 
-
     #task-color{
-
         margin: 15px 0px;
         width: 100%;
     }
-
      #color{
         padding-top: 0px;
         margin: 0;
     }
-
-
-
     .checkbox-field{
        grid-template-columns: 125px 110px;
-
    }
-
    #btn {
-       /* margin: 2%; */
        margin-left: 0.5%;
        width:98%;
     }  
     #btn button{
         margin-left: 0px;
     }
- 
     #btn1{
         padding: 12% 1px;
     }
-
     #btn2{
-        /* padding:6.8% 8px; */
         font-size: 13px;
-        /* width: 38%; */
         font-weight: bold;
     }
     .file{
-        /* margin-left:4%; */
         margin: 10px 0px;
     }
-    
-
    .file-upload{
         width: 92%;
         padding: 40px 5px;
-
         margin-left: 0px;
-        /* margin: 1%; */
    }
-
-     .file-upload div{
+    .file-upload div{
         font-size: 15px;
-
     }
     #ip{
         margin-left: 3px;
     }
 
 
-
-
-
-
-
-
-
    .right{
+    position: relative;
+    z-index: 1;
        width: 94%;
        margin-left: 3%;
-       /* margin: 8%; */
        border-radius: 15px;
        box-shadow: 0 0 10px rgb(219, 211, 211);
    }
@@ -1826,56 +1202,147 @@ textarea::placeholder{
    }
    .header-field nav{
        margin: 8px 2%;
-      
     }
     .header-field ul{
        display: flex;
        justify-content: space-around;
-       /* margin: 2% 1%; */
        margin-left: 2.8%;
-
    }
-  
    .header-field a{
        font-size: 13.5px;
    }
-
    .parent-container{
        display: block;
        padding: 1px 1px;
        margin-top: 5px;
-       /* margin-right: 4px; */
    }
-
    .parent-container .child-container{
-
        margin: 15px 15px;
    }
+   /* .low span{
+        font-size: 14px;
+        height: 9px;
+        width: 9px;
 
+   }
+   .high span{
+       font-size: 14px;
+       height: 8px;
 
-
-
-
-
-
+   }
+   .medium span{
+       font-size: 14px;
+       height: 8px;
+       width: 8px;
+   }
+    */
 
    .foot-content{
        display: block;
-       /* width: 50%; */
        text-align: center;
    }
    .foot-content div{
        padding-top: 17px;
-      
-
    }
    .foot-content p,a{
        font-size: 20px;
    }
-
-
    #bottom{
        width: 280px;
    }
+
+
+    .editpopup{
+        top:0;
+        margin: 10% 5%;
+    }
+    .editcontainer{
+        display: flex;
+        justify-content: center;
+        z-index:1 ;
+    }
+    .editcontainer .formvalidate{
+        overflow-y: auto;
+        height: 500px;
+    }
+    .side{
+        width: 90%;
+        top: 100%;
+    }
+    .side .act{
+        margin: 0;
+    }
+    .side .editcheckbox-field{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .editcheckbox-field .check-box{
+        margin-top: 17px;
+    }
+    .color{
+        position: fixed;
+        z-index: 3;
+        top: 0;
+    }
+
+
+    .details-popup{
+        top: 4%;
+        display: flex;
+        justify-content: center;
+        margin:   0;
+        width: 100%;
+        z-index: 3;
+    }
+    #Popup{
+        margin: 4px 8px;
+    }
+    #childpopup{
+        padding: 5px;
+        height: 600px;
+        overflow-y: auto;
+    }
+    .details-cards{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 20px 10%;
+    }
+    .detailspopup-color{
+        position: fixed;
+        height: 100%;
+        z-index: 3;
+        top: 0;
+    }
+
+
+    #deletepopup-colors{
+        z-index: 3;
+        top: 0;
+    }
+     #deletepopup{
+        top: 0;
+        z-index: 4;
+    }
+    #delete-container{
+        margin: 2% 0;
+        width: 65%;
+    }
+    #delete-container h3{
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    #delete-container button{
+        margin: 30px 5px;
+    }
+
+
+    #taskEmptystate{
+        margin: 0 30px;
+        /* line-height: normal; */
+    }
+
+    .empty-state{
+        margin: 0 110px;
+    }
 
 }
