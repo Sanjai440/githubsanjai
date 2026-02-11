@@ -22,7 +22,7 @@
                 <ul class="ul-element">
                     <li><a href="#" id="dashboard" class="active">Dashboard</a></li>
                     <li><a href="#" id="tasksheader">Tasks</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="#" id="profile">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,17 +32,20 @@
     <div class="popup-container" id="childpopup">
                         <i class="fa-solid fa-x" id="Popup"></i>
                         <h3 id="headname" class="headname">Design Homepage Mockup</h3>
-                        <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
-                    <div class="details-cards">
-                        <p>Email : sanjai@gmail.com</p>
-                        <p class="due-date">Due Date : Oct 20,2025</p>
-                        <p class="user">User Name : Sarath Jonhson</p>
-                        <p>Due Time : 10:40am</p>
-                        <p>Esatimate Hours : 52</p>
-                         <p>Project Url: www.com</p>
-                         <p>Task Type :Bug Fix</p>
-                         <p>Progress : 0%</p>
-                    </div>
+                      <div id="details-container" class="value">
+                         <p class="p">Create Wireframes and high-fidelity mockups for the new homepage redesign project with modern UI elements.</p>
+                         <div class="details-cards">
+                            <p>Email : sanjai@gmail.com</p>
+                            <p class="due-date">Due Date : Oct 20,2025</p>
+                            <p class="user">User Name : Sarath Jonhson</p>
+                            <p>Due Time : 10:40am</p>
+                            <p>Esatimate Hours : 52</p>
+                            <p>Project Url: www.com</p>
+                            <p>Task Type :Bug Fix</p>
+                            <p>Progress : 0%</p>
+                         </div>
+                      </div>
+
                     <div id="border-color"></div>
                         <div class="main-content" >
                             <div class="hig" >
@@ -89,7 +92,7 @@
 
                     <div class="input-field">
                         <input type="email" name="email" placeholder="Assignee Email " class="input-type" id="editemail" >
-                        <span class="editspan" id="editerroremail"></span>
+                        <span class="editspan" id="erroreditemail"></span>
                     </div>
 
                     <div class="input-field">
@@ -123,11 +126,15 @@
                         <div class="upper-field">
                             <label for="estimate hour">Estimated Hours</label>
                             <input type="number" name="estimate hours" value="" id="editEstimatehour" class="input-type" min="0" onkeydown="return !['e','E','+','-'].includes(event.key)">
+                            <span class="editspan" id="erroreditEstimatehour"></span>
+
                         </div>
                     </div>
 
                     <div class="input-field">
                         <input type="url" name="project url" placeholder="Project URL" class="input-type"  id="editUrl">
+                        <span class="editspan" id="erroreditUrl"></span>
+
                     </div>
 
                     <div class="input-field">
@@ -156,6 +163,8 @@
                             <input type="checkbox" id="Enhancement" name="editTaskType" value="Enhancement" ><label for="Enhancement" class="checkbox-label">Enhancement</label>
                           </div>
                        </div>
+                       <span class="editspan" id="erroreditTaskType"></span>
+                       
                     </div>
 
                     <div class="input-field" id="ip">
@@ -187,9 +196,9 @@
 </section>
 
 
-    <div class="main">
+    <div class="main" >
         <h1 class="h1" id="title"><span class="taskSpan"></span>Task Dashboard</h1>
-        <div class="sub-main"> 
+        <div class="sub-main" id="form-task"> 
             <div class="left" id="createform">
                 <h4>📝Create New Task</h4>
                 <form action="" id="form-validate">
@@ -321,7 +330,18 @@
         <div class="right" id="divCards">
             <div id="maintaskcard">
                 <div class="header-field">
-                    <h2>✅Active Tasks</h2>
+                  <div id="dropdown">
+
+                    <select name="" id="statusdropdown">
+                        <option value="" id="activetask">✅All Active Task</option>
+                        <option value="pending">📰Pending</option>
+                        <option value="In Progress">📈In Progress</option>
+                        <option value="completed">✅Completed</option>
+                    </select>
+                    <span id="dropdownCount"></span>
+
+                  </div>
+                    <!-- <h2 id="activetask">✅Active Tasks</h2> -->
                     <nav>
                         <ul>
                             <li><a href="#"data-filter="all" class="taskfilter active" id="all">All</a><span class="countElement"></span></li>
@@ -331,6 +351,24 @@
                         </ul>
                     </nav>
                 </div>
+
+                <!-- <div id="dropdown">
+
+                    <select name="" id="statusdropdown">
+                        <option value="">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <span id="dropdownCount"></span>
+
+                </div> -->
+
+                <!-- <div id="dropdown">
+                    <div>Low priority </div>
+                    <div>Medium priority </div>
+                    <div>High priority </div>
+                </div> -->
 
                 <div id="emptystatediv">
                 <div id="emptyState" class="empty-state">
