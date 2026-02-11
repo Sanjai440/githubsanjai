@@ -1008,7 +1008,6 @@ let taskTitle = document.getElementById("taskTitle")
 let taskEmptytask = document.getElementById("taskEmptystate")
 taskheader.addEventListener('click', taskHeader)
 
-
 //profile
 
 let profile = document.getElementById("profile")
