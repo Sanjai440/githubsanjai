@@ -1,12 +1,10 @@
 let formValidation = document.getElementById("form-validate")
 formValidation.addEventListener('submit', getIntput);
-
 // input field declaration 
 let userName, taskName, userEmail, dueDate, taskDescription, prioritySelect, radio, dueTime, estimateHours, projectUrl, checkBox, taskProgressValue, span, storedValues
 // error field declaration
 let errorName, errorTask, errorEmail, errorpriority, errorDescription, errorstatus, errorDate, errorTime, errorEstimatehour, errorUrl, errorCheckbox
-let isDateInitialized = false
-
+// let isDateInitialized = false
 function getIntput(event) {
     event.preventDefault()
     userName = document.getElementById("username")
@@ -23,7 +21,7 @@ function getIntput(event) {
     checkBox.forEach(currentItem => {
         currentItem.addEventListener('change', function () {
             storedValues = [...checkBox].filter(box => box.checked).map(box => box.value)
-            if (!storedValues) {
+            if (storedValues.length==0) {
                 errorCheckbox.innerHTML = ""
             }
         })
@@ -40,7 +38,6 @@ function getIntput(event) {
     errorDescription = document.getElementById("errordescription")
     errorCheckbox = document.getElementById("errortask-type")
     errorstatus = document.getElementById("errorstatus")
-
     let isvalid = setValue()
     if (isvalid) {
         if (isDuplicateTask(taskName.value)) {
@@ -60,9 +57,7 @@ function getIntput(event) {
         formValidation.reset()
         EmptyState()
         showToast("Task added successfully", "success")
-
-        triggerAllFilter()
-
+        AllFilter()
     }
 }
 
@@ -81,16 +76,13 @@ function resetForm() {
         }
     })
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     dueDate = document.getElementById("dueDate")
     let todayDate = new Date().toISOString().split("T")[0]
     dueDate.min = todayDate
-    dueDate.max = todayDate
 })
 
 function setValue() {
-
     let userNamePattern = /^[A-Za-z]+$/
     let gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     // let taskNamePattern=/^[A-Za-z]$/
@@ -110,6 +102,7 @@ function setValue() {
         if (!scrollElement) {
             scrollElement = userName
         }
+        isvalid = false
     }
     else if (userName.value.trim().length < 3) {
         errorName.innerHTML = `<div class="error-icon">!</div>Enter your name more than 3 charater`
@@ -117,6 +110,7 @@ function setValue() {
         if (!scrollElement) {
             scrollElement = userName
         }
+        isvalid = false
     }
     if (taskName.value.trim() == "") {
         errorTask.innerHTML = `<div class="error-icon">!</div>Enter your Task Name *`
@@ -137,6 +131,7 @@ function setValue() {
         if (!scrollElement) {
             scrollElement = taskName
         }
+        isvalid = false
     }
     if (userEmail.value == "") {
         errorEmail.innerHTML = `<div class="error-icon">!</div>Enter your Email *`
@@ -152,6 +147,7 @@ function setValue() {
         if (!scrollElement) {
             scrollElement = userEmail
         }
+        isvalid = false
     }
     if (dueDate.value == "") {
         errorDate.innerHTML = `<div class="error-icon">!</div>Enter the Date *`
@@ -161,42 +157,35 @@ function setValue() {
         }
         isvalid = false
     }
+    if (dueTime.value == "") {
+        errorTime.innerHTML = `<div class="error-icon">!</div>Set the time *`
+        dueTime.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = dueTime
+        }
+        isvalid = false
+    }
+    if (dueDate.value && dueTime.value) {
+        let now = new Date()
+        let selectedDate = new Date(dueDate.value)
+        if (selectedDate.toDateString() == now.toDateString()) {
+            let currentTime = now.toTimeString().slice(0, 5)
+            if (dueTime.value < currentTime) {
+                errorTime.innerHTML = `<div class="error-icon">!</div>Past time not allowed *`
+                dueTime.style.border = "2px solid red"
+                if (!scrollElement) {
+                    scrollElement = dueTime
+                }
+                isvalid = false
+            }
+        }
+    }
     if (prioritySelect.value == "") {
         errorpriority.style.display = "block"
         errorpriority.innerHTML = `<div class="error-icon">!</div>Select the Priority *`
         prioritySelect.style.border = "2px solid red"
         if (!scrollElement) {
             scrollElement = prioritySelect
-        }
-        isvalid = false
-    }
-    if (taskDescription.value.trim() == "") {
-        errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description *`
-        taskDescription.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = taskDescription
-        }
-        isvalid = false
-    }
-    else if (taskDescription.value.trim().length < 25) {
-        errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description More than 25 Character *`
-        taskDescription.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = taskDescription
-        }
-    }
-    if (!radio) {
-        errorstatus.innerHTML = `<div class="error-icon">!</div>Select the status *`
-        if (!scrollElement) {
-            scrollElement = radio
-        }
-        isvalid = false
-    }
-    if (dueTime.value == "") {
-        errorTime.innerHTML = `<div class="error-icon">!</div>Set the time *`
-        dueTime.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = dueTime
         }
         isvalid = false
     }
@@ -222,11 +211,34 @@ function setValue() {
             projectUrl.value = "https://" + urlValue
         }
     }
+    if (taskDescription.value.trim() == "") {
+        errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description *`
+        taskDescription.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = taskDescription
+        }
+        isvalid = false
+    }
+    else if (taskDescription.value.trim().length < 25) {
+        errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description More than 25 Character *`
+        taskDescription.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = taskDescription
+        }
+        isvalid = false
+    }
     let anyChecked = [...checkBox].some(cb => cb.checked)
     if (!anyChecked) {
         errorCheckbox.innerHTML = `<div class="error-icon">!</div>Select the task type *`
         if (!scrollElement) {
-            scrollElement = userName
+            scrollElement = anyChecked
+        }
+        isvalid = false
+    }
+     if (!radio) {
+        errorstatus.innerHTML = `<div class="error-icon">!</div>Select the status *`
+        if (!scrollElement) {
+            scrollElement = radio
         }
         isvalid = false
     }
@@ -237,7 +249,6 @@ function setValue() {
             block: "center"
         })
         scrollElement.focus()
-
     }
 
     let newArr = ["username", "taskname", "email", "dueDate", "time", "priority", "estimatehour", "url", "description", "status", "task-type"]
@@ -271,9 +282,7 @@ function setValue() {
             })
         }
     })
-    if (newValid) {
-        return isvalid
-    }
+    return isvalid
 }
 
 function createDiv(id) {
@@ -283,7 +292,6 @@ function createDiv(id) {
     newDiv.dataset.id = id
     let selectedValue = prioritySelect.value
     newDiv.dataset.priority = selectedValue
-
     let priorityClass = ""
     let FieldClass = ""
     if (selectedValue == "low") {
@@ -367,7 +375,7 @@ function setLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks))
 }
 window.addEventListener("DOMContentLoaded", function () {
-    let tasks = JSON.parse(localStorage.getItem("task")) || []
+    let tasks = JSON.parse(localStorage.getItem("task")) 
     tasks.forEach(item => {
         userName = { value: item.username }
         taskName = { value: item.taskname }
@@ -385,9 +393,7 @@ window.addEventListener("DOMContentLoaded", function () {
     EmptyState()
 })
 
-
 //Edit Cards
-
 let editUsername = document.getElementById("editusername")
 let editTaskname = document.getElementById("edittaskname")
 let editEmail = document.getElementById("editemail")
@@ -418,15 +424,12 @@ function editButtonClick(event) {
         editingId = Number(card.dataset.id)
         let tasks = JSON.parse(localStorage.getItem("task"))
         let task = tasks.find(t => t.id == editingId)
-
         let todayDate = new Date().toISOString().split("T")[0]
         editDuedate.min = todayDate
-        editDuedate.max = todayDate
         editDuedate.value = todayDate
         editUsername.value = task.username
         editTaskname.value = task.taskname
         editEmail.value = task.useremail
-        // editDuedate.value=task.duedate
         editTime.value = task.duetime
         editPriority.value = task.priorityselect
         editEstimatehour.value = task.estimatehours
@@ -439,7 +442,7 @@ function editButtonClick(event) {
             editPercentage.innerText = `${this.value}%`
         })
         editTasktype.forEach(cb => {
-            cb.checked = task.checkbox.includes(cb.value);
+            cb.checked = task.checkbox.includes(cb.value)
         })
         editStatusRadios.forEach(radio => {
             radio.checked = (radio.value == task.radioValue)
@@ -448,7 +451,6 @@ function editButtonClick(event) {
         color.style.display = "block"
     }
 }
-
 btnadd.addEventListener("click", editButtonAdd)
 
 let editErrorname = document.getElementById("erroreditusername")
@@ -458,101 +460,140 @@ let editErroremail = document.getElementById("erroreditemail")
 let editErrorestimatehour = document.getElementById("erroreditEstimatehour")
 let editErrorurl = document.getElementById("erroreditUrl")
 let editErrorcheckbox = document.getElementById("erroreditTaskType")
+let editErrorTime=document.getElementById("erroreditTime")
 
 function editButtonAdd(event) {
     event.stopPropagation()
 
     if (editingId == null) return
     let tasks = JSON.parse(localStorage.getItem("task"))
-
+    let edituserNamePattern = /^[A-Za-z]+$/
     let editgmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
     let editCheckbox = Array.from(editTasktype).some(element => element.checked)
     let editValue = true
-
     let firstInvalidField = null
     if (editUsername.value.trim() == "") {
-        editErrorname.innerHTML = `<div class="editerror-icon">!</div>Enter Your Name *`
+        editErrorname.innerHTML = `<div class="editerror-icon">!</div> Enter your name *`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorname
+            firstInvalidField = editUsername
+        }
+        editValue = false
+    }
+    else if(editUsername.value.trim().length<3){
+        editErrorname.innerHTML=`<div class="editerror-icon">!</div> Enter your name more than 3 character *`
+         if (!firstInvalidField) {
+            firstInvalidField = editUsername
+        }
+        editValue = false
+    }
+    else if(!edituserNamePattern.test(editUsername.value)){
+        editErrorname.innerHTML=`<div class="editerror-icon">!</div> Not allowed number ,special character,and space *`
+        if(!firstInvalidField) {
+            firstInvalidField = editUsername
         }
         editValue = false
     }
     if (editTaskname.value.trim() == "") {
-        editErrorTaskname.innerHTML = `<div class="editerror-icon">!</div> Enter your Task Name *`
+        editErrorTaskname.innerHTML = `<div class="editerror-icon">!</div> Enter your task name *`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorTaskname
+            firstInvalidField = editTaskname
+        }
+        editValue = false
+    }
+    else if(editTaskname.value.trim().length<7){
+        editErrorTaskname.innerHTML=`<div class="editerror-icon">!</div> Enter your task name more than 7 character *`
+        if (!firstInvalidField) {
+            firstInvalidField = editTaskname
         }
         editValue = false
     }
     if (editEmail.value.trim() == "") {
         editErroremail.innerHTML = `<div class="editerror-icon">!</div> Enter your email`
         if (!firstInvalidField) {
-            firstInvalidField = editErroremail
+            firstInvalidField = editEmail
         }
         editValue = false
     }
     else if (!editgmailPattern.test(editEmail.value)) {
         editErroremail.innerHTML = `<div class="editerror-icon">!</div> Invalid email`
         if (!firstInvalidField) {
-            firstInvalidField = editErroremail
+            firstInvalidField = editEmail
         }
         editValue = false
     }
+    if(editTime.value==""){
+        editErrorTime.innerHTML=`<div class="editerror-icon">!</div> Set the time`
+         if (!firstInvalidField) {
+            firstInvalidField = editTime
+        }
+        editValue=false
+    }
+    let selectedDateTime = new Date(editDuedate.value + "T" + editTime.value)
+    let currentDateTime = new Date()
+    if (selectedDateTime <= currentDateTime) {
+        editErrorTime.innerHTML = `<div class="editerror-icon">!</div> Past time not allowed`
+        if (!firstInvalidField) {
+            firstInvalidField = editTime
+        }
+        editValue = false
+    }
+
     if (editEstimatehour.value.trim() == "") {
         editErrorestimatehour.innerHTML = `<div class="editerror-icon">!</div> Enter the estimate hour`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorestimatehour
+            firstInvalidField = editEstimatehour
         }
         editValue = false
     }
     if (editUrl.value.trim() == "") {
         editErrorurl.innerHTML = `<div class="editerror-icon">!</div> Enter Url`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorurl
+            firstInvalidField = editUrl
         } editValue = false
     }
     if (editDescription.value.trim() == "") {
         editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description`
         if (!firstInvalidField) {
-            firstInvalidField = editErrordescription
+            firstInvalidField = editDescription
         }
         editValue = false
     }
     else if (editDescription.value.trim().length < 25) {
-        editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description More than 25 character`
+        editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description more than 25 character`
         if (!firstInvalidField) {
-            firstInvalidField = editErrordescription
+            firstInvalidField = editDescription
         }
         editValue = false
     }
     if (!editCheckbox) {
-        editErrorcheckbox.innerHTML = `<div class="editerror-icon">!</div> Select the TaskType`
+        editErrorcheckbox.innerHTML = `<div class="editerror-icon">!</div> Select the tasktype`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorcheckbox
+            firstInvalidField = editCheckbox
         }
         editValue = false
     }
     if (isDuplicateTask(editTaskname.value, editingId)) {
         editErrorTaskname.innerHTML = `<div class="error-icon">!</div> Task name already exists`
         if (!firstInvalidField) {
-            firstInvalidField = editErrorTaskname
+            firstInvalidField = editTaskname
         }
-
+        editValue=false
     }
-
     if (firstInvalidField) {
-        firstInvalidField.scrollIntoView({ behavior: "smooth", block: "center" });
+        firstInvalidField.scrollIntoView({ 
+            behavior: "smooth",
+             block: "center" 
+            })
+        firstInvalidField.focus()
     }
-
-    let editUrlValue = editUrl.value.trim();
+    let editUrlValue = editUrl.value.trim()
     if (editUrlValue) {
         if (!editUrlValue.startsWith("http://") && !editUrlValue.startsWith("https://")) {
-            editUrl.value = "https://" + editUrlValue;
+            editUrl.value = "https://" + editUrlValue
         }
     }
-
     if (editValue) {
-        let updatedCheckbox = Array.from(document.querySelectorAll('input[name="editTaskType"]:checked')).map(cb => cb.value);
+        let updatedCheckbox = Array.from(document.querySelectorAll('input[name="editTaskType"]:checked')).map(cb => cb.value)
         let selectedEditStatus = document.querySelector('input[name="editstatus"]:checked')?.value || ""
         let updatedTask = {
             username: editUsername.value,
@@ -579,7 +620,7 @@ function editButtonAdd(event) {
         color.style.display = "none"
     }
 }
-let errorfield = ["editusername", "edittaskname", "editdescription", "editemail", "editEstimatehour", "editUrl"]
+let errorfield = ["editusername", "edittaskname", "editdescription", "editemail", "editEstimatehour", "editUrl","editTime"]
 errorfield.forEach(id => {
     let inputEle = document.getElementById(id);
     let errorEle = document.getElementById("error" + id);
@@ -594,12 +635,9 @@ editTasktype.forEach(cb => {
     })
 })
 
-
-
 function updateDivCard(task, id) {
     let card = document.querySelector(`.child-container[data-id="${id}"]`)
     if (!card) return
-
     card.dataset.priority = task.priorityselect
     card.dataset.status = task.radioValue
     let formattedDueDate = ""
@@ -704,18 +742,14 @@ function deleteDiv() {
     deleteContainer.style.display = "none"
     deletePopColor.style.display = "none"
     showToast(`"${changeLine.innerText}" deleted`, "delete")
-
 }
 cancelBtn.addEventListener("click", deleteCancelButton)
-
 function deleteCancelButton() {
     deleteContainer.style.display = "none"
     deletePopColor.style.display = "none"
 }
 
-
 //Filter Cards
-
 let selectedPrioritys = "all"
 let selectedStatus = "all"
 let filtertask = document.querySelectorAll(".taskfilter")
@@ -729,7 +763,7 @@ function filterTaskCards(event) {
     let link = event.currentTarget
     selectedPrioritys = link.dataset.filter
     bothFilters()
-    updateStatusDropdownCount()
+    updateDropdowncount()
     updateEmptyState()
     filtertask.forEach(element => {
         element.classList.remove("active")
@@ -747,7 +781,7 @@ function filterTaskCards(event) {
     }
 }
 
-function triggerAllFilter() {
+function AllFilter() {
     let allFilterBtn = document.querySelector('.taskfilter[data-filter="all"]')
     if (allFilterBtn) {
         allFilterBtn.click()
@@ -762,24 +796,24 @@ function PriorityFilter() {
 }
 
 let statusDropdown = document.getElementById("statusdropdown")
-
 let statusCount = document.getElementById("dropdownCount")
 statusDropdown.addEventListener("change", statusFilter)
 function statusFilter() {
     selectedStatus = statusDropdown.value || "all"
-    let cards = document.querySelectorAll(".child-container")
     bothFilters()
     updateEmptyState()
     let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
     statusCount.innerText = visibleCards
-    statusCount.style.display = visibleCards ? "inline-block" : "none"
+    if(visibleCards){
+        statusCount.style.display = "inline-block";
+    } 
+    else {
+         statusCount.style.display = "none";
+    }    
 }
-
-
 
 function bothFilters() {
     let cards = document.querySelectorAll(".child-container")
-
     cards.forEach(card => {
         let cardPriority = card.dataset.priority
         let cardStatus = card.dataset.status
@@ -812,7 +846,7 @@ function bothFilters() {
     })
 }
 
-function updateStatusDropdownCount() {
+function updateDropdowncount() {
     let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
     statusCount.innerText = visibleCards
     if (visibleCards) {
@@ -822,7 +856,6 @@ function updateStatusDropdownCount() {
         statusCount.style.display = "none"
     }
 }
-
 
 //DetailsPopup Show
 let parentContainer = document.querySelector(".parent-container")
@@ -844,8 +877,8 @@ function clickPopup(event) {
     }
 }
 function showPopup(id) {
-    let tasks = JSON.parse(localStorage.getItem("task")) || []
-    let task = tasks.find(t => t.id === id)
+    let tasks = JSON.parse(localStorage.getItem("task"))
+    let task = tasks.find(t => t.id == id)
     if (!task) return
     let firstClassRadio = ""
     let secondClassRadio = ""
@@ -862,13 +895,13 @@ function showPopup(id) {
         secondClassRadio = "completed-field"
     }
     let progressValue = task.progress ?? 0
+    
     childpopup.innerHTML = ` <i class="fa-solid fa-x" id="Popup"></i>
                         <!-- <i class="fa-regular fa-pen-to-square " id="add"></i> -->
                         <!-- <button class="add" type="button">Edit</button> -->
                         <!-- <button class="delete" type="button">Delete</button> -->
                         <h3 id="headname" class="headname">${task.taskname}</h3>
                     <div id="details-container" class="value">
-
                         <p class="p">${task.description}</p>
                       <div class="details-cards">
                         <p><strong>📥Email :</strong> ${task.useremail}</p>
@@ -918,51 +951,49 @@ function emptyButton() {
     document.getElementById("username").focus()
 }
 function EmptyState() {
-    let tasks = JSON.parse(localStorage.getItem("task")) || []
-    document.getElementById("emptyState").style.display = tasks.length == 0 ? "flex" : "none";
+    let tasks = JSON.parse(localStorage.getItem("task"))
+    let emptyState = document.getElementById("emptyState")
+
+    if(tasks.length == 0) {
+        emptyState.style.display = "flex"
+    } 
+    else {
+        emptyState.style.display = "none"
+    }
+ 
 }
 
 
 function updateEmptyState() {
     let cards = document.querySelectorAll(".child-container")
     let emptyState = document.getElementById("emptyState")
-
     let visibleCount = 0
     cards.forEach(card => {
-        if (card.style.display !== "none") {
+        if(card.style.display != "none") {
             visibleCount++
         }
     })
-
-    if (visibleCount == 0) {
+    if(visibleCount == 0) {
         emptyState.style.display = "flex"
         if (selectedPrioritys && selectedPrioritys != "all") {
             addTaskBtn.style.display = "none"
         }
-        // else {
-        //   addTaskBtn.innerText = "Create your tasks"
-        // }
-    } else {
+    } 
+    else {
         emptyState.style.display = "none"
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", () => {
     updateEmptyState()
-})
-
 
 function isDuplicateTask(taskName, currentTaskId = null) {
-    let tasks = JSON.parse(localStorage.getItem("task")) || []
+    let tasks = JSON.parse(localStorage.getItem("task")) 
     return tasks.some(task => {
         if (currentTaskId != null && task.id == currentTaskId) {
             return false
         }
-        return task.taskname.trim().toLowerCase() == taskName.trim().toLowerCase();
+        return task.taskname.trim().toLowerCase() == taskName.trim().toLowerCase()
     })
 }
-
 
 function showToast(message, type = "success") {
     let toast = document.getElementById("submitToast")
@@ -974,7 +1005,6 @@ function showToast(message, type = "success") {
     }, 3000)
 }
 
-
 let footAnchor = document.querySelectorAll(".footer-anchor")
 let foot = document.getElementById("footer")
 footAnchor.forEach(element => {
@@ -982,12 +1012,13 @@ footAnchor.forEach(element => {
         event.preventDefault()
     })
 })
+
 let barIcon = document.getElementById("bar-icon")
 let menu = document.querySelector(".ul-element")
-barIcon.addEventListener("click", function () {
+barIcon.addEventListener("click", menuBar)
+function menuBar() {
     menu.classList.toggle("active")
-
-    if (menu.classList.contains("active")) {
+    if(menu.classList.contains("active")) {
         barIcon.classList.remove("fa-bars")
         barIcon.classList.add("fa-xmark")
     }
@@ -996,24 +1027,18 @@ barIcon.addEventListener("click", function () {
         barIcon.classList.add("fa-bars")
 
     }
-})
+}
 
 let taskheader = document.getElementById("tasksheader")
 let dashBoard = document.getElementById("dashboard")
 let createForm = document.getElementById("createform")
-let titleName = document.getElementById("title")
 let activeTaskCard = document.getElementById("divCards")
+let titleName = document.getElementById("title")
 let dashboardEmptystate = document.getElementById("emptyState")
 let taskTitle = document.getElementById("taskTitle")
 let taskEmptytask = document.getElementById("taskEmptystate")
+let taskDivCards=document.getElementById("taskCards")
 taskheader.addEventListener('click', taskHeader)
-
-//profile
-
-let profile = document.getElementById("profile")
-let formTask = document.getElementById("form-task")
-profile.addEventListener('click', profileFunction)
-
 
 function taskHeader(event) {
     event.preventDefault()
@@ -1022,45 +1047,25 @@ function taskHeader(event) {
     activeTaskCard.classList.add("taskcardsView")
     dashBoard.classList.remove("active")
     taskheader.classList.add("active")
-    // taskheader.classList.add("active")
-    profile.classList.remove("active")
     titleName.innerText = "Task Cards"
     titleName.classList.add("taskSpan")
-    // taskEmptytask.style.display="block"
-    // dashboardEmptystate.style.display="none"
     taskTitle.innerText = "Click your Dashboard and then Create Your Task"
     addTaskBtn.style.display = "none"
-    formTask.style.display = "block"
-
+    activeTaskCard.style.display="block"
+    taskDivCards.classList.add("taskContainer")
 }
 dashBoard.addEventListener("click", dashboardHeader)
 
 function dashboardHeader(event) {
     event.preventDefault()
-    createForm.style.display = "block"
-    // activeTaskCard.classList.remove("taskcardsView")
     activeTaskCard.classList.add("dashboardView")
     taskheader.classList.remove("active")
     dashBoard.classList.add("active")
-    // taskheader.classList.add("active")
-    profile.classList.remove("active")
+    createForm.style.display = "block"
+    activeTaskCard.style.display="block"
     titleName.innerText = "Task Dashboard"
-    // dashboardEmptystate.style.display="flex"
-    // taskEmptytask.style.display="none"
     taskTitle.innerText = "No tasks yet 🚀"
     addTaskBtn.style.display = "flex"
-    formTask.style.display = "flex"
-}
-// //profile
-function profileFunction() {
-
-
-    formTask.style.display = "none"
-    profile.classList.add("active")
-    taskheader.classList.remove("active")
-    dashBoard.classList.remove("active")
-    // profile.classList.remove("active")
-
-    // activeTaskCard.classList.add("dashboardView")
-
+    taskDivCards.classList.add("parent-container")
+    taskDivCards.classList.remove("taskContainer")
 }
