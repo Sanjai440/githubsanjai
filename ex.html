@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+</head>
+
+<style>
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.profile-container {
+    width: 350px;
+}
+
+/* Card */
+.profile-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Avatar */
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #b1b3b5;
+}
+
+/* Details */
+.profile-details h2 {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-details .email {
+    color: #555;
+    margin: 5px 0;
+    /* font-size: 1px; */
+    /* font-weight: bold; */
+
+}
+
+/* UPDATED BIO */
+.profile-details .bio {
+    font-size: 14px;
+    color: #555;
+    margin-top: 18px;
+    font-weight: 500;
+}
+
+/* NEW CTA TEXT */
+.profile-details .cta {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #5a626b;
+    font-weight: bold;
+}
+</style>
+
+<body>
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-avatar">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyJhSGBSGQwf7PY-awAA8rAYl0RrhzGXxWOcmu8MdGQ&s" alt="Profile Picture">
+            </div>
+
+            <div class="profile-details">
+                <h2>E2 INFOSYSTEMS</h2>
+                <p class="email">admin@e2infosystems.com</p>
+
+                <p class="bio">Turning ideas into clean, scalable web solutions.</p>
+
+                <p class="cta">💼 Available for web development projects</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

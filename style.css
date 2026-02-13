@@ -506,10 +506,12 @@ textarea{
  footer{
     background-color: white;
     margin-top: 6%;
+    /* width: 350px; */
  }
  .foot-content{
     display:flex;
     justify-content: center;
+    /* width: 350px; */
  }
  .foot-content div{
     margin: 30px 7%;
@@ -796,7 +798,7 @@ textarea{
 }
 
 #taskEmptystate{
-    font-size: 20px;
+    font-size: 200px;
     position: relative;
     font-weight: 600;
     top: 200px;
@@ -858,6 +860,9 @@ textarea{
 }
 #delete-container h3{
     font-size: 22px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 #delete-container p{
     margin-top: 25px;
@@ -894,7 +899,7 @@ textarea{
 
 #dropdown{
     width:100px;
-    margin: 10px 20px;
+    margin: 18px 28px;
     padding: 0 20px;
     height: 1px;
 }
@@ -926,6 +931,60 @@ textarea{
 .taskContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* profile */
+
+#profile-container {
+    width: 350px;
+    /* height: 350px; */
+    margin: 40px auto;
+    padding-bottom: 70px;
+    display: none;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #b1b3b5;
+}
+
+.profile-details h2 {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #333;
+}
+.profile-details .email {
+    color: #555;
+    margin: 5px 0;
+    /* font-size: 1px; */
+    /* font-weight: bold; */
+
+}
+
+.profile-details .bio {
+    font-size: 14px;
+    color: #555;
+    margin-top: 18px;
+    font-weight: 500;
+}
+.profile-details .cta {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #5a626b;
+    font-weight: bold;
 }
 
 
@@ -1077,8 +1136,7 @@ textarea{
         margin-left: 10px;
     }
     #dropdownCount{
-        top: -39px;
-        left: 190px;
+        left: 160px;
     }
     .taskContainer{
         grid-template-columns: 1fr 1fr;
@@ -1269,10 +1327,14 @@ textarea{
        width: 8px;
    }
     
-
+/* 
+   footer{
+    width: 100vw;
+   } */
    .foot-content{
        display: block;
        text-align: center;
+       /* width: 350px; */
    }
    .foot-content div{
        padding-top: 17px;
@@ -1334,11 +1396,11 @@ textarea{
     .details-cards{
         display: grid;
         grid-template-columns: auto;
-        margin: 20px 7%;
+        margin: 20px 0%;
     }
-    .details-cards #task-type{
-        margin: 20px 0px;
-    }
+    /* .details-cards #task-type{
+        margin: 0px 0px;
+    } */
     .detailspopup-color{
         position: fixed;
         height: 100%;
@@ -1351,6 +1413,7 @@ textarea{
         overflow-y: visible;
         margin-bottom: 0;
     }
+
 
 
     #deletepopup-colors{
@@ -1374,10 +1437,12 @@ textarea{
     }
 
     #taskEmptystate{
-        margin: 0 30px;
+        margin: 0;
     }
+
     .empty-state{
-        margin: 0 110px;
+        margin: 0 80px;
+
     }
 
     /* drop down */
@@ -1387,4 +1452,18 @@ textarea{
         padding: 0 20px;
         margin-left: 10px;
     }
+    #dropdownCount{
+        left: 160px;
+    }
+
+    .countElement{
+        left: -8px;
+        /* position: fixed; */
+    }
+
+    #profile-container {
+        margin: 80px auto;
+    }
+
+
 }

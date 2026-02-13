@@ -1,9 +1,12 @@
 let formValidation = document.getElementById("form-validate")
 formValidation.addEventListener('submit', getIntput);
+
 // input field declaration 
 let userName, taskName, userEmail, dueDate, taskDescription, prioritySelect, radio, dueTime, estimateHours, projectUrl, checkBox, taskProgressValue, span, storedValues
 // error field declaration
 let errorName, errorTask, errorEmail, errorpriority, errorDescription, errorstatus, errorDate, errorTime, errorEstimatehour, errorUrl, errorCheckbox
+let isDateInitialized = false
+
 function getIntput(event) {
     event.preventDefault()
     userName = document.getElementById("username")
@@ -20,7 +23,7 @@ function getIntput(event) {
     checkBox.forEach(currentItem => {
         currentItem.addEventListener('change', function () {
             storedValues = [...checkBox].filter(box => box.checked).map(box => box.value)
-            if (storedValues.length==0) {
+            if (!storedValues) {
                 errorCheckbox.innerHTML = ""
             }
         })
@@ -37,6 +40,7 @@ function getIntput(event) {
     errorDescription = document.getElementById("errordescription")
     errorCheckbox = document.getElementById("errortask-type")
     errorstatus = document.getElementById("errorstatus")
+
     let isvalid = setValue()
     if (isvalid) {
         if (isDuplicateTask(taskName.value)) {
@@ -56,7 +60,9 @@ function getIntput(event) {
         formValidation.reset()
         EmptyState()
         showToast("Task added successfully", "success")
-        AllFilter()
+
+        triggerAllFilter()
+
     }
 }
 
@@ -75,17 +81,19 @@ function resetForm() {
         }
     })
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     dueDate = document.getElementById("dueDate")
     let todayDate = new Date().toISOString().split("T")[0]
     dueDate.min = todayDate
+    dueDate.max = todayDate
 })
 
 function setValue() {
-    let userNamePattern = /^[A-Za-z\s.]+$/
-    let taskNamePattern=/^[A-Za-z\s.]+$/
-    let gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
-    let urlPattern = /^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/\S*)?$/
+
+    let userNamePattern = /^[A-Za-z]+$/
+    let gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    // let taskNamePattern=/^[A-Za-z]$/
     let isvalid = true
     let scrollElement = null
     if (userName.value.trim() == "") {
@@ -97,7 +105,7 @@ function setValue() {
         isvalid = false
     }
     else if (!userNamePattern.test(userName.value)) {
-        errorName.innerHTML = `<div class="error-icon">!</div> Special characters and numbers are not allowed *`
+        errorName.innerHTML = `<div class="error-icon">!</div> Not allowed space,spacial character and then number*`
         userName.style.border = " 2px solid red "
         if (!scrollElement) {
             scrollElement = userName
@@ -105,7 +113,7 @@ function setValue() {
         isvalid = false
     }
     else if (userName.value.trim().length < 3) {
-        errorName.innerHTML = `<div class="error-icon">!</div>Enter your name more than 3 charater *`
+        errorName.innerHTML = `<div class="error-icon">!</div>Enter your name more than 3 charater`
         userName.style.border = " 2px solid red "
         if (!scrollElement) {
             scrollElement = userName
@@ -120,16 +128,13 @@ function setValue() {
         }
         isvalid = false
     }
-    else if(!taskNamePattern.test(taskName.value)){
-        errorTask.innerHTML=`<div class="error-icon">!</div> Special characters and numbers are not allowed *`
-        taskName.style.border = " 2px solid red "
-         if (!scrollElement) {
-            scrollElement = taskName
-        }
-        isvalid = false
-    }
+    // else if(!taskNamePattern.test(taskName.value)){
+    //     errorTask.innerHTML=`<div class="error-icon">!</div> Enter your Task Name *`
+    //     taskName.style.border = " 2px solid red "
+    //     newValid=false
+    // }
     else if (taskName.value.trim().length < 7) {
-        errorTask.innerHTML = `<div class="error-icon">!</div> Enter your task name more than 7 character*`
+        errorTask.innerHTML = `<div class="error-icon">!</div> Enter your task name mmore than 7 character*`
         taskName.style.border = " 2px solid red "
         if (!scrollElement) {
             scrollElement = taskName
@@ -160,29 +165,6 @@ function setValue() {
         }
         isvalid = false
     }
-    if (dueTime.value == "") {
-        errorTime.innerHTML = `<div class="error-icon">!</div>Set the time *`
-        dueTime.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = dueTime
-        }
-        isvalid = false
-    }
-    if (dueDate.value && dueTime.value) {
-        let now = new Date()
-        let selectedDate = new Date(dueDate.value)
-        if (selectedDate.toDateString() == now.toDateString()) {
-            let currentTime = now.toTimeString().slice(0, 5)
-            if (dueTime.value < currentTime) {
-                errorTime.innerHTML = `<div class="error-icon">!</div>Past time not allowed *`
-                dueTime.style.border = "2px solid red"
-                if (!scrollElement) {
-                    scrollElement = dueTime
-                }
-                isvalid = false
-            }
-        }
-    }
     if (prioritySelect.value == "") {
         errorpriority.style.display = "block"
         errorpriority.innerHTML = `<div class="error-icon">!</div>Select the Priority *`
@@ -191,44 +173,6 @@ function setValue() {
             scrollElement = prioritySelect
         }
         isvalid = false
-    }
-    if (estimateHours.value.trim() == "") {
-        errorEstimatehour.innerHTML = `<div class="error-icon">!</div>Enter the hours *`
-        estimateHours.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = estimateHours
-        }
-        isvalid = false
-    }
-    else if (Number(estimateHours.value.trim()) <= 0) {
-        errorEstimatehour.innerHTML = `<div class="error-icon">!</div> 0 not allowed, Enter valid hours *`
-        estimateHours.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = estimateHours
-        }
-        isvalid = false
-    }
-    let urlValue = projectUrl.value.trim()
-    if (urlValue == "") {
-        errorUrl.innerHTML = `<div class="error-icon">!</div> Enter the url *`
-        projectUrl.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = projectUrl
-        }
-        isvalid = false
-    }
-    else if (!urlPattern.test(urlValue)) {
-        errorUrl.innerHTML = `<div class="error-icon">!</div> Invalid URL format`
-        projectUrl.style.border = "2px solid red"
-        if (!scrollElement) {
-            scrollElement = projectUrl
-        }
-        isvalid = false
-    }
-    else {
-        if (!urlValue.startsWith("http://") && !urlValue.startsWith("https://")) {
-            projectUrl.value = "https://" + urlValue
-        }
     }
     if (taskDescription.value.trim() == "") {
         errorDescription.innerHTML = `<div class="error-icon">!</div>Write the description *`
@@ -246,27 +190,59 @@ function setValue() {
         }
         isvalid = false
     }
-    let anyChecked = [...checkBox].some(cb => cb.checked)
-    if (!anyChecked) {
-        errorCheckbox.innerHTML = `<div class="error-icon">!</div>Select the task type *`
-        if (!scrollElement) {
-            scrollElement = anyChecked
-        }
-        isvalid = false
-    }
-     if (!radio) {
+    if (!radio) {
         errorstatus.innerHTML = `<div class="error-icon">!</div>Select the status *`
         if (!scrollElement) {
             scrollElement = radio
         }
         isvalid = false
     }
+    if (dueTime.value == "") {
+        errorTime.innerHTML = `<div class="error-icon">!</div>Set the time *`
+        dueTime.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = dueTime
+        }
+        isvalid = false
+    }
+    if (estimateHours.value == "") {
+        errorEstimatehour.innerHTML = `<div class="error-icon">!</div>Enter the hours *`
+        estimateHours.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = estimateHours
+        }
+        isvalid = false
+    }
+    if (projectUrl.value == "") {
+        errorUrl.innerHTML = `<div class="error-icon">!</div>Enter the url *`
+        projectUrl.style.border = "2px solid red"
+        if (!scrollElement) {
+            scrollElement = projectUrl
+        }
+        isvalid = false
+    }
+    let urlValue = projectUrl.value.trim()
+    if (urlValue) {
+        if (!urlValue.startsWith("http://") && !urlValue.startsWith("https://")) {
+            projectUrl.value = "https://" + urlValue
+        }
+    }
+    let anyChecked = [...checkBox].some(cb => cb.checked)
+    if (!anyChecked) {
+        errorCheckbox.innerHTML = `<div class="error-icon">!</div>Select the task type *`
+        if (!scrollElement) {
+            scrollElement = userName
+        }
+        isvalid = false
+    }
+
     if (scrollElement) {
         scrollElement.scrollIntoView({
             behavior: "smooth",
             block: "center"
         })
         scrollElement.focus()
+
     }
 
     let newArr = ["username", "taskname", "email", "dueDate", "time", "priority", "estimatehour", "url", "description", "status", "task-type"]
@@ -310,6 +286,7 @@ function createDiv(id) {
     newDiv.dataset.id = id
     let selectedValue = prioritySelect.value
     newDiv.dataset.priority = selectedValue
+
     let priorityClass = ""
     let FieldClass = ""
     if (selectedValue == "low") {
@@ -393,7 +370,7 @@ function setLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks))
 }
 window.addEventListener("DOMContentLoaded", function () {
-    let tasks = JSON.parse(localStorage.getItem("task")) ||[]
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
     tasks.forEach(item => {
         userName = { value: item.username }
         taskName = { value: item.taskname }
@@ -411,7 +388,9 @@ window.addEventListener("DOMContentLoaded", function () {
     EmptyState()
 })
 
+
 //Edit Cards
+
 let editUsername = document.getElementById("editusername")
 let editTaskname = document.getElementById("edittaskname")
 let editEmail = document.getElementById("editemail")
@@ -442,12 +421,15 @@ function editButtonClick(event) {
         editingId = Number(card.dataset.id)
         let tasks = JSON.parse(localStorage.getItem("task"))
         let task = tasks.find(t => t.id == editingId)
+
         let todayDate = new Date().toISOString().split("T")[0]
         editDuedate.min = todayDate
+        editDuedate.max = todayDate
         editDuedate.value = todayDate
         editUsername.value = task.username
         editTaskname.value = task.taskname
         editEmail.value = task.useremail
+        // editDuedate.value=task.duedate
         editTime.value = task.duetime
         editPriority.value = task.priorityselect
         editEstimatehour.value = task.estimatehours
@@ -460,7 +442,7 @@ function editButtonClick(event) {
             editPercentage.innerText = `${this.value}%`
         })
         editTasktype.forEach(cb => {
-            cb.checked = task.checkbox.includes(cb.value)
+            cb.checked = task.checkbox.includes(cb.value);
         })
         editStatusRadios.forEach(radio => {
             radio.checked = (radio.value == task.radioValue)
@@ -469,6 +451,7 @@ function editButtonClick(event) {
         color.style.display = "block"
     }
 }
+
 btnadd.addEventListener("click", editButtonAdd)
 
 let editErrorname = document.getElementById("erroreditusername")
@@ -482,157 +465,116 @@ let editErrorTime=document.getElementById("erroreditTime")
 
 function editButtonAdd(event) {
     event.stopPropagation()
+
     if (editingId == null) return
     let tasks = JSON.parse(localStorage.getItem("task"))
-    let edituserNamePattern = /^[A-Za-z\s]+$/
-    let edittaskNamepattern= /^[A-Za-z\s]+$/
+
+    let edituserNamePattern = /^[A-Za-z]+$/
+
     let editgmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
-    let editurlPattern = /^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/\S*)?$/;
     let editCheckbox = Array.from(editTasktype).some(element => element.checked)
     let editValue = true
+
     let firstInvalidField = null
     if (editUsername.value.trim() == "") {
         editErrorname.innerHTML = `<div class="editerror-icon">!</div> Enter your name *`
         if (!firstInvalidField) {
-            firstInvalidField = editUsername
+            firstInvalidField = editErrorname
         }
         editValue = false
     }
     else if(editUsername.value.trim().length<3){
         editErrorname.innerHTML=`<div class="editerror-icon">!</div> Enter your name more than 3 character *`
          if (!firstInvalidField) {
-            firstInvalidField = editUsername
+            firstInvalidField = editErrorname
         }
         editValue = false
     }
     else if(!edituserNamePattern.test(editUsername.value)){
-        editErrorname.innerHTML=`<div class="editerror-icon">!</div> Special characters and numbers are not allowed *`
+        editErrorname.innerHTML=`<div class="editerror-icon">!</div> Not allowed number ,special character,and space *`
         if(!firstInvalidField) {
-            firstInvalidField = editUsername
+            firstInvalidField = editErrorname
         }
         editValue = false
     }
     if (editTaskname.value.trim() == "") {
         editErrorTaskname.innerHTML = `<div class="editerror-icon">!</div> Enter your task name *`
         if (!firstInvalidField) {
-            firstInvalidField = editTaskname
+            firstInvalidField = editErrorTaskname
         }
         editValue = false
-    }
-    else if(!edittaskNamepattern.test(editTaskname.value)){
-        editErrorTaskname.innerHTML = `<div class="editerror-icon">!</div> Special characters and numbers are not allowed *`
-        if (!firstInvalidField) {
-            firstInvalidField = editTaskname
-        }
-        editValue = false
-
     }
     else if(editTaskname.value.trim().length<7){
         editErrorTaskname.innerHTML=`<div class="editerror-icon">!</div> Enter your task name more than 7 character *`
         if (!firstInvalidField) {
-            firstInvalidField = editTaskname
+            firstInvalidField = editErrorTaskname
         }
         editValue = false
     }
     if (editEmail.value.trim() == "") {
         editErroremail.innerHTML = `<div class="editerror-icon">!</div> Enter your email`
         if (!firstInvalidField) {
-            firstInvalidField = editEmail
+            firstInvalidField = editErroremail
         }
         editValue = false
     }
     else if (!editgmailPattern.test(editEmail.value)) {
         editErroremail.innerHTML = `<div class="editerror-icon">!</div> Invalid email`
         if (!firstInvalidField) {
-            firstInvalidField = editEmail
+            firstInvalidField = editErroremail
         }
         editValue = false
     }
     if(editTime.value==""){
         editErrorTime.innerHTML=`<div class="editerror-icon">!</div> Set the time`
          if (!firstInvalidField) {
-            firstInvalidField = editTime
+            firstInvalidField = editErrorTime
         }
         editValue=false
     }
-    let selectedDateTime = new Date(editDuedate.value + "T" + editTime.value)
-    let currentDateTime = new Date()
-    if (selectedDateTime <= currentDateTime) {
-        editErrorTime.innerHTML = `<div class="editerror-icon">!</div> Past time not allowed`
-        if (!firstInvalidField) {
-            firstInvalidField = editTime
-        }
-        editValue = false
-    }
-
-    let editHoursValue = editEstimatehour.value.trim()
-    if (editHoursValue == "") {
+    if (editEstimatehour.value.trim() == "") {
         editErrorestimatehour.innerHTML = `<div class="editerror-icon">!</div> Enter the estimate hour`
-        editEstimatehour.style.border = "2px solid red"
         if (!firstInvalidField) {
-            firstInvalidField = editEstimatehour
-        }
-        editValue = false;
-    } 
-    else if (Number(editHoursValue) <= 0) {
-        editErrorestimatehour.innerHTML = `<div class="editerror-icon">!</div> 0 not allowed, Enter valid hours`
-        editEstimatehour.style.border = "2px solid red"
-        if (!firstInvalidField) {
-            firstInvalidField = editEstimatehour
-        }
-        editValue = false;
-    } 
-    let editUrlValues = editUrl.value.trim()
-    if (editUrlValues == "") {
-        editErrorurl.innerHTML = `<div class="editerror-icon">!</div> Enter Url`
-        editUrl.style.border = "2px solid red"
-        if (!firstInvalidField) {
-            firstInvalidField = editUrl
+            firstInvalidField = editErrorestimatehour
         }
         editValue = false
-    } 
-    else if (!editurlPattern.test(editUrlValues)) {
-        editErrorurl.innerHTML = `<div class="editerror-icon">!</div> Invalid URL format`
-        editUrl.style.border = "2px solid red"
-        if (!firstInvalidField) {
-            firstInvalidField = editUrl
-        }
-        editValue = false
-    } 
-    else {
-        if (!editUrlValues.startsWith("http://") && !editUrlValues.startsWith("https://")) {
-            editUrl.value = "https://" + editUrlValues
-        }
     }
-
+    if (editUrl.value.trim() == "") {
+        editErrorurl.innerHTML = `<div class="editerror-icon">!</div> Enter Url`
+        if (!firstInvalidField) {
+            firstInvalidField = editErrorurl
+        } editValue = false
+    }
     if (editDescription.value.trim() == "") {
         editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description`
         if (!firstInvalidField) {
-            firstInvalidField = editDescription
+            firstInvalidField = editErrordescription
         }
         editValue = false
     }
     else if (editDescription.value.trim().length < 25) {
         editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description more than 25 character`
         if (!firstInvalidField) {
-            firstInvalidField = editDescription
+            firstInvalidField = editErrordescription
         }
         editValue = false
     }
     if (!editCheckbox) {
         editErrorcheckbox.innerHTML = `<div class="editerror-icon">!</div> Select the tasktype`
         if (!firstInvalidField) {
-            firstInvalidField = editCheckbox
+            firstInvalidField = editErrorcheckbox
         }
         editValue = false
     }
     if (isDuplicateTask(editTaskname.value, editingId)) {
         editErrorTaskname.innerHTML = `<div class="error-icon">!</div> Task name already exists`
         if (!firstInvalidField) {
-            firstInvalidField = editTaskname
+            firstInvalidField = editErrorTaskname
         }
         editValue=false
+
     }
+
     if (firstInvalidField) {
         firstInvalidField.scrollIntoView({ 
             behavior: "smooth",
@@ -640,8 +582,16 @@ function editButtonAdd(event) {
             })
         firstInvalidField.focus()
     }
+
+    let editUrlValue = editUrl.value.trim();
+    if (editUrlValue) {
+        if (!editUrlValue.startsWith("http://") && !editUrlValue.startsWith("https://")) {
+            editUrl.value = "https://" + editUrlValue;
+        }
+    }
+
     if (editValue) {
-        let updatedCheckbox = Array.from(document.querySelectorAll('input[name="editTaskType"]:checked')).map(cb => cb.value)
+        let updatedCheckbox = Array.from(document.querySelectorAll('input[name="editTaskType"]:checked')).map(cb => cb.value);
         let selectedEditStatus = document.querySelector('input[name="editstatus"]:checked')?.value || ""
         let updatedTask = {
             username: editUsername.value,
@@ -651,7 +601,7 @@ function editButtonAdd(event) {
             duetime: editTime.value,
             priorityselect: editPriority.value,
             estimatehours: editEstimatehour.value,
-            projecturl: editUrl.value,
+            projecturl: editUrlValue,
             progress: Number(editprogress.value) || 0,
             description: editDescription.value,
             checkbox: updatedCheckbox,
@@ -683,9 +633,12 @@ editTasktype.forEach(cb => {
     })
 })
 
+
+
 function updateDivCard(task, id) {
     let card = document.querySelector(`.child-container[data-id="${id}"]`)
     if (!card) return
+
     card.dataset.priority = task.priorityselect
     card.dataset.status = task.radioValue
     let formattedDueDate = ""
@@ -792,12 +745,15 @@ function deleteDiv() {
     showToast(`"${changeLine.innerText}" deleted`, "delete")
 }
 cancelBtn.addEventListener("click", deleteCancelButton)
+
 function deleteCancelButton() {
     deleteContainer.style.display = "none"
     deletePopColor.style.display = "none"
 }
 
+
 //Filter Cards
+
 let selectedPrioritys = "all"
 let selectedStatus = "all"
 let filtertask = document.querySelectorAll(".taskfilter")
@@ -811,7 +767,7 @@ function filterTaskCards(event) {
     let link = event.currentTarget
     selectedPrioritys = link.dataset.filter
     bothFilters()
-    updateDropdowncount()
+    updateStatusDropdownCount()
     updateEmptyState()
     filtertask.forEach(element => {
         element.classList.remove("active")
@@ -821,37 +777,21 @@ function filterTaskCards(event) {
         }
     })
     link.classList.add("active")
-    let count = 0
-    let cards = document.querySelectorAll(".child-container")
-    cards.forEach(card => {
-        let priority = card.dataset.priority
-        let status = card.dataset.status
-
-        if (selectedStatus == "all" && status == "completed"){
-            return
-        } 
-        if (selectedStatus != "all" && status != selectedStatus){
-             return
-         }
-
-         if (selectedPrioritys == "all" || priority == selectedPrioritys) {
-             count++
-         }
-    })
-         let countSpan = link.nextElementSibling
-         if (countSpan) {
-             countSpan.innerText = count
-             countSpan.style.display = "inline-block"
-         }
-
+    let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
+    let countSpan = link.nextElementSibling
+    if (countSpan) {
+        countSpan.innerText = visibleCards
+        countSpan.style.display = "inline-block"
+    }
 }
 
-function AllFilter() {
+function triggerAllFilter() {
     let allFilterBtn = document.querySelector('.taskfilter[data-filter="all"]')
     if (allFilterBtn) {
         allFilterBtn.click()
     }
 }
+
 function PriorityFilter() {
     let activeFilter = document.querySelector(".taskfilter.active")
     if (activeFilter) {
@@ -860,25 +800,23 @@ function PriorityFilter() {
 }
 
 let statusDropdown = document.getElementById("statusdropdown")
+
 let statusCount = document.getElementById("dropdownCount")
 statusDropdown.addEventListener("change", statusFilter)
 function statusFilter() {
     selectedStatus = statusDropdown.value || "all"
+    let cards = document.querySelectorAll(".child-container")
     bothFilters()
     updateEmptyState()
     let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
     statusCount.innerText = visibleCards
-    if(visibleCards){
-        statusCount.style.display = "inline-block"
-    } 
-    else {
-         statusCount.style.display = "none"
-    }    
+    statusCount.style.display = visibleCards ? "inline-block" : "none"
 }
+
+
 
 function bothFilters() {
     let cards = document.querySelectorAll(".child-container")
-        let visibleCount = 0
 
     cards.forEach(card => {
         let cardPriority = card.dataset.priority
@@ -893,6 +831,7 @@ function bothFilters() {
         else {
             priorityMatch = false
         }
+
         let statusMatch
         if (selectedStatus == "all") {
             statusMatch = cardStatus != "completed"
@@ -905,16 +844,13 @@ function bothFilters() {
         }
         if (priorityMatch && statusMatch) {
             card.style.display = "block"
-            visibleCount++
-
         } else {
             card.style.display = "none"
         }
     })
-        updateCountsUI(visibleCount)
 }
 
-function updateDropdowncount() {
+function updateStatusDropdownCount() {
     let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
     statusCount.innerText = visibleCards
     if (visibleCards) {
@@ -923,27 +859,6 @@ function updateDropdowncount() {
     else {
         statusCount.style.display = "none"
     }
-}
-
-function updateCountsUI(count) {
-    let activeFilter = document.querySelector(".taskfilter.active")
-    let countSpan = activeFilter?.nextElementSibling
-    if (countSpan) {
-        countSpan.innerText = count
-        if (count > 0) {
-            countSpan.style.display = "inline-block"
-        } 
-        else {
-            countSpan.style.display = "none"
-        }
-   }
-    statusCount.innerText = count
-    if (count > 0) {
-        statusCount.style.display = "inline-block"
-    } else {
-        statusCount.style.display = "none"
-    }
-
 }
 
 
@@ -967,7 +882,7 @@ function clickPopup(event) {
     }
 }
 function showPopup(id) {
-    let tasks = JSON.parse(localStorage.getItem("task"))
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
     let task = tasks.find(t => t.id == id)
     if (!task) return
     let firstClassRadio = ""
@@ -985,17 +900,32 @@ function showPopup(id) {
         secondClassRadio = "completed-field"
     }
     let progressValue = task.progress ?? 0
+
+    // let finaldate
+    // if(task.dueDate){
+
     
+    let date=new Date(task.dueDate)
+    // console.log(date);
+    
+    let getdate=date.getDate()
+    let getmonth=date.getMonth()+1
+    let getyear=date.getFullYear()
+    let finaldate=`${getdate}-${getmonth}-${getyear}`
+    
+
+
     childpopup.innerHTML = ` <i class="fa-solid fa-x" id="Popup"></i>
                         <!-- <i class="fa-regular fa-pen-to-square " id="add"></i> -->
                         <!-- <button class="add" type="button">Edit</button> -->
                         <!-- <button class="delete" type="button">Delete</button> -->
                         <h3 id="headname" class="headname">${task.taskname}</h3>
                     <div id="details-container" class="value">
+
                         <p class="p">${task.description}</p>
                       <div class="details-cards">
                         <p><strong>📥Email :</strong> ${task.useremail}</p>
-                        <p class="due-date"><strong>🗓️Due Date :</strong> ${task.duedate}</p>
+                        <p class="due-date"><strong>🗓️Due Date :</strong> ${finaldate}</p>
                         <p class="user"><strong>👤User Name :</strong> ${task.username}</p>
                         <p><strong>⏱️Due Time :</strong> ${task.duetime}</p>
                         <p><strong>⏳Esatimate Hours : </strong>${task.estimatehours}</p>
@@ -1026,6 +956,8 @@ function popUpClose(event) {
         event.stopPropagation()
         popupcolor.style.display = "none"
         childpopup.style.display = "none"
+        console.log("hiii");
+        
     }
 }
 
@@ -1041,49 +973,51 @@ function emptyButton() {
     document.getElementById("username").focus()
 }
 function EmptyState() {
-    let tasks = JSON.parse(localStorage.getItem("task"))
-    let emptyState = document.getElementById("emptyState")
-
-    if(tasks.length == 0) {
-        emptyState.style.display = "flex"
-    } 
-    else {
-        emptyState.style.display = "none"
-    }
- 
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
+    document.getElementById("emptyState").style.display = tasks.length == 0 ? "flex" : "none";
 }
 
 
 function updateEmptyState() {
     let cards = document.querySelectorAll(".child-container")
     let emptyState = document.getElementById("emptyState")
+
     let visibleCount = 0
     cards.forEach(card => {
-        if(card.style.display != "none") {
+        if (card.style.display != "none") {
             visibleCount++
         }
     })
-    if(visibleCount == 0) {
+
+    if (visibleCount == 0) {
         emptyState.style.display = "flex"
         if (selectedPrioritys && selectedPrioritys != "all") {
             addTaskBtn.style.display = "none"
         }
-    } 
-    else {
+        // else {
+        //   addTaskBtn.innerText = "Create your tasks"
+        // }
+    } else {
         emptyState.style.display = "none"
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
     updateEmptyState()
+})
+
 
 function isDuplicateTask(taskName, currentTaskId = null) {
-    let tasks = JSON.parse(localStorage.getItem("task")) ||[]
+    let tasks = JSON.parse(localStorage.getItem("task")) || []
     return tasks.some(task => {
         if (currentTaskId != null && task.id == currentTaskId) {
             return false
         }
-        return task.taskname.trim().toLowerCase() == taskName.trim().toLowerCase()
+        return task.taskname.trim().toLowerCase() == taskName.trim().toLowerCase();
     })
 }
+
 
 function showToast(message, type = "success") {
     let toast = document.getElementById("submitToast")
@@ -1095,6 +1029,7 @@ function showToast(message, type = "success") {
     }, 3000)
 }
 
+
 let footAnchor = document.querySelectorAll(".footer-anchor")
 let foot = document.getElementById("footer")
 footAnchor.forEach(element => {
@@ -1102,13 +1037,12 @@ footAnchor.forEach(element => {
         event.preventDefault()
     })
 })
-
 let barIcon = document.getElementById("bar-icon")
 let menu = document.querySelector(".ul-element")
-barIcon.addEventListener("click", menuBar)
-function menuBar() {
+barIcon.addEventListener("click", function () {
     menu.classList.toggle("active")
-    if(menu.classList.contains("active")) {
+
+    if (menu.classList.contains("active")) {
         barIcon.classList.remove("fa-bars")
         barIcon.classList.add("fa-xmark")
     }
@@ -1117,7 +1051,7 @@ function menuBar() {
         barIcon.classList.add("fa-bars")
 
     }
-}
+})
 
 let taskheader = document.getElementById("tasksheader")
 let dashBoard = document.getElementById("dashboard")
@@ -1131,10 +1065,12 @@ let taskDivCards=document.getElementById("taskCards")
 taskheader.addEventListener('click', taskHeader)
 
 //profile
-let profile = document.getElementById("profile")
-let formTask = document.getElementById("form-task")
-let profileContainer=document.getElementById("profile-container")
-profile.addEventListener('click', profileFunction)
+
+// let profile = document.getElementById("profile")
+// let formTask = document.getElementById("form-task")
+// profile.addEventListener('click', profileFunction)
+
+
 function taskHeader(event) {
     event.preventDefault()
     createForm.style.display = "none"
@@ -1142,23 +1078,33 @@ function taskHeader(event) {
     activeTaskCard.classList.add("taskcardsView")
     dashBoard.classList.remove("active")
     taskheader.classList.add("active")
-    profile.classList.remove("active")
+    // taskheader.classList.add("active")
+    // profile.classList.remove("active")
     titleName.innerText = "Task Cards"
     titleName.classList.add("taskSpan")
-    taskTitle.innerText = "Open the Dashboard to create a new task"
+    // taskEmptytask.style.display="block"
+    // dashboardEmptystate.style.display="none"
+    taskTitle.innerText = "Click your Dashboard and then Create Your Task"
     addTaskBtn.style.display = "none"
+    // formTask.style.display = "block"
+    // taskDivCards.style.display="block"
     activeTaskCard.style.display="block"
     taskDivCards.classList.add("taskContainer")
-    profileContainer.style.display="none"
+    // taskDivCards.style.display="none"
+
+
 }
 dashBoard.addEventListener("click", dashboardHeader)
 
 function dashboardHeader(event) {
     event.preventDefault()
+    // createForm.style.display = "block"
+    // activeTaskCard.classList.remove("taskcardsView")
     activeTaskCard.classList.add("dashboardView")
     taskheader.classList.remove("active")
     dashBoard.classList.add("active")
-    profile.classList.remove("active")
+    // taskheader.classList.add("active")
+    // profile.classList.remove("active")
     createForm.style.display = "block"
     activeTaskCard.style.display="block"
     titleName.innerText = "Task Dashboard"
@@ -1166,16 +1112,17 @@ function dashboardHeader(event) {
     addTaskBtn.style.display = "flex"
     taskDivCards.classList.add("parent-container")
     taskDivCards.classList.remove("taskContainer")
-    profileContainer.style.display="none"
+    // taskDivCards.style.display="none"
+    // formTask.style.display = "flex"
 }
-// profile
-function profileFunction() {
-    profile.classList.add("active")
-    taskheader.classList.remove("active")
-    dashBoard.classList.remove("active")
-    activeTaskCard.style.display="none"
-    createForm.style.display="none"
-    titleName.innerText="Profile"
-    profileContainer.style.display="block"
+// //profile
+// function profileFunction() {
+//     profile.classList.add("active")
+//     taskheader.classList.remove("active")
+//     dashBoard.classList.remove("active")
+//     activeTaskCard.style.display="none"
+//     createForm.style.display="none"
+//     titleName.innerText="Profile"
     
-}
+
+// }
