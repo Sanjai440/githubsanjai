@@ -375,7 +375,7 @@ function setLocalStorage() {
     localStorage.setItem("task", JSON.stringify(tasks))
 }
 window.addEventListener("DOMContentLoaded", function () {
-    let tasks = JSON.parse(localStorage.getItem("task")) 
+    let tasks = JSON.parse(localStorage.getItem("task")) ||[]
     tasks.forEach(item => {
         userName = { value: item.username }
         taskName = { value: item.taskname }
@@ -986,7 +986,7 @@ function updateEmptyState() {
     updateEmptyState()
 
 function isDuplicateTask(taskName, currentTaskId = null) {
-    let tasks = JSON.parse(localStorage.getItem("task")) 
+    let tasks = JSON.parse(localStorage.getItem("task")) ||[]
     return tasks.some(task => {
         if (currentTaskId != null && task.id == currentTaskId) {
             return false
