@@ -20,9 +20,9 @@ function getIntput(event) {
     checkBox.forEach(currentItem => {
         currentItem.addEventListener('change', function () {
             storedValues = [...checkBox].filter(box => box.checked).map(box => box.value)
-            if (storedValues.length==0) {
-                errorCheckbox.innerHTML = ""
-            }
+            // if (storedValues.length==0) {
+            //     errorCheckbox.innerHTML = ""
+            // }
         })
     })
     radio = document.querySelector(`input[name="status"]:checked`)
@@ -457,7 +457,7 @@ function editButtonClick(event) {
         editprogress.value = progressValue
         editPercentage.innerText = `${progressValue}%`
         editprogress.addEventListener("input", function () {
-            editPercentage.innerText = `${this.value}%`
+            editPercentage.innerText = `${editprogress.value}%`
         })
         editTasktype.forEach(cb => {
             cb.checked = task.checkbox.includes(cb.value)
@@ -604,7 +604,6 @@ function editButtonAdd(event) {
             editUrl.value = "https://" + editUrlValues
         }
     }
-
     if (editDescription.value.trim() == "") {
         editErrordescription.innerHTML = `<div class="editerror-icon">!</div> Write the description`
         if (!firstInvalidField) {
@@ -744,7 +743,7 @@ function updateDivCard(task, id) {
                 <span>${newRadioValue}</span>
             </div>
         </div>`
-    PriorityFilter()
+    // PriorityFilter()
 }
 btncancel.addEventListener("click", editCancelButton)
 function editCancelButton(event) {
@@ -784,7 +783,7 @@ function deleteDiv() {
     tasks.splice(index, 1)
     localStorage.setItem("task", JSON.stringify(tasks))
     deleteCard.remove()
-    PriorityFilter()
+    // PriorityFilter()
     statusFilter()
     updateEmptyState()
     deleteContainer.style.display = "none"
@@ -811,13 +810,13 @@ function filterTaskCards(event) {
     let link = event.currentTarget
     selectedPrioritys = link.dataset.filter
     bothFilters()
-    updateDropdowncount()
     updateEmptyState()
     filtertask.forEach(element => {
         element.classList.remove("active")
         let countSpan = element.nextElementSibling
         if (countSpan && countSpan.classList.contains("countElement")) {
             countSpan.style.display = "none"
+            countSpan.innerText=" "
         }
     })
     link.classList.add("active")
@@ -840,9 +839,17 @@ function filterTaskCards(event) {
     })
          let countSpan = link.nextElementSibling
          if (countSpan) {
-             countSpan.innerText = count
-             countSpan.style.display = "inline-block"
-         }
+            if(count>0){
+                countSpan.innerText = count
+                countSpan.style.display = "inline-block"
+
+            }
+         
+         else {
+             countSpan.innerText = ""
+             countSpan.style.display = "none"
+        }
+    }
 
 }
 
@@ -852,12 +859,12 @@ function AllFilter() {
         allFilterBtn.click()
     }
 }
-function PriorityFilter() {
-    let activeFilter = document.querySelector(".taskfilter.active")
-    if (activeFilter) {
-        activeFilter.click()
-    }
-}
+// function PriorityFilter() {
+//     let activeFilter = document.querySelector(".taskfilter.active")
+//     if (activeFilter) {
+//         activeFilter.click()
+//     }
+// }
 
 let statusDropdown = document.getElementById("statusdropdown")
 let statusCount = document.getElementById("dropdownCount")
@@ -866,14 +873,8 @@ function statusFilter() {
     selectedStatus = statusDropdown.value || "all"
     bothFilters()
     updateEmptyState()
-    let visibleCards = document.querySelectorAll('.child-container:not([style*="none"])').length
-    statusCount.innerText = visibleCards
-    if(visibleCards){
-        statusCount.style.display = "inline-block"
-    } 
-    else {
-         statusCount.style.display = "none"
-    }    
+    updateDropdowncount()
+     
 }
 
 function bothFilters() {
@@ -927,7 +928,7 @@ function updateDropdowncount() {
 
 function updateCountsUI(count) {
     let activeFilter = document.querySelector(".taskfilter.active")
-    let countSpan = activeFilter?.nextElementSibling
+    let countSpan = activeFilter.nextElementSibling
     if (countSpan) {
         countSpan.innerText = count
         if (count > 0) {
@@ -994,15 +995,16 @@ function showPopup(id) {
                     <div id="details-container" class="value">
                         <p class="p">${task.description}</p>
                       <div class="details-cards">
-                        <p><strong>📥Email :</strong> ${task.useremail}</p>
-                        <p class="due-date"><strong>🗓️Due Date :</strong> ${task.duedate}</p>
-                        <p class="user"><strong>👤User Name :</strong> ${task.username}</p>
-                        <p><strong>⏱️Due Time :</strong> ${task.duetime}</p>
-                        <p><strong>⏳Esatimate Hours : </strong>${task.estimatehours}</p>
-                        <!-- <p>Progress : ${progressValue}</p> -->
-                         <p><strong>🔗Project Url : </strong>  <a href="${task.projecturl}" target="_blank"   id="urlHref">View Link</a></p>
-                         <p ><strong>📈Progress :</strong> ${progressValue}%</p>
-                         <p id="task-type"><strong>📰Task Type : </strong>${task.checkbox}</p>
+                        <div class="details-cards">
+                        <div>User Name</div><div>:</div><div class="content">${task.username}</div>
+                          <div>Email</div><div>:</div><div class="content">${task.useremail}</div>
+                          <div>Due Date</div><div>:</div><div class="content">${task.duedate}</div>
+                          <div>Due Time</div><div>:</div><div class="content">${task.duetime}</div>
+                          <div>Esatimate Hours</div><div>:</div><div class="content">${task.estimatehours}</div>
+                          <div>Project Url</div><div>:</div><div class="content"> ${task.projecturl}</div>
+                          <div>Task Type</div><div>:</div><div class="content">${task.checkbox}</div>
+                          <div>Progress</div><div>:</div><div class="content">${task.progress}</div>
+                        </div>
                        </div>
                     </div>
                     <div id="border-color"></div>
@@ -1143,7 +1145,7 @@ function taskHeader(event) {
     dashBoard.classList.remove("active")
     taskheader.classList.add("active")
     profile.classList.remove("active")
-    titleName.innerText = "Task Cards"
+    titleName.innerText = "Tasks"
     titleName.classList.add("taskSpan")
     taskTitle.innerText = "Open the Dashboard to create a new task"
     addTaskBtn.style.display = "none"

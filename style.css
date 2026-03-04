@@ -200,7 +200,10 @@ textarea{
 }
 .check-box input[type="radio"],input[type="checkbox"]{
     width: 17px;
-    height: 15px;
+    height: 16px;
+    /* margin-top: 2px; */
+    position: relative;
+    top: 1px;
     cursor: pointer;
     accent-color: rgb(71, 71, 202);
 }
@@ -510,11 +513,12 @@ textarea{
  }
  .foot-content{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
+
     /* width: 350px; */
  }
  .foot-content div{
-    margin: 30px 7%;
+    margin: 2% 7%;
  }
  .foot-content ul{
     margin-top: 10px;
@@ -591,7 +595,8 @@ textarea{
     margin: 2px 15px;
     display: block;
     padding-right: 2px;
-    font-size: 17px;
+    font-size: 20px;
+    text-align: center;
 }
 .side form{
     margin-top: 12px;
@@ -683,15 +688,17 @@ textarea{
     height: 100%;
     opacity: 0.5;
     display: none;
-    top: 0;
+    top:0;
 }
 .details-popup{
     position:fixed ;
     /* top: 20%; */
     display: flex;
     justify-content: center;
-    margin: 1rem 25%;
+    margin: 0 25%;
      width: 50%;
+     /* height: 100%; */
+     top: 8%;
     z-index: 2;
 }
 .popup-container{
@@ -736,8 +743,12 @@ textarea{
 }
 #details-container{
     overflow-y: auto;
-    height: 280px;
+    height: 440px;
     margin-bottom: 10px;
+    /* text-align: center; */
+    /* display: flex; */
+    /* display: grid;
+    grid-template-columns: 1fr auto auto; */
 }
 
 #Popup{
@@ -746,8 +757,18 @@ textarea{
 
 .details-cards{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 150px 20px auto;
     border-width: 10%;
+    justify-content: center;
+    /* text-align: center; */
+}
+.details-cards div{
+    font-size: 20px;
+    margin: 10px 0;
+
+}
+.details-cards .content{
+    color: rgb(75, 70, 70);
 }
 
 #border-color{
@@ -777,7 +798,8 @@ textarea{
   justify-content: center;
   color: #777;
   position: absolute;
-  margin: 0 40%;
+  /* margin: 0 0%; */
+  left: 40%;
   top:200px;
 }
 .empty-state p{
@@ -899,26 +921,28 @@ textarea{
 
 #dropdown{
     width:100px;
-    margin: 18px 28px;
+    margin: 10px 30px;
     padding: 0 20px;
     height: 1px;
 }
 
 #dropdown select{
-    padding: 1px;
-    border: none;
-    outline: none;
-    font-size: 22px;
-    border-radius: 10px;
-    width: 180px;
+    padding: 5px 1px;
+    /* border: none; */
+    /* outline: none; */
+    font-size: 18px;
+    border-radius: 28px;
+    /* border-color: black; */
+    
+    width: 155px;
     font-weight: bold;
     margin-top: 25px;
     margin-left: -15px;
 }
 #dropdownCount{
     position: relative;
-    top: -35px;
-    left: 165px;
+    top: -45px;
+    left: 137px;
     color: red;
     font-weight: bold;
 }
@@ -989,7 +1013,7 @@ textarea{
 
 
  /* Tablet view */
- @media screen and (max-width:1150px) {
+ @media screen and (max-width:1024px) {
      header{
         height: 75px;
      }
@@ -1051,14 +1075,27 @@ textarea{
         font-size: 18px;
     }
     #btn{
-        margin-left: 2px;
-        width: 99%;
+        /* margin-left: 2px; */
+        display: block;
+        text-align: center;
+        /* justify-content: center; */
+        /* height: 20px; */
+        /* width: 30%; */
+        
+        /* width: 99%; */
+        /* margin: 0; */
+
     }
     #btn1{
-        padding: 5%;
+        width: 30%;
+        padding: 4% 0;
+        font-size: 16px;
     }
     #btn2{
-        padding: 3.8%;
+        width: 30%;
+        padding: 3.2% 0;
+        /* height: 10; */
+        top: 8px;
     }
 
     .right{
@@ -1069,7 +1106,7 @@ textarea{
         height: 100%;
     }
     .header-field nav{
-        margin-right: 10px;
+        margin-right: 20px;
     }
     .header-field ul{
         margin: 0 0;
@@ -1085,11 +1122,17 @@ textarea{
         margin: 1%;
     }
 
+    .foot-content{
+        display: block;
+        text-align: center;
+
+    }
     .foot-content div{
-        margin: 40px 5%;
+        padding-top: 20px;
+        /* margin: 40px 5%; */
     }
     #bottom{
-        width: 90vw;
+        /* width: 90vw; */
     }
 
      .editpopup{
@@ -1133,10 +1176,10 @@ textarea{
         font-size: 25px;
     }
     #dropdown{
-        margin-left: 10px;
+        margin-left: 20px;
     }
     #dropdownCount{
-        left: 160px;
+        left: 138px;
     }
     .taskContainer{
         grid-template-columns: 1fr 1fr;
@@ -1250,17 +1293,26 @@ textarea{
    }
    #btn {
        margin-left: 0.5%;
-       width:98%;
+       width:100%;
+       display: grid;
+       grid-template-columns: 1fr 1fr;
     }  
     #btn button{
-        margin-left: 0px;
+        /* margin-left: 0px; */
+        /* margin: 20px 200px; */
+       
     }
     #btn1{
+        width: 95%;
         padding: 12% 1px;
+        margin-right: 200px;
+        /* margin: 0; */
     }
     #btn2{
+        width: 95%;
         font-size: 13px;
         font-weight: bold;
+        top: 1px;
     }
     .file{
         margin: 10px 0px;
@@ -1343,7 +1395,7 @@ textarea{
        font-size: 20px;
    }
    #bottom{
-       width: 280px;
+       /* width: 280px; */
    }
 
     .editpopup{
@@ -1394,9 +1446,17 @@ textarea{
         overflow-y: auto;
     }
     .details-cards{
-        display: grid;
-        grid-template-columns: auto;
-        margin: 20px 0%;
+        /* width: 20%; */
+        /* display: grid; */
+        grid-template-columns: 80px 10px auto;
+
+        /* margin: 0px 0px/; */
+        margin-left: 5%;
+        /* margin: 20px 0%; */
+    }
+    .details-cards div{
+        padding: 0;
+        font-size: 15px;
     }
     /* .details-cards #task-type{
         margin: 0px 0px;
@@ -1437,11 +1497,13 @@ textarea{
     }
 
     #taskEmptystate{
-        margin: 0;
+        /* margin: 0; */
     }
 
     .empty-state{
-        margin: 0 80px;
+        /* margin: 0 80px; */
+        left: 28%;
+        top: 320px;
 
     }
 
@@ -1453,7 +1515,7 @@ textarea{
         margin-left: 10px;
     }
     #dropdownCount{
-        left: 160px;
+        left: 137px;
     }
 
     .countElement{
